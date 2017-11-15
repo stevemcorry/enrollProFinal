@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, MenuController } from 'ionic-angular';
-import { PostProvider } from '../../providers/post/post';
-import { GetProvider } from '../../providers/get/get';
+
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+import { StorageService } from '../../services/storage.service';
 
 //import { GooglePlus } from '@ionic-native/google-plus';
 
@@ -11,7 +13,7 @@ import { GetProvider } from '../../providers/get/get';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers: [PostProvider, GetProvider]
+  providers: [ AuthService, UserService ]
 })
 export class LoginPage {
 
@@ -21,13 +23,14 @@ export class LoginPage {
     password: "",
     name: "",
     zip: ""
-}
+  }
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public getService: GetProvider,
-    public postService: PostProvider,
+    public authService: AuthService,
+    public userService: UserService,
+    public storageService: StorageService,
     public platform: Platform, 
     public menuCtrl: MenuController
     //private googlePlus: GooglePlus
@@ -38,46 +41,46 @@ export class LoginPage {
     this.navCtrl.pop();
   }
 
-  login(x){
-    if(x.email && x.password){
-        let user = {
-            email: x.email,
-            password: x.password,
-        }
-        this.getKey(user)
-    } else if(!x.email){
+  login(){
+    if(this.user.email && this.user.password){
+        this.authorize();
+    } else if(!this.user.email){
         alert('Please enter a valid email')
-    } else if(!x.password){
+    } else if(!this.user.password){
         alert('Please enter your password')
     } else {
         alert('Please Enter all the Information')
     }
   }
-  getKey(x){
-  this.postService.requestOAuth(x).subscribe(res=>{
-    if(res){   
-    this.postService.store(res);
-    this.getService.getUserInfo(res.access_token).subscribe(data => {
-      console.log(data)
-            if(data.data.training_flags.indexOf(1) != -1){
-                this.menuCtrl.swipeEnable(true);
-                if(data.subscribed){
-                    //this.navCtrl.setRoot(Dashboard);
-                    this.navCtrl.setRoot('page-actions');
+
+  authorize(){
+
+    this.authService.passwordLogin(this.user.email, this.user.password).subscribe(res=>{  
+        
+        console.log(res);
+
+        this.storageService.storeToken(res);
+
+        this.userService.getUser().subscribe(data => {
+          console.log(data)
+                if(data.data.training_flags.indexOf(1) != -1){
+                    this.menuCtrl.swipeEnable(true);
+                    if(data.subscribed){
+                        //this.navCtrl.setRoot(Dashboard);
+                        this.navCtrl.setRoot('page-actions');
+                    } else {
+                        this.navCtrl.setRoot('page-actions');
+                    }
                 } else {
+                    //this.navCtrl.push(OnboardModal);
                     this.navCtrl.setRoot('page-actions');
                 }
-            } else {
-                //this.navCtrl.push(OnboardModal);
-                this.navCtrl.setRoot('page-actions');
-            }
-        })
-    }
-    }, error => {
-        if(error){
-            alert('Incorrect Login Info')
-        }
-    })
+        });
+
+    }, (error) => {
+        console.log(error);
+        alert('Incorrect Login Info')
+    });
   }
 
   googleSignIn() {
