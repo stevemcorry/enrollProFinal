@@ -2,6 +2,8 @@ import {Injectable, Inject} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {Http, Headers, Response} from '@angular/http';
 
+import { GooglePlus } from '@ionic-native/google-plus';
+
 @Injectable()
 export class AuthService {
 
@@ -13,7 +15,7 @@ export class AuthService {
 	    ionicEnvName: 'prod'
 	}
 
-	constructor(private http: Http) {
+	constructor(private http: Http, private googlePlus: GooglePlus) {
 
 	}
 
@@ -38,6 +40,10 @@ export class AuthService {
 	}
 
 	googleLogin(google, platform) {
+
+
+
+
       let user = {
 	      'grant_type': 'custom_request',
 	      'client_id': this.envVar.client_id,
