@@ -1,0 +1,84 @@
+<ion-header>
+    <ion-navbar>
+      <ion-buttons left>
+        <div (click)="dismiss()">
+          <ion-icon name="arrow-back" class="icons"></ion-icon>
+        </div>
+      </ion-buttons>
+      <ion-title>Action</ion-title>
+      <ion-buttons right>
+        <div (click)="saveAction()">
+          <div class="navbarSave" *ngIf="editActionOn">Save</div>
+        </div>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content class="addProspect">
+      <div class="iconList">
+          <div class="labelIcon" 
+            (click)="actionSet('Call');editActionOn=true">
+            <div [ngClass]="{callOn: actionStyles.Call}" 
+              class="call">
+            </div>
+            <div class="labels" 
+              [ngClass]="{labelsOn: actionStyles.Call}">
+              Call
+            </div>
+          </div>
+          <div class="labelIcon" 
+            (click)="actionSet('Text');editActionOn=true">
+            <div [ngClass]="{textOn: actionStyles.Text}" 
+              class="text">
+            </div>
+            <div class="labels" 
+              [ngClass]="{labelsOn: actionStyles.Text}">
+              Text
+            </div>
+          </div>
+          <div class="labelIcon" 
+            (click)="actionSet('Email');editActionOn=true">
+            <div [ngClass]="{emailOn: actionStyles.Email}" 
+              class="email">
+            </div>
+            <div class="labels" 
+              [ngClass]="{labelsOn: actionStyles.Email}">
+              Email
+            </div>
+          </div>
+          <div class="labelIcon" 
+            (click)="actionSet('Meet');editActionOn=true">
+            <div [ngClass]="{meetOn: actionStyles.Meet}" 
+              class="meet">
+            </div>
+            <div class="labels" 
+              [ngClass]="{labelsOn: actionStyles.Meet}">
+              Meet
+            </div>
+          </div>
+        </div>
+        <div class="nameChoose" (click)="openContact()">
+          <div class="nameLabel">Name:</div>
+          <div class="nameName">
+            {{action.contact.first_name}} {{action.contact.last_name}}
+          </div>
+          <!--<ion-select [(ngModel)]="action.contact.first_name" multiple="false">
+            <ion-option *ngFor="let c of contacts" value="{{c.id}}">{{c.first_name}} {{c.last_name}}</ion-option>
+          </ion-select>-->
+        </div>
+        <div style="display:flex;width:100%">
+          <ion-item (click)="editActionOn=true">
+              <ion-label *ngIf="!action.due_date">Due Date:</ion-label>
+              <ion-datetime displayFormat="MMM/DD/YYYY" pickerFormat="MMM DD YYYY"  min="2016" max="2020-12-31"  [(ngModel)]="action.due_date"></ion-datetime>
+          </ion-item>
+          <ion-item (click)="editActionOn=true">
+              <ion-label *ngIf="!actionTime">Time:</ion-label>
+              <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A"  min="2016" max="2020-12-31"  [(ngModel)]="actionTime"></ion-datetime>
+          </ion-item>
+        </div>
+        <!--<ion-item>
+            <ion-label>Due Date:</ion-label>
+            <ion-datetime displayFormat="MMM/DD/YYYY" pickerFormat="MMM DD YYYY"  min="2016" max="2020-12-31"  [(ngModel)]="action.due_date"></ion-datetime>
+        </ion-item>-->
+        <textarea type="text" [(ngModel)]="action.notes"placeholder="Notes" (click)="editActionOn=true"></textarea>
+    </ion-content>

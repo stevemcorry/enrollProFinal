@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Actions</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<div class="dimmer" [ngClass]="{showDim: showDim}" (click)="showDim = false; closeFab(fab)">
+  <div [ngClass]="{circles :showDim}"></div>
+</div>
+
+
+<ion-content padding>
+  <ion-list  *ngFor="let action of actions | actionFilter: 0">
+    <ion-item-sliding class="heightSet" 
+      [ngClass]="{completeAnimation:  animate(action)}">
+      <ion-item no-lines class="task">
+        <ion-icon item-left 
+          (click)="openSpecificAction(action)" 
+          class="{{classCheck(action)}}">
+        </ion-icon>
+        <div class="spacing">
+          <div (click)="openSpecificAction(action)" 
+            class="actionBody" 
+            [ngClass]="{striking :action.strike}">
+            <div class="taskProspect {{dateCheck(action.due_date)}}Border">
+              {{action.action_type.name}} {{action.contact.first_name}}
+            </div>
+            <div class="taskNotes">
+              {{action.notes}}
+            </div>
+          </div>
+          <div class="statusCircle {{dateCheck(action.due_date)}}Border" 
+            [ngClass]="doneCheck(action.due_date, action.animate)" 
+            (click)="action.animate = true; completeAction(action)">
+          </div>
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" 
+          (click)="action.strike = !action.strike; action.skip = true; skipAction(action)">
+          Skip Action
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div *ngIf="!actions[0]" class="job">
+      <div style="font: 18px 'junction-light'; padding-top: 10px;">
+          {{actionsLoading}}
+      </div>
+  </div>
+  <ion-fab bottom center #fab>
+    <div ion-fab (click)="showDim = !showDim;" class="addButton" [ngClass]="{addButtonActive: showDim}" ></div>
+    <ion-fab-list side="right">
+      <div (click)="addContact(); showDim = false; closeFab(fab)" class="addContactIcon">
+        <div class="fabTitles">
+          Add Contact
+        </div>
+      </div>
+    </ion-fab-list>
+    <ion-fab-list side="left">
+      <div (click)="chooseActionContact(); showDim = false; closeFab(fab)" class="addActionIcon">
+          <div class="fabTitles">
+            Add Action
+          </div>
+      </div>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

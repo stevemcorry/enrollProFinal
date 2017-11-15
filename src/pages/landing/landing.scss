@@ -1,0 +1,64 @@
+page-landing {
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 15px;
+        .enrollIcon{
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url('../assets/imgs/Asset 19.png');
+            height: 30px;
+            width: 150px;
+        }
+        .login{
+            font: 16px 'junction-light';
+            color: $dark;
+        }
+    }body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .mainIcon{
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url('../assets/imgs/Asset 83.png');
+            height: 80vw;
+            width: 100vw;
+            top: 12%;
+            position: absolute;
+        }
+        .mentor{
+            font: 20px 'junction-regular';
+            text-align: center;
+            color: $dark;
+            margin: 52% 25px 0;
+            line-height: 22px;
+        }
+        .startButton{
+            height: 65px;
+            width: 250px;
+            font: 26px 'junction-regular';
+            text-align: center;
+            padding-top: 20px;
+            color: white;
+            background-color: #1A9199;
+            margin-top: 70px;
+            z-index: 2;
+            border-radius: 7px;
+        }
+        // .pipeIcon{
+        //     background-repeat: no-repeat;
+        //     background-size: contain;
+        //     background-image: url('../assets/img/newIcons/Asset 244.png');
+        //     height: 12vw;
+        //     width: 36vw;
+        //     margin: 45px 0;
+        // }
+        // .support{
+        //     font: 16px 'junction-regular';
+        //     color: $dark;
+        //     margin: 15px 0;
+        // }
+    }
+}

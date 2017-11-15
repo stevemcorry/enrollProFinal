@@ -1,0 +1,241 @@
+page-actions {
+    .scroll-content{
+        padding: 15px 0 !important;
+    }
+
+    //Dimmer
+    .dimmer{
+        z-index: 50;
+        position: fixed;
+        transform: translateX(-150%);
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: opacity .3s;
+        background-image: url('../assets/imgs/dimBack.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .showDim{
+        transform: translateX(0%);
+        opacity: 1;
+        transition: opacity .5s;
+    }
+    .circles{
+        position: fixed;
+        bottom: 0%;
+        background-image: url('../assets/imgs/addAction.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 50%;
+        width: 85%;
+        transform: translateX(8%);
+    }
+    //Fab
+    .addButton{
+        background-image: url('../assets/imgs/tealDrop.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100px;
+        width: 75px;
+    }
+    .addButtonActive{
+        background-image: none;
+        background-repeat: no-repeat;
+    }
+    .addContactIcon{
+        height: 75px;
+        width: 75px;
+        transform: translate(50%,-55%);
+    }
+    .addActionIcon{
+        height: 75px;
+        width: 75px;
+        transform: translate(-50%,-55%);
+    }
+    .fabTitles{
+        font: 12px junction-bold;
+        color: white;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(20px);
+        text-shadow: -1px 0px 1px $dark;
+    }
+    //Loading
+    .job{
+        text-align: center
+    }
+
+    //Actions
+    .heightSet{
+        height: 67px;
+        transition: all .5s cubic-bezier(1, 0, 1, .2);
+    }
+    .task{
+        display: flex;
+        //height: 45px;
+        align-items: center;
+        //margin: 10px 0 10px 2px;
+        transition: transform .8s cubic-bezier(1, 0, 1, .2);
+    }
+    .completeAnimation{
+        //transform: translateX(-100%);
+        border-radius: 5px;
+        height: 0px;
+    }
+    .spacing{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .actionBody{
+        width: 80%;
+    }
+    .striking{
+        text-decoration: line-through;
+        -moz-text-decoration-color: $redd;
+    }
+    .taskProspect{
+        font: 15px 'junction-regular';
+        font-weight: 700;
+        padding-top: 2px;
+    }
+    .redBorder{
+        color: $redd;
+        border-color: $redd;
+    }
+    .blueBorder{
+        color: $bluish;
+        border-color: $bluish;
+    }
+    .greyBorder{
+        color: $dark;
+        border-color: $dark;
+    }
+    .taskNotes{
+        font: 12px 'junction-light';
+        color: $dark;
+        margin-top: 4px;
+        white-space: pre-line;
+        height: 2em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-top: 1px;
+    }
+    .statusCircle{
+        border-radius: 50%;
+        border: 2px solid $greyy;
+        height: 25px;
+        width: 25px;
+        align-self: center;
+        margin-right: 10px;
+    }
+    .statusCircleOn{
+        background-image: url('../assets/imgs/Asset 40.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 25px;
+        width: 25px;
+        border: none;
+    }
+    //Icons
+    .text{
+        background-image: url('../assets/imgs/actionIcons/Asset 35.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .textRed{
+        background-image: url('../assets/imgs/actionIcons/Asset 33.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .textBlue{
+        background-image: url('../assets/imgs/actionIcons/Asset 34.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .email{
+        background-image: url('../assets/imgs/actionIcons/Asset 53.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .emailRed{
+        background-image: url('../assets/imgs/actionIcons/Asset 51.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .emailBlue{
+        background-image: url('../assets/imgs/actionIcons/Asset 52.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .call{
+        background-image: url('../assets/imgs/actionIcons/Asset 59.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .callRed{
+        background-image: url('../assets/imgs/actionIcons/Asset 57.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .callBlue{
+        background-image: url('../assets/imgs/actionIcons/Asset 58.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .meet{
+        background-image: url('../assets/imgs/actionIcons/Asset 64.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .meetRed{
+        background-image: url('../assets/imgs/actionIcons/Asset 62.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .meetBlue{
+        background-image: url('../assets/imgs/actionIcons/Asset 63.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+
+}

@@ -14,6 +14,24 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
+$bluish: #1A9199;
+$darkblue: #1f6396;
+$greeny: #ACD373;
+$purp: #5F4275;
+$light: #eeeff2;
+$greyy: #E5E6E8;
+$dark: #768189;
+$redd: #f6795d;
+$yellow: #fddd05;
+$clear: rgba(255, 255, 255, 0.45);
+$clear1: rgba(255, 27, 23, 0.70);
+$clear2: rgba(255, 177, 23, 0.70);
+$clear3: rgba(173, 255, 3, 0.70);
+$clear4: rgba(23, 251, 255, 0.70);
+$clear5: rgba(23, 101, 255, 0.70);
+$clear6: rgba(169, 23, 255, 0.70);
+$clear7: rgba(255, 23, 169, 0.70);
+$clear8: rgba(80, 80, 80, 0.88);
 
 // Shared Variables
 // --------------------------------------------------
@@ -34,7 +52,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    $bluish,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -86,3 +104,23 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+//Junction
+@font-face{
+  font-family: "junction-bold";
+  src: url('../assets/fonts/Junction/Junction-bold.otf') format('opentype');
+}
+@font-face{
+  font-family: "junction-light";
+  src: url('../assets/fonts/Junction/Junction-light.otf') format('opentype');
+}
+@font-face{
+  font-family: "junction-regular";
+  src: url('../assets/fonts/Junction/Junction-regular.otf') format('opentype');
+}
+
+//Hello Beautiful
+@font-face{
+  font-family: "janda-casual";
+  src: url('../assets/fonts/HelloBeautiful/JandaEverydayCasual.ttf') format('truetype');
+}

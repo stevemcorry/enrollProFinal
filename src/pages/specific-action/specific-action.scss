@@ -1,0 +1,124 @@
+page-specific-action {
+    .item{
+        padding: 0 10px !important;
+    }
+    .item-block:last-child{
+        margin-top: 0 !important;
+    }
+    textarea{
+        height: 100px;
+        width: 95%;
+        border: 3px solid $greyy;
+        padding: 5px;
+        resize: none;
+    }
+    .scroll-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .navbarSave{
+        font: 16px 'junction-regular';
+        color: $dark;
+        padding-top: 2px;
+    }
+    .iconList{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .labelIcon{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    //Icons
+    .text{
+        background-image: url('../assets/imgs/actionIcons/Asset 35.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .email{
+        background-image: url('../assets/imgs/actionIcons/Asset 53.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .call{
+        background-image: url('../assets/imgs/actionIcons/Asset 59.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+        transform: translateX(13px);
+    }
+    .meet{
+        background-image: url('../assets/imgs/actionIcons/Asset 64.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .emailOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 51.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .textOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 33.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .callOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 57.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+        transform: translateX(13px);
+    }
+    .meetOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 62.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .labels{
+        margin-top: 8px;
+        color: $dark;
+        font: 100 16px 'junction-light';
+    }
+    .labelsOn{
+        color: $redd;
+    }
+    .label, .datetime-text{
+        color: $dark;
+    }
+
+    .nameChoose{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid $greyy;
+        width: 95%;
+        height: 40px;
+        font: 20px 'junction-light';
+        color: $dark;
+    }
+    .nameLabel{
+        margin-left: 10px;
+    }
+    .nameName{
+        margin-right: 10px;
+    }
+
+}

@@ -14,3 +14,32 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.fab-md{
+    background-color: transparent;
+    box-shadow: none;
+    color: transparent;
+}
+.fab-ios{
+    color: transparent;
+    background-color: rgba(0,0,0,0);
+}
+ion-fab[center]{
+    margin-left: -38px !important;
+}
+ion-title{
+    padding: 20px 40px 0 40px !important;
+    text-align: center;
+}
+.back-button{
+    display: none !important;
+}
+.toolbar-background {
+    background-color: $greyy;
+    border-style: none !important;
+}
+.toolbar-title{
+    font: 100 20px 'junction-regular';
+    color: $dark;
+    padding-top: 5px;
+}
