@@ -7,7 +7,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { ComponentsModule} from '../components/components.module';
 
 import { MyApp } from './app.component';
-
+import {GlobalVars} from './globalvars';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GetProvider } from '../providers/get/get';
@@ -37,7 +37,8 @@ import { PutProvider } from '../providers/put/put';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GetProvider,
     PostProvider,
-    PutProvider
+    PutProvider,
+    GlobalVars
   ]
 })
 export class AppModule {}

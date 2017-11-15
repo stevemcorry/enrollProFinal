@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, FabContainer, ModalController, AlertController } from 'ionic-angular';
-import { GetProvider } from '../../providers/get/get';
-import { PutProvider } from '../../providers/put/put';
+import {ActionService } from '../../services/actions.service';
+import { StorageService } from '../../services/storage.service';
 
 
 @IonicPage({
@@ -10,7 +10,7 @@ import { PutProvider } from '../../providers/put/put';
 @Component({
   selector: 'page-actions',
   templateUrl: 'actions.html',
-  providers: [GetProvider, PutProvider]
+  providers: [ActionService, StorageService]
 })
 export class ActionsPage {
 
@@ -31,9 +31,9 @@ export class ActionsPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public getService: GetProvider,
-    public putService: PutProvider,
+    public actionService: ActionService,
     public alert: AlertController,
+    public storageService: StorageService
   ) {
   }
 
@@ -54,7 +54,7 @@ export class ActionsPage {
   }
   //Actions
   getActions(){
-    this.getService.getActions(this.currentKey).subscribe(res => {
+    this.actionService.getActions(this.currentKey).subscribe(res => {
       let actions = [];
       for(let action of res){
         if(!action.complete){
@@ -73,9 +73,9 @@ export class ActionsPage {
         }
         return 0;
       })
-      this.getService.getContacts(this.currentKey).subscribe(contacts => {
-        this.contacts = contacts;
-      })
+      // this.getService.getContacts(this.currentKey).subscribe(contacts => {
+      //   this.contacts = contacts;
+      // })
       this.actionsLoading = "No actions for today!"
     });
   }
@@ -188,7 +188,7 @@ export class ActionsPage {
     let id = action.id
     let contact = action.contact;
       setTimeout(()=>{
-        this.putService.completeAction(this.currentKey, id, this.newAction).subscribe(res => {
+        this.actionService.completeAction(this.currentKey, id, this.newAction).subscribe(res => {
           this.getActions();
           this.openAlert(contact)
         })
@@ -228,7 +228,7 @@ export class ActionsPage {
 
 
   ionViewDidLoad() {
-    this.getService.getStorage().then(key => {
+    this.storageService.getToken().then(key => {
       this.currentKey = key;
       this.getActions()
     })

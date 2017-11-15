@@ -1,27 +1,22 @@
-import { Http, Headers, ResponseContentType } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
+import { Injectable, Inject } from '@angular/core';
 
+import { GlobalVars } from '../app/globalvars';
 
 @Injectable()
 export class PipelineService {
 
-    envVar = {
-        apiUrl: 'http://devapi.enroll.pro',
-        client_secret: 'KNEYH2qOB2ZPEPWbUGzkBuaqyLUQFysvUgpgjBu2',
-        client_id: 2,
-        environmentName: 'Production Environment',
-        ionicEnvName: 'prod'
-      }
 
     constructor(
         private http: Http,
+        @Inject(GlobalVars) public globalVar
     ){
     }
 
     getSpecificPipeline(id,key){
         let authHeader = new Headers();
         authHeader.append('Authorization', 'Bearer '+ key);
-        return this.http.get(this.envVar.apiUrl + '/api/pipelines/'+id, {headers: authHeader})
+        return this.http.get(this.globalVar.getApiUrl() + 'pipelines/'+id, {headers: authHeader})
         .map(data=>{
             return data.json();
         })
