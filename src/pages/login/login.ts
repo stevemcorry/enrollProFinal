@@ -13,7 +13,7 @@ import { StorageService } from '../../services/storage.service';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers: [ AuthService, UserService ]
+  providers: [ AuthService, UserService, StorageService ]
 })
 export class LoginPage {
 
@@ -56,25 +56,37 @@ export class LoginPage {
   authorize(){
 
     this.authService.passwordLogin(this.user.email, this.user.password).subscribe(res=>{  
-        
-        console.log(res);
 
-        this.storageService.storeToken(res);
+        this.storageService.setToken(res).then(()=>{
+          console.log(res, 'token set');
 
-        this.userService.getUser().subscribe(data => {
-          console.log(data)
-                if(data.data.training_flags.indexOf(1) != -1){
-                    this.menuCtrl.swipeEnable(true);
-                    if(data.subscribed){
-                        //this.navCtrl.setRoot(Dashboard);
-                        this.navCtrl.setRoot('page-actions');
-                    } else {
-                        this.navCtrl.setRoot('page-actions');
-                    }
-                } else {
-                    //this.navCtrl.push(OnboardModal);
-                    this.navCtrl.setRoot('page-actions');
-                }
+          this.userService.getUser().then((data) => {
+
+            let userData: any = {
+              data: {},
+              subscribe: false
+            }
+
+            userData = data;
+
+            console.log(data, 'user data');
+           
+
+            if(userData.data.training_flags.indexOf(1) != -1){
+              this.menuCtrl.swipeEnable(true);
+              if(userData.subscribed){
+                this.storageService.setSubscribed(true);
+                //this.navCtrl.setRoot(Dashboard);
+                this.navCtrl.setRoot('page-actions');
+              } else {
+                this.storageService.setSubscribed(false)
+                this.navCtrl.setRoot('page-actions');
+              }
+            } else {
+              //this.navCtrl.push(OnboardModal);
+              this.navCtrl.setRoot('page-actions');
+            }
+          });
         });
 
     }, (error) => {

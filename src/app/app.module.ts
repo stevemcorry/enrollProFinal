@@ -7,12 +7,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { ComponentsModule} from '../components/components.module';
 
 import { MyApp } from './app.component';
-
+import {GlobalVars} from './globalvars';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GetProvider } from '../providers/get/get';
 import { PostProvider } from '../providers/post/post';
 import { PutProvider } from '../providers/put/put';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 //Filters
 
@@ -37,7 +38,9 @@ import { PutProvider } from '../providers/put/put';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GetProvider,
     PostProvider,
-    PutProvider
+    PutProvider,
+    GlobalVars,
+    GooglePlus
   ]
 })
 export class AppModule {}

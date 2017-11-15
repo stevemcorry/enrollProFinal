@@ -10,12 +10,26 @@ export class StorageService {
 
 	}
 
-	storeToken(token) {
-		this.storage.set('token', token).then(() => {});
+	setToken(token) {
+		return new Promise((resolve, reject)=>{
+			this.storage.set('token', token).then((data)=>{
+				resolve(data);		
+			}).catch((e)=>{
+				reject(e)
+			});
+		})
 	}
 
 	getToken() {
 		return this.storage.get('token');
+	}
+
+	setSubscribed(sub) {
+		this.storage.set('subscribed', sub).then(()=>{});
+	}
+
+	getSubscribed() {
+		this.storage.get('subscribed')
 	}
 
 }
