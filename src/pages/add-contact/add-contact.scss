@@ -1,3 +1,164 @@
 page-add-contact {
+    //header
+    .headerDiv{
+        font: 13px 'junction-light';
+        color: $bluish;
+    }
 
+    //ICONS
+    .iconList{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 20%;
+        width: 100%;
+    }
+    .labelIcon{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .customer{
+        background-image: url('../assets/imgs/actionIcons/Asset 70.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .sharer{
+        background-image: url('../assets/imgs/actionIcons/Asset 74.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .builder{
+        background-image: url('../assets/imgs/actionIcons/Asset 76.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .sharerOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 75.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .customerOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 71.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .builderOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 77.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .labels{
+        margin-top: 8px;
+        color: $greyy;
+        font: 100 16px 'junction-light';
+    }
+    .labelsOn{
+        color: $redd;
+    }
+    //inputs
+
+    input{
+        height: 100%;
+        width: 95%;
+        margin: 5px 2px;
+        border: 2px solid $greyy;
+        padding: 10px;
+        color: $bluish;
+        font: 17px 'junction-regular';
+    }
+    .inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 5px 15px 0px 15px;
+        font-size: 25px;
+    }
+    //buttons
+    .buttons{
+        display: flex;
+        margin: 25px 5px 5px 0;
+        height: auto;
+        justify-content: flex-end;
+    }
+    .save{
+        width: 100px;
+        font: 15px 'junction-light';
+    }
+    
+    //Pipe
+    .smallSlide{
+        width: 15% !important;
+    }
+    .slides{
+        height: 45px;
+        transition: all .2s ease;
+    }
+    .pipe{
+        display: flex;
+        align-items: center;
+        height: 35px;
+    }
+    .slideName{
+        height: 75%;
+        width: 89%;
+        font: 20px 'junction-regular';
+        color: white;
+        background-color: $greyy;
+        padding-top: 4px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .bumper{
+        width: 5%;
+        height: 100%;
+        background-color: $greyy;
+        margin: 1px;
+    }
+    .activePipe{
+        background-color: $bluish
+    }
+    .activeName{
+        width: 70% !important;
+        transition: all .2s ease;
+    }
+    //PAGER
+
+    .pagerBar{
+        display: flex;
+        width: 100%;
+        margin-top: 10px; 
+        justify-content: center;
+    }
+    .pagerBox{
+        display: flex;
+    }
+    .pagerFlag{
+        height: 6px;
+        width: 6px;
+        background: $greyy;
+        border-radius: 50%;
+        margin: 2px 2px;
+    }
+    .activeFlag{
+        background: $bluish;
+    }
+    .position{
+        font-size: 23px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
 }

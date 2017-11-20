@@ -10,12 +10,11 @@ import { MyApp } from './app.component';
 import {GlobalVars} from './globalvars';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { GetProvider } from '../providers/get/get';
-import { PostProvider } from '../providers/post/post';
-import { PutProvider } from '../providers/put/put';
 import { GooglePlus } from '@ionic-native/google-plus';
 
+import { StorageService } from '../services/storage.service';
 //Filters
+
 
 @NgModule({
   declarations: [
@@ -36,11 +35,9 @@ import { GooglePlus } from '@ionic-native/google-plus';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GetProvider,
-    PostProvider,
-    PutProvider,
     GlobalVars,
-    GooglePlus
+    GooglePlus,
+    StorageService
   ]
 })
 export class AppModule {}

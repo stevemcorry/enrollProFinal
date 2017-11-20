@@ -1,18 +1,83 @@
-<!--
-  Generated template for the AddContactPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>AddContact</ion-title>
+    <ion-buttons left>
+      <div (click)="dismiss()">
+        <div class="headerDiv">Cancel</div>
+      </div>
+    </ion-buttons>
+    <ion-title>New Contact</ion-title>
+    <ion-buttons end>
+      <div (click)="addContact(contact)">
+        <div class="headerDiv">Save</div>
+      </div>
+    </ion-buttons>
   </ion-navbar>
+</ion-header>  
 
-</ion-header>
-
-
-<ion-content padding>
-
+<ion-content>
+    <div class="iconList">
+      <div class="labelIcon" (click)=" customerOn=true; builderOn=false; sharerOn=false; teamOn=false; contact.role=2; setPipes('customer')">
+        <div [ngClass]="{customerOn: customerOn}" class="customer"></div>
+        <div class="labels" [ngClass]="{labelsOn: customerOn}">Customer</div>
+      </div>
+      <div class="labelIcon" (click)=" sharerOn=true; builderOn=false; customerOn=false; teamOn=false;  contact.role=3; setPipes()">
+        <div [ngClass]="{sharerOn: sharerOn}" class="sharer"></div>
+        <div class="labels" [ngClass]="{labelsOn: sharerOn}">Sharer</div>
+      </div>
+      <div class="labelIcon" (click)=" builderOn=true; sharerOn=false; customerOn=false; teamOn=false; contact.role = 1; setPipes()">
+        <div [ngClass]="{builderOn: builderOn}" class="builder"></div>
+        <div class="labels" [ngClass]="{labelsOn: builderOn}">Builder</div>
+      </div>
+      <!--<div class="labelIcon" (click)=" teamOn=true; builderOn=false; sharerOn=false; customerOn=false;">
+        <div [ngClass]="{teamOn: teamOn}" class="team"></div>
+        <div class="labels" [ngClass]="{labelsOn: teamOn}">Team Member</div>
+      </div>-->
+    </div>
+    <div class="inputs">
+        <input placeholder="First Name:" type="text" required [(ngModel)]="contact.first_name">
+        <input placeholder="Last Name:" type="text" required [(ngModel)]="contact.last_name">
+        <input placeholder="Mobile:" type="tel" required [(ngModel)]="phone" (keydown)="formatPhone()">
+        <input placeholder="Email:" type="email" required [(ngModel)]="contact.email">
+      <ion-slides #choosePipe (ionSlideDidChange)="setPipe()">
+        <ion-slide class="smallSlide"></ion-slide>
+        <ion-slide *ngFor="let slide of slides" 
+          class="slides" 
+          [ngClass]="{activeName: getIndex(slide)}">
+          <div class="pipe">
+            <div class="bumper" 
+              [ngClass]="{activePipe: getIndex(slide)}">
+            </div>
+            <div class="slideName" 
+              [ngClass]="{activePipe: getIndex(slide)}">
+              {{slide.name}}
+            </div>
+            <div class="bumper" 
+              [ngClass]="{activePipe: getIndex(slide)}">
+            </div>
+          </div>
+        </ion-slide>
+        <ion-slide></ion-slide>
+      </ion-slides>
+      <div class="pagerBar">
+        <div *ngFor="let slide of slides" 
+          class="pagerBox">
+          <div [ngClass]="{activeFlag: getIndex(slide)}" 
+            class="pagerFlag">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="addTagBox" 
+      (click)="openTags()"
+      *ngIf="subscribed">
+      <div class="addTag"></div>
+      <div class="addTagLabel">Add Tag</div>
+    </div>
+    <div class="tags"
+     *ngIf="subscribed">
+      <div class="tag" *ngFor="let t of tags" (click)="tag(tags)">{{t.name}}</div>
+    </div>
+    <div class="buttons">
+      <button class="save" ion-button bottom right (click)="addContact(contact)">Save</button>
+    </div>
 </ion-content>

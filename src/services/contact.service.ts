@@ -1,7 +1,11 @@
 import { Http, Headers, ResponseContentType } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import { GlobalVars } from '../app/globalvars';
+
+import {StorageService} from '../services/storage.service'
 
 @Injectable()
 export class ContactService {
@@ -10,27 +14,28 @@ export class ContactService {
     constructor(
         private http: Http,
         @Inject(GlobalVars) public globalVar,
+        public storage: StorageService
     ){
     }
-    getContacts(key){
+    getContacts(){
             let authHeader = new Headers();
-            authHeader.append('Authorization', 'Bearer '+ key);
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
             return this.http.get(this.globalVar.getApiUrl() + 'contacts', {headers: authHeader})
             .map(data=>{
                 return data.json();
             })
     }
-    getSpecificContact(key, id){
+    getSpecificContact(id){
         let authHeader = new Headers();
-            authHeader.append('Authorization', 'Bearer '+ key);
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
             return this.http.get(this.globalVar.getApiUrl() + 'contacts/' + id, {headers: authHeader})
             .map(data=>{
                 return data.json();
             })
     }
-    getContactImage(key, id){
+    getContactImage(id){
         let authHeader = new Headers();
-            authHeader.append('Authorization', 'Bearer ' + key);
+            authHeader.append('Authorization', 'Bearer ' + this.storage.getToken());
         var options = {
             headers: authHeader,
             responseType: ResponseContentType.Blob
@@ -43,36 +48,36 @@ export class ContactService {
         //     return data;
         // })
     }
-    getContactPosition(key){
+    getContactPosition(){
         let authHeader = new Headers();
-            authHeader.append('Authorization', 'Bearer '+ key);
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
             return this.http.get(this.globalVar.getApiUrl() + 'pipelines', {headers: authHeader})
             .map(data=>{
                 return data.json();
             })
     }
-    addContact(key, contact){
+    addContact(contact){
         let authHeader = new Headers();
-            authHeader.append('Authorization', 'Bearer '+ key);
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
         return this.http.post(this.globalVar.getApiUrl() + 'contacts', contact, { headers: authHeader})
         .map(res => res.json());
     }
-    addContactArr(key, contact){
+    addContactArr(contact){
         let authHeader = new Headers();
-            authHeader.append('Authorization', 'Bearer '+ key);
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
         return this.http.post(this.globalVar.getApiUrl() + 'contacts/multiple', contact, { headers: authHeader});
     }
-    editContact(key, id, edit){
+    editContact(id, edit){
         let authHeader = new Headers();
-            authHeader.append('Authorization', 'Bearer '+ key);
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
             authHeader.append('Content-Type','application/json')
         return this.http.put(this.globalVar.getApiUrl() + 'contacts/' + id, edit, { headers: authHeader}).
         map(res => {
         });
     }
-    deleteContact(key, id){
+    deleteContact(id){
         let authHeader = new Headers();
-            authHeader.append('Authorization', 'Bearer '+ key);
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
             authHeader.append('Content-Type','application/json')
         return this.http.delete(this.globalVar.getApiUrl() + 'contacts/' + id, { headers: authHeader})
         .map(res => console.log(res, 'put complete'));

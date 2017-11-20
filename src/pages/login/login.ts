@@ -57,21 +57,19 @@ export class LoginPage {
 
     this.authService.passwordLogin(this.user.email, this.user.password).subscribe(res=>{  
 
-        this.storageService.setToken(res).then(()=>{
+        this.storageService.setToken(res)
           console.log(res, 'token set');
 
-          this.userService.getUser().then((data) => {
+          this.userService.getUser().subscribe((data) => {
 
             let userData: any = {
               data: {},
               subscribe: false
             }
 
-            userData = data;
-
-            console.log(data, 'user data');
+            userData = data.json();
+            console.log(data.json(), 'user data');
            
-
             if(userData.data.training_flags.indexOf(1) != -1){
               this.menuCtrl.swipeEnable(true);
               if(userData.subscribed){
@@ -86,13 +84,11 @@ export class LoginPage {
               //this.navCtrl.push(OnboardModal);
               this.navCtrl.setRoot('page-actions');
             }
+          },Error=>{
+            console.log(Error)
           });
         });
 
-    }, (error) => {
-        console.log(error);
-        alert('Incorrect Login Info')
-    });
   }
 
   googleSignIn() {

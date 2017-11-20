@@ -6,22 +6,18 @@ import {Storage} from '@ionic/storage';
 @Injectable()
 export class StorageService {
 
-	constructor(private http: Http, private storage: Storage) {
+	key
 
+	constructor(private http: Http, private storage: Storage) {
+		
 	}
 
 	setToken(token) {
-		return new Promise((resolve, reject)=>{
-			this.storage.set('token', token).then((data)=>{
-				resolve(data);		
-			}).catch((e)=>{
-				reject(e)
-			});
-		})
+		localStorage.setItem('token', token.access_token)
 	}
 
 	getToken() {
-		return this.storage.get('token');
+		return localStorage.getItem('token');
 	}
 
 	setSubscribed(sub) {

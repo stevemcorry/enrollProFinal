@@ -3,6 +3,8 @@ import {Observable} from 'rxjs/Rx';
 import {Http, Headers, Response} from '@angular/http';
 import { GlobalVars } from '../app/globalvars';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import { GooglePlus } from '@ionic-native/google-plus';
 
 @Injectable()
@@ -15,6 +17,11 @@ export class AuthService {
 	) {
 
 	}
+
+    registerUser(user){
+        let headers:any = new Headers({'Content-Type': "application/json"})
+        return this.http.post(this.globalVar.getOauthUrl() + 'api/register', user, headers);
+    }
 
 	passwordLogin(email, password) {
 	    let user = {
@@ -56,6 +63,7 @@ export class AuthService {
 
       return this.http.post( this.globalVar.getOauthUrl() + 'token', user, headers)
       .map(res => res.json());
-  	}
+	}
+	  
 
 }

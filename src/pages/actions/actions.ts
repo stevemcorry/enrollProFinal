@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, FabContainer, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, FabContainer, ModalController, AlertController, Events } from 'ionic-angular';
 import {ActionService } from '../../services/actions.service';
-import { StorageService } from '../../services/storage.service';
 
 
 @IonicPage({
@@ -10,11 +9,9 @@ import { StorageService } from '../../services/storage.service';
 @Component({
   selector: 'page-actions',
   templateUrl: 'actions.html',
-  providers: [ActionService, StorageService]
+  providers: [ActionService]
 })
 export class ActionsPage {
-
-  currentKey
 
   //dimmer
   showDim = false;
@@ -33,8 +30,11 @@ export class ActionsPage {
     public modalCtrl: ModalController,
     public actionService: ActionService,
     public alert: AlertController,
-    public storageService: StorageService
+    public events: Events
   ) {
+    this.events.subscribe('actionAdded', ()=>{
+      this.getActions();
+    })
   }
 
   //Dimmer
@@ -45,18 +45,21 @@ export class ActionsPage {
   }
   //FAB
   addContact(){
-    let modal = this.modalCtrl.create('AddContactPage');
+    let modal = this.modalCtrl.create('page-add-contact');
     modal.present();
   }
   chooseActionContact(){
-    let modal = this.modalCtrl.create('AddActionPage');
+    let modal = this.modalCtrl.create('page-add-action');
     modal.present();
   }
   //Actions
   getActions(){
-    this.actionService.getActions(this.currentKey).subscribe(res => {
+    this.actionService.getActions().subscribe(res => {
+      console.log(res)
+      let data: any = {}
+      data = res;
       let actions = [];
-      for(let action of res){
+      for(let action of data){
         if(!action.complete){
           actions.push(action)
         }
@@ -77,7 +80,9 @@ export class ActionsPage {
       //   this.contacts = contacts;
       // })
       this.actionsLoading = "No actions for today!"
-    });
+    }, Error=>{
+      console.log(Error)
+    })
   }
   animate(action){
     let id = action.animate;
@@ -188,7 +193,7 @@ export class ActionsPage {
     let id = action.id
     let contact = action.contact;
       setTimeout(()=>{
-        this.actionService.completeAction(this.currentKey, id, this.newAction).subscribe(res => {
+        this.actionService.completeAction(id, this.newAction).subscribe(res => {
           this.getActions();
           this.openAlert(contact)
         })
@@ -208,13 +213,13 @@ export class ActionsPage {
         {
           text: 'Add Action',
           handler: () => {
-            // this.navCtrl.push(AddAction, {
-            //   recommendation: {
-            //       contact_name: contact.first_name + ' ' + contact.last_name,
-            //       contact : contact.id
-            //   }
+            this.navCtrl.push('page-add-action', {
+              recommendation: {
+                  contact_name: contact.first_name + ' ' + contact.last_name,
+                  contact : contact.id
+              }
 
-            // });
+            });
           }
         }
       ]
@@ -223,16 +228,8 @@ export class ActionsPage {
 }
 
 
-
-
-
-
   ionViewDidLoad() {
-    this.storageService.getToken().then(key => {
-      this.currentKey = key;
       this.getActions()
-    })
-    console.log('ActionsPage');
   }
 
 }

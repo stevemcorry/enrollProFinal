@@ -15,10 +15,19 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.icons{
+    cursor: pointer;
+    padding: 0px 10px 0 10px;
+    font-size: 30px;
+    color: $dark;
+}
 .fab-md{
     background-color: transparent;
     box-shadow: none;
     color: transparent;
+}
+.toolbar-content-md{
+    display: flex;
 }
 .fab-ios{
     color: transparent;

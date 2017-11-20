@@ -19,23 +19,11 @@ export class UserService {
 
 	getUser(){
 
-		return new Promise((resolve, reject) => {
+			let authHeader = new Headers();
 
-			this.storage.getToken().then((data) => {
+			authHeader.append('Authorization', 'Bearer ' + this.storage.getToken());
 
-				let authHeader = new Headers();
-
-				authHeader.append('Authorization', 'Bearer ' + data.access_token);
-
-				this.http.get(this.globalVar.getApiUrl() + 'user', {headers: authHeader}).toPromise().then((data) => {
-		            resolve(data.json());
-		        }).catch((e) => {
-		        	reject(e);
-		        });
-
-			});
-
-		});
+			return this.http.get(this.globalVar.getApiUrl() + 'user', {headers: authHeader})
         
   	}
 

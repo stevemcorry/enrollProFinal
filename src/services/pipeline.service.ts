@@ -1,6 +1,8 @@
 import { Http, Headers } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import { GlobalVars } from '../app/globalvars';
 
 @Injectable()

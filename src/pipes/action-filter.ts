@@ -12,9 +12,8 @@ export class ActionFilterPipe implements PipeTransform {
   
   transform(values: any, term: any): any {
     if(term === undefined || values === undefined) return values;
-    console.log(values, term)
     return values.filter(value => {
-        return (value.complete === term)
+        return (value.complete == term)
     })
 }
 }

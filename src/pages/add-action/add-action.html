@@ -1,18 +1,63 @@
-<!--
-  Generated template for the AddActionPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>AddAction</ion-title>
+    <div class="icons" (click)="dismiss()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </div>
+    <ion-title>Add Action</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<div class="dimSearch"  [ngClass]="{showDimSearch: showDimSearch}" >
+  <div class="dimSearchContent">
+    <div class="dimSearchIcon"></div>
+    <div class="dimSearchArrow" (click)="showDimSearch = false;"></div>
+    <input type="text" [(ngModel)]="search">
+    <div *ngFor="let c of contacts | contactFilter: search | contactOrder: 'name-asc'" (click)="newAction.contact=c.id; selectedName=c.first_name +' '+ c.last_name;showDimSearch=false" class="dimSearchName">{{c.first_name}} {{c.last_name}}</div>
+  </div>
+  <div class="dimSearchBottom" (click)="showDimSearch = false"></div>
+</div>
 
-<ion-content padding>
-
+<ion-content>
+  <div class="iconList">
+    <div class="labelIcon">
+      <div [ngClass]="{callOn: callOn}" (click)="newAction.action_type = 3; callOn=true; emailOn=false; textOn=false; meetOn=false;" class="call"></div>
+      <div class="labels" [ngClass]="{labelsOn: callOn}">Call</div>
+    </div>
+    <div class="labelIcon">
+      <div [ngClass]="{textOn: textOn}" (click)="newAction.action_type = 2; textOn=true; emailOn=false; callOn=false; meetOn=false;" class="text"></div>
+      <div class="labels" [ngClass]="{labelsOn: textOn}">Text</div>
+    </div>
+    <div class="labelIcon">
+      <div [ngClass]="{emailOn: emailOn}" (click)="newAction.action_type = 1; emailOn=true; textOn=false; callOn=false; meetOn=false;" class="email"></div>
+      <div class="labels" [ngClass]="{labelsOn: emailOn}">Email</div>
+    </div>
+    <div class="labelIcon">
+      <div [ngClass]="{meetOn: meetOn}" (click)="newAction.action_type = 4; meetOn=true; emailOn=false; textOn=false; callOn=false" class="meet"></div>
+      <div class="labels" [ngClass]="{labelsOn: meetOn}">Meet</div>
+    </div>
+  </div>
+  <ion-item class="nameChoose" (click)="showDimSearch=true;">
+    <ion-label>Name:</ion-label>
+    <div item-content>
+    {{selectedName}}
+  </div>
+    <!--<ion-select [(ngModel)]="newAction.contact" multiple="false">
+      <ion-option *ngFor="let c of contacts | contactFilter: search | ordering: 'name-asc'" value="{{c.id}}">{{c.first_name}} {{c.last_name}}</ion-option>
+    </ion-select>-->
+  </ion-item>
+  <!--<input type="date">-->
+  <div style="display:flex;width:100%">
+    <ion-item>
+        <ion-label *ngIf="!newAction.due_date">Due Date:</ion-label>
+        <ion-datetime displayFormat="MMM/DD/YYYY" pickerFormat="MMM DD YYYY"  min="2016" max="2020-12-31"  [(ngModel)]="newAction.due_date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label *ngIf="!newActionTime">Time:</ion-label>
+        <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A"  min="2016" max="2020-12-31"  [(ngModel)]="newActionTime"></ion-datetime>
+    </ion-item>
+  </div>
+  <textarea type="text" [(ngModel)]="newAction.notes"placeholder="Notes"></textarea>
+  <div (click)="addAction()" class="junctionLight save">
+    Save
+  </div>
 </ion-content>
