@@ -61,7 +61,7 @@ export class SpecificActionPage {
         this.action.notes = res.notes;
         this.actionSet(res.action_type.name);
     })
-    this.contactService.getSpecificContact(this.key, this.action.contact.id).subscribe(data=>{
+    this.contactService.getSpecificContact(this.action.contact.id).subscribe(data=>{
         this.contact = data;
     })
   }

@@ -1,25 +1,62 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, FabContainer } from 'ionic-angular';
+import { ContactService } from '../../services/contact.service';
 
-/**
- * Generated class for the ContactsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-@IonicPage()
+@IonicPage({
+  name: 'page-contacts'
+})
 @Component({
   selector: 'page-contacts',
   templateUrl: 'contacts.html',
+  providers: [ContactService]
 })
 export class ContactsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  contacts = [];
+  contact;
+  contactsLoading = "Loading..."
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public contactService: ContactService,
+    public modalCtrl: ModalController
+  ) {
+  }
+
+  getContacts(){
+    this.contactService.getContacts().subscribe((res)=>{
+        this.contacts = res;
+        !this.contacts[0] ? this.contactsLoading = 'Please Add Contacts!':this.contactsLoading = 'Loading...';
+    })
+  }
+  addContact(){
+    let modal = this.modalCtrl.create('page-add-contact');
+    modal.present();
+  }
+  addAction(){
+    let modal = this.modalCtrl.create('page-add-action');
+    modal.present();
+  }
+  openContact(contact){
+    this.navCtrl.push('page-contact', {contact: contact})
+  }
+  closeFab(fab: FabContainer): void {
+    if (fab !== undefined) {
+      fab.close();
+    }
+  }
+  deleteContact(id){
+      console.log(id);
+      this.contactService.deleteContact(id).subscribe(res=>{
+          console.log(res,'Gone!'),
+          this.getContacts();
+      })
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactsPage');
+    this.getContacts();
   }
 
 }

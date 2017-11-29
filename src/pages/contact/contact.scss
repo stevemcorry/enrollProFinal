@@ -1,3 +1,506 @@
 page-contact {
+    //header
+    .edit{
+        font-size: 20px;
+        margin-right: 8px; 
+        color: $dark;
+    }
 
+    //top
+    .top{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url('../assets/imgs/contactIcons/Asset 217.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 105%;
+        transform: translate(-2.5%, -2px)
+    }
+    .profile{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35vw;
+        height: 35vw;
+        background-color: white;
+        border-radius: 50%;
+        margin-top: 30px;
+    }
+    .profileIcon{
+        background-image: url('../assets/imgs/actionIcons/Asset 70.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 50%;
+        width: 50%;
+    }
+    .profilePic{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+    .profileName{
+        font: 20px 'junction-light';
+        color: $bluish;
+        margin-top: 20px;
+        text-align: center;
+    }
+    //Icon List
+    .iconList{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 20%;
+        width: 100%;
+    }
+    .labelIcon{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 80px;
+        max-width: 25%;
+        text-align: center;
+    }
+    .customer{
+        background-image: url('../assets/imgs/actionIcons/Asset 70.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .sharer{
+        background-image: url('../assets/imgs/actionIcons/Asset 74.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .builder{
+        background-image: url('../assets/imgs/actionIcons/Asset 76.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .sharerOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 75.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .customerOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 71.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .builderOn{
+        background-image: url('../assets/imgs/actionIcons/Asset 77.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .labels{
+        margin-top: 8px;
+        color: $greyy;
+        font: 100 16px 'junction-light';
+    }
+    .labelsOn{
+        color: $redd;
+    }
+
+    //Pipe
+    .pipePager{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 5px 0;
+    }
+    .choosePipe{
+        height: 20px;
+        color: $purp;
+        font: 25px 'brandon-regular';
+    }
+    .firstSlide{
+        width: 25% !important;
+    }
+    .slides{
+        height: 40px;
+        transition: all 1s ease;
+    }
+    .activeSlide{
+        width: 50% !important;
+    }
+    .pipe{
+        display: flex;
+        align-items: center;
+        height: 30px;
+        transition: all .5s ease;
+    }
+    .bumper{
+        width: 4.5%;
+        height: 100%;
+        background-color: $greyy;
+        margin: 1px;
+        transition: all .21s ease;
+    }
+    .activePipe{
+        background-color: $bluish !important;
+    }
+    .slideName{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 75%;
+        width: 90%;
+        background-color: $greyy;
+        color: white;
+        font: 15px 'junction-light';
+        transition: all .21s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .pagerBar{
+        display: flex;
+        width: 100%;
+        margin-top: 10px; 
+        justify-content: center;
+    }
+    .pagerBox{
+        display: flex;
+    }
+    .pagerFlag{
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        margin: 2px;
+        background: $greyy;
+    }
+    .activeFlag{
+        height: 9px;
+        width: 9px;
+        background: $bluish;
+    }
+
+    //Toggles
+    .toggles{
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        height: 70px;
+        transition: all 1s ease;
+    }
+    .togglesOn{
+        height: 400px;
+        overflow: scroll;
+    }
+    .toggle{
+        display: inline-block;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+        flex-shrink: 0;
+        margin: 15px 10px;
+    }
+    .downArrowWrap{
+        position: absolute;
+        right: 10px;
+        bottom: 0px;
+        padding: 10px;
+    }
+    .downArrow{
+        transform: rotate(90deg);
+        background-image: url('../assets/imgs/toggles/HRESAsset 233.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 45px;
+        width: 45px;
+        transition: all .2s ease;
+    }
+    .downArrowOn{
+        transform: rotate(-90deg);
+        color: rgba(0,0,0,0);
+    }
+
+    .toggle1{
+        background-image: url('../assets/imgs/toggles/HRESAsset 178.png');
+      }
+      .toggle1On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 135.png');
+      }
+      .toggle2{
+        background-image: url('../assets/imgs/toggles/HRESAsset 176.png');
+      }
+      .toggle2On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 181.png');
+      }
+      .toggle3{
+        background-image: url('../assets/imgs/toggles/HRESAsset-177.png');
+      }
+      .toggle3On{
+        background-image: url('../assets/imgs/toggles/HRESAsset-182.png');
+      }
+      .toggle4{
+        background-image: url('../assets/imgs/toggles/HRESAsset 203.png');
+      }
+      .toggle4On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 204.png');
+      }
+      .toggle5{
+        background-image: url('../assets/imgs/toggles/HRESAsset 175.png');
+      }
+      .toggle5On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 180.png');
+      }
+      .toggle6{
+        background-image: url('../assets/imgs/toggles/HRESAsset 174.png');
+      }
+      .toggle6On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 179.png');
+      }
+      .toggle7{
+        background-image: url('../assets/imgs/toggles/HRESAsset 183.png');
+      }
+      .toggle7On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 190.png');
+      }
+      .toggle8{
+        background-image: url('../assets/imgs/toggles/HRESAsset 184.png');
+      }
+      .toggle8On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 189.png');
+      }
+      .toggle9{
+        background-image: url('../assets/imgs/toggles/HRESAsset 185.png');
+      }
+      .toggle9On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 188.png');
+      }
+      .toggle10{
+        background-image: url('../assets/imgs/toggles/HRESAsset 186.png');
+      }
+      .toggle10On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 187.png');
+      }
+      //Business Toggles
+      
+      .toggle11{
+        background-image: url('../assets/imgs/toggles/HRESAsset 192.png');
+      }
+      .toggle11On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 191.png');
+      }
+      
+      //Launch Toggles
+      
+      .toggle12{
+        background-image: url('../assets/imgs/toggles/HRESAsset 197.png');
+      }
+      .toggle12On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 193.png');
+      }
+      .toggle13{
+        background-image: url('../assets/imgs/toggles/HRESAsset 198.png');
+      }
+      .toggle13On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 154.png');
+      }
+      .toggle14{
+        background-image: url('../assets/imgs/toggles/Asset 226 (1).png');
+      }
+      .toggle14On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 223.png');
+      }
+      .toggle15{
+        background-image: url('../assets/imgs/toggles/Asset 227.png');
+      }
+      .toggle15On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 224.png');
+      }
+      .toggle16{
+        background-image: url('../assets/imgs/toggles/Pasted image at 2017_10_03 11_00 AM.png');
+      }
+      .toggle16On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 225.png');
+      }
+      .toggle17{
+        background-image: url('../assets/imgs/toggles/Pasted image at 2017_10_03 11_00 AM.png');
+      }
+      .toggle17On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 225.png');
+      }
+      //Support Toggles
+      
+      .toggle18{
+        background-image: url('../assets/imgs/toggles/HRESAsset 209.png');
+      }
+      .toggle18On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 210.png');
+      }
+      .toggle19{
+        background-image: url('../assets/imgs/toggles/HRESAsset 208.png');
+      }
+      .toggle19On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 211.png');
+      }
+      .toggle20{
+        background-image: url('../assets/imgs/toggles/HRESAsset 186.png');
+      }
+      .toggle20On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 187.png');
+      }
+      .toggle21{
+        background-image: url('../assets/imgs/toggles/HRESAsset 207.png');
+      }
+      .toggle21On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 213.png');
+      }
+      .toggle22{
+        background-image: url('../assets/imgs/toggles/HRESAsset 206.png');
+      }
+      .toggle22On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 214.png');
+      }
+      .toggle23{
+        background-image: url('../assets/imgs/toggles/HRESAsset 205.png');
+      }
+      .toggle23On{
+        background-image: url('../assets/imgs/toggles/HRESAsset 215.png');
+      }
+      .toggle24{
+        background-image: url('../assets/imgs/toggles/phone_160.png');
+      }
+      .toggle24On{
+        background-image: url('../assets/imgs/toggles/phoneteal_160.png');
+      }
+      .toggle25{
+        background-image: url('../assets/imgs/toggles/chat_160.png');
+      }
+      .toggle25On{
+        background-image: url('../assets/imgs/toggles/chatteal_160.png');
+      }
+
+    //Actions
+    .box{
+        margin-top: 40px;
+        min-height: 150px;
+        width: 100%;
+        bottom: 0%;
+        border-radius: 5px;
+        position: relative;
+        padding-bottom: 50px;
+    }
+    .topBox{
+        display: flex;
+        height: 30px;
+        width: 100%;
+        color: $purp;
+        font-family: 'brandon-black';
+        margin-bottom: 15px;
+    }
+    .smallBox{
+        height: 100%;
+        width: 50%;
+        background: $dark;
+        font: 20px 'junction-regular';
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .left{
+        transform: translateY(2px);
+    }
+    .leftBox{
+        background: $greyy;
+    }
+    .rightBox{
+        background: $greyy;
+    }
+    .action{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        margin: 5px 0 5px 0;
+    }
+    .typeIcon{
+        height: 30px;
+        width: 30px;
+        margin: 15px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        transform: translateY(5px);
+    }
+    .email{
+        background-image: url('../assets/imgs/actionIcon/Asset 53.png');
+    }
+    .text{
+        background-image: url('../assets/imgs/actionIcon/Asset 35.png');
+    }
+    .call{
+        background-image: url('../assets/imgs/actionIcon/Asset 59.png');
+        transform: translate(5px);
+    }
+    .meet{
+        background-image: url('../assets/imgs/actionIcon/Asset 64.png');
+    }
+    .spacing{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .taskProspect{
+        font: 17px junction-regular;
+        display: flex;
+        align-items: center;
+        color: $dark;
+    }
+    .dueDate{
+        font-size: 18px;
+        margin-left: 5px;
+    }
+    .taskNotes{
+        color: grey;
+    }
+    .statusCircle{
+        border-radius: 50%;
+        flex-shrink: 0;
+        border: 2px solid $dark;
+        height: 25px;
+        width: 25px;
+        align-self: center;
+    }
+    .statusCircleOn{
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('../assets/imgs/actionIcons/Asset 40.png');
+        height: 25px;
+        width: 25px;
+        border: none;
+    }
+    .circleButton{
+        position: absolute;
+        top: -30px;
+        left: calc(50% - 25px);
+        height: 70px;
+        width: 50px;
+        background-image: url('../assets/imgs/Asset 67.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
 }

@@ -1,18 +1,84 @@
-<!--
-  Generated template for the ContactsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>contacts</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Contacts
+        </ion-title>
+    <ion-buttons end>
+      <div (click)="addContact()">
+        <div class="add"></div>
+      </div>
+    </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
+<div class="dimmer" [ngClass]="{showDim: showDim}" (click)="showDim = false; closeFab(fab)">
+  <div [ngClass]="{circles :showDim}"></div>
+</div>
+  
+<ion-content>
+    <input type="text" 
+      placeholder="search" 
+      [(ngModel)]="search" 
+      class="searchBar">
+    <ion-list>
+      <ion-item-sliding *ngFor="let contact of contacts | 
+        contactFilter: search | 
+        contactOrder: 'name-asc'" 
+        class="contact" 
+        [ngClass]="{completeAnimation:  contact.delete}">
+        <ion-item (click)="openContact(contact)" >
+          <div class="contact-body">
+            <div [ngClass]="{textOn:contact.on}">
+              {{contact.first_name}} {{contact.last_name}}
+            </div>
+            <!-- <div class="statusCircle" [ngClass]="{statusCircleOn:contact.on}" (click)="contact.on = !contact.on"></div> -->
+          </div>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button 
+            color="danger" 
+            (click)="contact.delete=true;deleteContact(contact.id)">
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <div *ngIf="!contacts[0]" 
+      class="job" 
+      style="text-align: center">
+        <div style="font: 18px 'junction-light'; padding-top: 10px;">
+            {{contactsLoading}}
+        </div>
+    </div>
 
-<ion-content padding>
-
+    <ion-fab bottom center #fab>
+    <div ion-fab 
+      (click)="showDim = !showDim;" 
+      class="addButton" 
+      [ngClass]="{addButtonActive: showDim}" >
+    </div>
+    <ion-fab-list side="right">
+      <div (click)="addContact(); 
+        showDim = false; 
+        closeFab(fab)" 
+        class="addContactIcon">
+        <div class="fabTitles">
+            Add Contact
+        </div>
+      </div>
+    </ion-fab-list>
+    <ion-fab-list side="left">
+      <div (click)="addAction(); 
+        showDim = false; 
+        closeFab(fab)" 
+        class="addActionIcon">
+        <div class="fabTitles">
+            Add Action
+        </div>
+      </div>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

@@ -1,18 +1,125 @@
-<!--
-  Generated template for the ContactPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+    <ion-navbar>
+      <ion-buttons left>
+        <div (click)="dismiss()">
+          <ion-icon name="arrow-back" class="icons"></ion-icon>
+        </div>
+      </ion-buttons>
+      <ion-title>Contact</ion-title>
+      <ion-buttons end>
+        <div (click)="openEdit()">
+          <div class="edit" *ngIf="contact.pipeline_position">Edit</div>
+        </div>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
 
-  <ion-navbar>
-    <ion-title>contact</ion-title>
-  </ion-navbar>
 
-</ion-header>
+<ion-content>
+  <div class="top">
+      <div class="profile" 
+        (click)="presentActionSheet()">
+        <div class="profileIcon" [hidden]="lastImage != null"></div>
+        <!-- <img [src]="lastImage" class="profilePic" [hidden]="lastImage === null" (click)="uploadImage()"> -->
+        <img [src]="lastImage" class="profilePic" [hidden]="lastImage === null">
+      </div>
+      <div class="profileName">{{contact.first_name}} {{contact.last_name}}</div>
+  </div>
 
+  <div class="iconList">
+    <div class="labelIcon" (click)="changeRole('customerOn'); saveRole(2);">
+      <div [ngClass]="{customerOn: customerOn}" class="customer"></div>
+      <div class="labels" [ngClass]="{labelsOn: customerOn}">Customer</div>
+    </div>
+    <div class="labelIcon" (click)=" changeRole('sharerOn'); saveRole(3);">
+      <div [ngClass]="{sharerOn: sharerOn}" class="sharer"></div>
+      <div class="labels" [ngClass]="{labelsOn: sharerOn}">Sharer</div>
+    </div>
+    <div class="labelIcon" (click)=" changeRole('builderOn'); saveRole(1);">
+      <div [ngClass]="{builderOn: builderOn}" class="builder"></div>
+      <div class="labels" [ngClass]="{labelsOn: builderOn}">Builder</div>
+    </div>
+  </div>
 
-<ion-content padding>
+  <div class="pipePager">
+    <ion-slides #pipeSlider 
+      class="choosePipe" 
+      #choosePipe 
+      slidesPerView="3" 
+      (ionSlideDidChange)="slideChange()">
+      <ion-slide class="firstSlide">
+      </ion-slide>
+      <ion-slide *ngFor="let slide of slides" 
+        class="slides" 
+        [ngClass]="{ activeSlide: getIndex(slide)}">
+        <div class="pipe">
+          <div class="bumper" [ngClass]="{activePipe: getIndex(slide)}"></div>
+          <div class="slideName" 
+            [ngClass]="{activePipe: getIndex(slide)}">
+            {{slide.name}}
+          </div>
+          <div class="bumper" [ngClass]="{activePipe: getIndex(slide)}"></div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+      </ion-slide>
+    </ion-slides>
+    <div class="pagerBar">
+      <div *ngFor="let slide of slides" 
+        class="pagerBox">
+        <div [ngClass]="{activeFlag: getIndex(slide)}" class="pagerFlag"></div>
+      </div>
+    </div>
+  </div> 
+
+  <div class="toggles"
+    [ngClass]="{togglesOn: downArrowOn}">
+    <div *ngFor="let toggle of toggles | toggleFilter : downArrowOn"
+      class="toggle toggle{{toggle.id}}"
+      [ngClass]="toggle.status? 'toggle'+toggle.id+'On' : ''"
+      (click)="saveToggle(toggle)">
+    </div>
+    <div class="downArrowWrap">
+      <div class="downArrow"
+        [ngClass]="{downArrowOn: downArrowOn}"
+        (click)="downArrowOn = !downArrowOn">
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="topBox">
+      <div class="smallBox" [ngClass]="{leftBox: leftBox}" (click)="leftBox=false; rightBox = true; complete = 0;">
+        <div class="left">
+          Actions
+        </div>
+      </div>
+      <div class="smallBox" [ngClass]="{rightBox: rightBox}" (click)="rightBox=false; leftBox = true; complete = 1">
+        <div class="left">
+          History
+        </div>
+      </div>
+    </div>
+    <div class="bottomBox">
+      <div *ngFor="let action of actions | contactActionFilter: complete" class="action">
+        <div class="typeIcon {{classCheck(action)}}"></div>
+        <div class="spacing">
+          <div 
+            (click)="specificAction(action)">
+            <div class="taskProspect">
+              {{action.action_type.name}} {{contact.first_name}}: 
+                <div class="dueDate">
+                  {{action.due_date.slice(0,10)}}
+                </div>
+              </div>
+            <div class="taskNotes">{{action.notes}}</div>
+          </div>
+          <div class="statusCircle" (click)="completeAction(action)" [ngClass]="{statusCircleOn : action.complete}"></div>
+        </div>
+      </div>
+    </div>
+      <div  (click)="addAction()" color="primary" class="circleButton">
+      </div>
+  </div>
 
 </ion-content>
