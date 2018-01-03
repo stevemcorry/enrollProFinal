@@ -1,0 +1,105 @@
+page-success-tracker {
+    .pipelineSnapshot{
+        margin-top: 25px;
+    }
+    .snapshotTop{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .snapshotTitle{
+        margin-bottom: 10px;
+        font: 25px 'junction-bold';
+        color: $bluish;
+    }
+    .snapshotBody{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .snapshotPyramid{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .snapshot{
+        position: relative;
+        width: 70%;
+        height: 0;
+        background-color: transparent;
+        margin: 10px;
+        border-top: 30px solid blue;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+    }
+    .snapshotNumbers{
+        position: absolute;
+        width: 50px;
+        font: 15px 'junction-light';
+        color: white;
+        text-align: center;
+        left: calc(50% - 25px);
+        transform: translateY(-22px);
+        z-index: 5;
+    }
+    .label{
+        font: 12px 'junction-regular';
+        color: $dark;
+        padding-bottom: 3px;
+        width: 23%;
+    }
+    .one{
+        border-top-color: rgb(250,181,166);
+    }
+    .two{
+        border-top-color: rgb(129,195,199);
+        width: 55%;
+    }
+    .three{
+        border-top-color: rgb(171,178,183);
+        width: 40%;
+    }
+    .four{
+        border-top-color: rgb(180,174,213);
+        width: 25%;
+    }
+    .five{
+        border-top-color: rgb(247,157,155);
+        width: 10%;
+    }
+    .snapshot45{
+        border-top: 30px solid #f6795d;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    .snapshotOils{
+        border-top: 30px solid #1a9199;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    .snapshotCommitted{
+        border-top: 30px solid #66737c;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    .snapshotPresentation{
+        border-top: 30px solid #776cb2;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    .snapshotEnrolled{
+        border-top: 30px solid #f14d49;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+
+
+
+}

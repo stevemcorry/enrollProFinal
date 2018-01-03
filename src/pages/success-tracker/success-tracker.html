@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle left>
+      <div class="menuToggle"></div>
+    </button>
+    <ion-title>Success Tracker</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="pipelineSnapshot">
+      <div class="snapshotTop">
+        <div class="snapshotTitle">How am I doing?</div>
+      </div>
+      <div class="snapshotBody">
+        <div class="snapshotPyramid">
+          <div class="snapshot one">
+            <div class="snapshotNumbers">{{top.actual}}/{{top.goal}}</div>
+            <div class="snapshot45" [ngStyle]="width(top)"></div>
+          </div>
+          <div class="label label1">Top 45</div>
+        </div>
+        <div class="snapshotPyramid">
+          <div class="snapshot two">
+            <div class="snapshotNumbers">{{oils.actual}}/{{oils.goal}}</div>
+            <div class="snapshotOils" [ngStyle]="width(oils)"></div>
+          </div>
+          <div class="label label2">6-Weeks Experienced</div>
+        </div>
+        <div class="snapshotPyramid">
+          <div class="snapshot three">
+            <div class="snapshotNumbers">{{committed.actual}}/{{committed.goal}}</div>
+            <div class="snapshotCommitted" [ngStyle]="width(committed)"></div>
+          </div>
+          <div class="label label3">30 day Committed</div>
+        </div>
+        <div class="snapshotPyramid">
+          <div class="snapshot four">
+            <div class="snapshotNumbers">{{presentation.actual}}/{{presentation.goal}}</div>
+            <div class="snapshotPresentation" [ngStyle]="width(presentation)"></div>
+          </div>
+          <div class="label label4">30 day Attended</div>
+        </div>
+        <div class="snapshotPyramid">
+          <div class="snapshot five">
+            <div class="snapshotNumbers">{{enrolled.actual}}/{{enrolled.goal}}</div>
+            <div class="snapshotEnrolled" [ngStyle]="width(enrolled)"></div>
+          </div>
+          <div class="label label5">30 day Enrolled</div>
+        </div>
+      </div>
+    </div>
+
+</ion-content>
