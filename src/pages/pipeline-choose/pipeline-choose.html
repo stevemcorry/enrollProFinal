@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <div class="icons" (click)="dismiss()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </div>
+    <ion-title (click)="dismiss()">
+      <div class="titleFlex">
+        Choose Pipe <div class="downArrow"></div>
+      </div>
+    </ion-title>
+    <ion-buttons end>
+      <div (click)="openAddModal()">
+        <div class="add"></div>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="pipeImage">
+        <div class="namesImg" (click)="leadsPipe();"></div>
+        <div class="enrollImg" (click)="enrollmentsPipe();"></div>
+        <div class="customerImg" (click)="customerPipe();"></div>
+        <div class="builderImg" (click)="builderPipe();"></div>
+  </div>
+</ion-content>

@@ -1,0 +1,54 @@
+page-pipeline-choose-builder {
+    .scroll-content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pipeImage{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url('../assets/imgs/Asset 226.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vw;
+        width: 100vw;
+    }
+    .images{
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+        left: 10vw;
+    }
+    .click{
+        position: absolute;
+        color: $bluish;
+        font: 15px 'junction-regular';
+    }
+    .click:hover{
+        background: lightgrey;
+    }
+    .customers{
+        left: 6vw;
+        display: flex;
+        top: 32vw;
+    }
+    .customerImg{
+        top: 0;
+        height: 50%;
+        width: 80vw;
+    }
+    .builders{
+        left: 68vw;
+        display: flex;
+        top: 87vw;
+    }
+    .builderImg{
+        bottom: 0;
+        height: 50%;
+        width: 80vw;
+    }
+}

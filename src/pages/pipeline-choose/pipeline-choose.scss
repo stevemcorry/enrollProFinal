@@ -1,0 +1,61 @@
+pipeline-choose {
+    .scroll-content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pipeImage{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url('../assets/imgs/PIPESAsset 223.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 180vw;
+        width: 95vw;
+        margin: 0px auto;
+    }
+    .click{
+        position: absolute;
+        color: $bluish;
+        font: 15px 'junction-regular';
+    }
+    .click:hover{
+        background: lightgrey;
+    }
+    .namesImg, .customerImg, .enrollImg, .builderImg{
+        position: absolute;
+    }
+    .namesImg{
+        top: 10vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 45vw;
+        width: 100%;
+    }
+    .enrollImg{
+        top: 55vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 45vw;
+        width: 100%;
+    }
+    .customerImg{
+        left: 0;
+        top: 105vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 55vw;
+        width: 50vw;
+    }
+    .builderImg{
+        top: 105vw;
+        left: 50vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 55vw;
+        width: 50vw;
+    }
+}
