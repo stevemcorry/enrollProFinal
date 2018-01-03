@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <div (click)="dismiss()">
+        <div class="headerDiv">Cancel</div>
+      </div>
+    </ion-buttons>
+    <ion-title>Add To Nameslist</ion-title>
+    <ion-buttons end>
+      <div (click)="addContact(contact)">
+        <div class="headerDiv">Save</div>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="add-names">
+      <div *ngFor="let contact of nameslistContacts" class="add-inputs">
+          <input type="text" [(ngModel)]="contact.first_name" placeholder="First Name">
+          <input type="text" [(ngModel)]="contact.last_name" placeholder="Last Name">
+      </div>
+      <div (click)="nameslistContacts.push({},{},{},{},{})"
+          class="more">
+          More...
+      </div>
+      <div class="button-wrapper">
+          <button (click)="dismiss()">Cancel</button>
+          <button (click)="nameslistAdd()">Save</button>
+      </div>
+  </div>
+</ion-content>

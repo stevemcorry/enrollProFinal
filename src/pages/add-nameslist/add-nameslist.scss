@@ -1,0 +1,54 @@
+page-add-nameslist {
+    .headerDiv{
+        font: 13px 'junction-light';
+        color: $bluish;
+    }
+    .add-names{
+        margin-top: 30px;
+        .add-title{
+            font: 18px 'junction-regular';
+            color: $bluish;
+            margin: 10px;
+            padding-top: 10px;
+        }
+        .add-inputs{
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            border: 2px solid $greyy;
+            font: 16px 'junction-regular';
+            height: 40px;
+            margin: 5px;
+            width: 49%;
+        }
+        .more{
+            font: 20px junction-light;
+            color: $dark;
+            margin: 20px;
+        }
+        button{
+            width: 100px;
+            height: 40px;
+            font: 18px junction-regular;
+            color: white;
+            background-color: $bluish;
+            margin-bottom: 25px;
+        }
+    }
+    .button-wrapper{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    //congrats dim
+
+    .congrats-image{
+        background-image: url('../assets/img/App design-assets/TRAININGAsset 207.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 100%;
+        height: 300px;
+        margin-top: 40%;
+    }
+}
