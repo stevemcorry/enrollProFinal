@@ -140,7 +140,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
+    this.menuCtrl.swipeEnable(false);
     console.log('ionViewDidLoad LoginPage');
   }
-
 }

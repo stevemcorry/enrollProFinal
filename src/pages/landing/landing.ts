@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 
 @IonicPage({
   name: 'page-landing'
@@ -8,12 +8,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-landing',
   templateUrl: 'landing.html',
 })
-export class LandingPage {
+export class LandingPage{
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public menuCtrl: MenuController
   ) {
+    this.menuCtrl.swipeEnable(false);
   }
 
   login(){
@@ -24,7 +26,7 @@ export class LandingPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LandingPage');
+    this.menuCtrl.swipeEnable(false);
   }
 
 }

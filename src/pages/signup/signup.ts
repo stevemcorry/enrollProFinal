@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service';
 
@@ -27,7 +27,8 @@ export class SignupPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public authService: AuthService,
-    public storageService: StorageService
+    public storageService: StorageService,
+    public menuCtrl: MenuController,
   ) {
   }
 
@@ -85,8 +86,9 @@ login(x){
     })
 }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+ionViewDidLoad() {
+    this.menuCtrl.swipeEnable(false);
+    console.log('ionViewDidLoad LoginPage');
   }
 
 }
