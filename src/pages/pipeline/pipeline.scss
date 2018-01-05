@@ -1,3 +1,168 @@
 page-pipeline {
+    .titleFlex{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .downArrow{
+        background-image: url('../assets/imgs/actionIcons/Asset 29.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+        margin: 7% 5px 10px 10px;
+    }
+    .add{
+        background-image: url('../assets/imgs/Asset 193.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 10px 5px 5px 5px;
+    }
+    .slides{
+        height: 100%;
+    }
+    .arrow{
+        display: flex;
+        background-image: url('../assets/imgs/Asset 103.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        font: 20px 'junction-regular';
+        justify-content: flex-start;
+        color: $darkblue;
+        width: 100%;
+        margin: 5px 0;
+        padding-left: 35px;
+        position: fixed;
+        top: 0%;
+        height: 50px;
+        align-items: center;
+        z-index: 2;
+    }
+    .prospects{
+        position: absolute;
+        top: 55px;
+        width: 100%;
+        font-family: 'brandon-medium';
+        letter-spacing: .7px;
+        height: calc(100% - 55px);
+        overflow-y: scroll;
+    }
+    .contact{    
+        height: 50px;
+        position: relative;
+        font: 15px 'junction-light';
+        color: $dark;
+    }
+    .blueText{
+        color: $bluish;
+    }
+    .redText{
+        color: $redd;
+    }
+    .contactLeft{
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 20px;
+        width: calc(100% - 190px);
+        text-align: left;
+    }
+    .circleContain{
+      display: inline-block;
+      width: 15px;
+      margin: 0 10px;
+    }
+    .smallCircle {
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        background: $dark;
+        border-radius: 50%;
+    }
+    .blueDot{
+      background-color: $bluish;
+    }
+    .redDot{
+      background-color: $redd;
+    }
+    .yellowDot{
+      background-image: url('../assets/imgs/toggles/seal buttonAsset 174@3x.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      border-radius: 0px;
+      background-color: rgba(0,0,0,0);
+      height: 15px;
+      width: 15px;
+      color: $dark;
+    }
+    .circleSpace{
+      display: inline-block;
+      width: 10px;
+    }
+    .contactName{
+        white-space: nowrap;
+        display: inline-block;
+        transition: all .2s ease;
+        width: calc(100% - 41px);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-top: 2px;
+    }
+    .contactName:hover{
+      color: $light;
+    }
+    //toggles
+    .togglesWrap{
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        width: 190px;
+    }
+    .outerToggles{
+      display: inline-block;
+      width: 135px;
+      overflow: hidden;
+    }
+    .toggles{
+        display: inline-block;
+        align-items: center;
+        white-space: nowrap;
+        padding-top: 4px;
+        width: 135px;
+        transition: all 1s ease;
+    }
+    .togglesOn{
+        transform: translateX(-135px)
+    }
+    .toggle{
+        display: inline-block;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    //toggle images are in app.scss
+    .spaceAround{
+        margin: 0 5%;
+    }
+    .overArrow{
+        background-image: url('../assets/imgs/toggles/HRESAsset 233.png');
+        transition: all .2s ease;
+    }
+    .overArrowOn{
+        transform: rotateY(180deg);
+        color: rgba(0,0,0,0);
+    }
+    .line{
+        height: 1px;
+        width: 100%;
+        background: $greyy;
+    }
 
 }
