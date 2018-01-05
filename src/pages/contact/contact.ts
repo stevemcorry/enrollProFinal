@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, ViewController, NavParams, Slides, Events } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, Slides, Events, NavController } from 'ionic-angular';
 import { ContactService } from '../../services/contact.service';
 
 
@@ -25,7 +25,6 @@ export class ContactPage {
   customerOn = false;
   builderOn = false;
   sharerOn = false;
-  //slides
   slides = [];
   allSlides = [
       { name: 'Imported', id: 1, text: "The contacts you've identified as your prospects. Decide who of these you want to be in your Top 45. " },
@@ -50,19 +49,47 @@ export class ContactPage {
   tags
   //actions
   actions
+  leftBox = false;
+  rightBox = true;
+  complete = 0;
   constructor( 
     public params: NavParams,
     public viewCtrl: ViewController,
     public contactService: ContactService,
-    public events: Events
+    public events: Events,
+    public navCtrl: NavController
   ) {
     this.contact = this.params.get('contact');
   }
   dismiss(){
       this.viewCtrl.dismiss();
   }
-  //top/setup
     
+  classCheck(x){
+    let action = x.action_type.id
+    if( action === 1){
+      return 'email'
+    } else if( action === 2){
+      return 'text'
+    } else if( action === 3){
+      return 'call'
+    }
+  }
+
+  addAction(){
+    let modal = this.navCtrl.push('page-add-action', {contact: this.contact});
+  }
+  openEdit(){
+    //   let modal = this.modalCtrl.create(EditContact, {contact: this.contact});
+    //   modal.present();
+  }
+  specificAction(action){
+      action.contact = {
+          first_name: this.contact.first_name,
+          last_name: this.contact.last_name
+      }
+      this.navCtrl.push('page-specific-action', {action: action});
+  }
   getSpecificContact(){
     this.contactService.getSpecificContact(this.contact.id).subscribe(res => {
         this.contact = res;

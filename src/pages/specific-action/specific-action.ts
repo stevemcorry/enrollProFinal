@@ -73,7 +73,7 @@ export class SpecificActionPage {
         this.action.action_type.id = this.actionIds[action];
   }
   openContact(){
-    this.navCtrl.push('ContactPage', {contact: this.contact});
+    this.navCtrl.push('page-contact', {contact: this.contact});
   }
   saveAction(){
       let action = {

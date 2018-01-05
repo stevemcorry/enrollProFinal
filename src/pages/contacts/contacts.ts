@@ -48,7 +48,7 @@ export class ContactsPage {
     }
   }
   deleteContact(id){
-      console.log(id);
+      id = [id];
       this.contactService.deleteContact(id).subscribe(res=>{
           console.log(res,'Gone!'),
           this.getContacts();

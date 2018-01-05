@@ -1,4 +1,4 @@
-import { Http, Headers, ResponseContentType } from '@angular/http';
+import { Http, Headers, ResponseContentType, RequestOptions } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
 
 import 'rxjs/add/operator/map';
@@ -79,7 +79,9 @@ export class ContactService {
         let authHeader = new Headers();
             authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
             authHeader.append('Content-Type','application/json')
-        return this.http.delete(this.globalVar.getApiUrl() + 'contacts/' + id, { headers: authHeader})
-        .map(res => console.log(res, 'put complete'));
+        return this.http.delete(this.globalVar.getApiUrl() + 'contacts', new RequestOptions({
+            headers: authHeader,
+            body: id
+         }))
     }
 }

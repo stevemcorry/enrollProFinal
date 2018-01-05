@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StorageService } from './../services/storage.service'
 
 @Component({
+  selector: 'page-app',
   templateUrl: 'app.html',
   providers: [StorageService]
 })
@@ -28,6 +29,9 @@ export class MyApp {
       { title: 'Actions', component: 'page-actions' },
       { title: 'Pipeline', component: 'page-pipeline'},
       { title: 'Contacts', component: 'page-contacts'},
+      { title: 'Success Tracker', component: 'page-tracker'},
+      { title: 'Settings', component: 'page-settings'},
+      { title: 'Log Out', component: 'page-landing'},
     ];
 
   }

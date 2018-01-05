@@ -80,10 +80,27 @@ export class AddActionPage {
               this.dismiss();
           });
       } else {
-          let alert = this.alertCtrl.create();
-          alert.setTitle('Please Enter All Info')
-          alert.addButton('OK');
-          alert.present();
+          if(!this.newAction.action_type){
+              let alert = this.alertCtrl.create();
+              alert.setTitle('Please select an task type. (Call, Text, Email, Meet)')
+              alert.addButton('OK');
+              alert.present();
+            } else if(!this.newAction.contact){
+                let alert = this.alertCtrl.create();
+                alert.setTitle('Please select a contact.')
+                alert.addButton('OK');
+                alert.present();
+            } else if(!this.newAction.notes){
+                let alert = this.alertCtrl.create();
+                alert.setTitle('Please add a note for the task.')
+                alert.addButton('OK');
+                alert.present();
+            } else{
+                let alert = this.alertCtrl.create();
+                alert.setTitle('Please enter a date.')
+                alert.addButton('OK');
+                alert.present();
+            }
       }
   }
 

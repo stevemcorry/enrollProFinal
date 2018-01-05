@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ContactsPage } from './contacts';
-import { ContactOrder } from '../../pipes/contact-order.filter';
-import { ContactFilter } from '../../pipes/contact.filter'
+
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
     ContactsPage,
-    ContactFilter,
-    ContactOrder
   ],
   imports: [
+    SharedModule,
     IonicPageModule.forChild(ContactsPage),
   ],
 })

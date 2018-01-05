@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle left>
+      <div class="menuToggle"></div>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile">
+      <div class="profilePic"><ion-icon name="contact" class="profileIcon"></ion-icon></div>
+      <div class="profileTitle">
+        <div>{{name}}</div>
+      </div>
+  </div>
+
+  <ion-list>
+    <ion-list-header>
+      Your Information
+    </ion-list-header>
+    <ion-item>
+      <div class="rightMargin">First Name</div>
+      <div>{{user.first_name}}</div>
+    </ion-item>
+    <ion-item>
+      <div class="rightMargin">Last Name</div>
+      <div>{{user.last_name}}</div>
+    </ion-item>
+    <ion-item>
+      <div class="rightMargin">Zip Code</div>
+      <div>{{user.zipcode}}</div>
+    </ion-item>
+    <ion-item>
+      <div class="rightMargin">doTERRA ID#</div>
+      <div>{{user.doterra_id}}</div>
+    </ion-item>
+    <ion-item>
+      <div class="rightMargin">Mentor Email</div>
+      <div>{{user.upline_email}}</div>
+    </ion-item>
+  </ion-list>
+    <ion-list>
+    <ion-list-header>
+      Account Information
+    </ion-list-header>
+    <ion-item>
+      <div class="rightMargin">Username</div>
+      <div>{{email}}</div>
+    </ion-item>
+    <ion-item *ngIf="subscribed">
+      <div>Next Biling Date</div>
+      <div></div>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="contactAdd.total">
+    {{contactAdd.current}}/{{contactAdd.total}}
+  </div>
+  <div (click)="addContacts()" 
+    *ngIf="!importOff"
+    id="import-contacts">
+    Import Contacts
+  </div>
+  <div id="import-contacts"
+    *ngIf="importOff">
+    {{importOff}}
+  </div>
+</ion-content>

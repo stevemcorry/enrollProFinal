@@ -15,6 +15,180 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+//Menu Styles
+page-app{
+  .menuHeader{
+      background-color: $dark;
+      padding-left: 0px !important;
+  }
+  .back{
+      z-index: 0;
+  }
+  .whiteMenuHeader{
+      color: white;
+      font: 100 25px 'junction-light';
+      background-image: url('../assets/imgs/newIcons/Asset 190@2x.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 60px;
+      width: 160px;
+      margin: auto;
+      margin-top: 20px;
+  }
+  .menuContent{
+      background-color: $dark;
+      margin-top: 20px;
+  }
+  .menuItem{
+      background-color: $dark;
+      color: white;
+      margin: 7px 0 7px 0;
+  }
+  .menuItem .item-inner{
+      border-bottom: none !important;
+      background-image: none !important;
+  }
+  .menuItem .label{
+      display: flex;
+      align-items: center;
+  }
+  .Dashboard{
+          background-image: url('../assets/imgs/newIcons/Asset 2.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin: 0 35px 0 10px;
+  }
+  .Actions{
+          background-image: url('../assets/imgs/newIcons/Asset 118.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin: 0 35px 0 10px;
+  }
+  .Success{
+          background-image: url('../assets/imgs/newIcons/Asset 5.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin: 0 35px 0 10px;
+  }
+  .Pipeline{
+          background-image: url('../assets/imgs/newIcons/Asset 6.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin: 0 35px 0 10px;
+          transform: translateY(45%);
+  }
+  .Marketing{
+          background-image: url('../assets/imgs/newIcons/Asset 121.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin: 0 35px 0 10px;
+  }
+  .Contacts{
+      background-image: url('../assets/imgs/newIcons/Asset 131.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+      margin: 0 35px 0 10px;
+  }
+  .Messaging{
+          background-image: url('../assets/imgs/newIcons/Asset 123.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin: 0 35px 0 10px;
+  }
+  .Scheduled{
+      background-image: url('../assets/imgs/newIcons/Asset 122.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+      margin: 0 35px 0 10px;
+  }
+  .Rewards{
+      background-image: url('../assets/imgs/newIcons/Asset 81.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+      margin: 0 35px 0 10px;
+  }
+  .Recommendations{
+      background-image: url('../assets/imgs/newIcons/Asset 4.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+      margin: 0 35px 0 10px;
+  }
+  .Settings{
+      background-image: url('../assets/imgs/newIcons/Asset 124.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+      margin: 0 35px 0 10px;
+  }
+  .Log{
+      background-image: url('../assets/imgs/newIcons/Asset 125.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 25px;
+      height: 25px;
+      margin: 5px 15px 0 10px;
+  }
+  }
+.menu-header{
+
+}
+.menu-styles{
+    /deep/ .scroll-content{
+        background: $dark;
+    }
+    /deep/ button{
+        background: $dark !important;
+    }
+    .menu-button:hover{
+      background-color: lightgrey !important;
+    }
+    .menu-button .item-inner{
+        border-bottom: none !important;
+        background-image: none !important;
+    }
+    .menu-button .label{
+        display: flex;
+        align-items: center;
+    }
+    .item-block:last-child{
+        border-bottom: none !important;
+        margin-top: 35px;
+    }
+    .item-block:first-child{
+      margin-top: 25px;
+      border-top: none !important;
+    }
+}
+
+.menuToggle{
+    background-image: url('../assets/imgs/Asset 23.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 25px;
+    width: 25px;
+    margin-top: 10px;
+}
 .icons{
     cursor: pointer;
     padding: 0px 10px 0 10px;
@@ -52,3 +226,163 @@ ion-title{
     color: $dark;
     padding-top: 5px;
 }
+
+//toggles
+
+.toggle1{
+    background-image: url('../assets/imgs/toggles/HRESAsset 178.png');
+  }
+  .toggle1On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 135.png');
+  }
+  .toggle2{
+    background-image: url('../assets/imgs/toggles/HRESAsset 176.png');
+  }
+  .toggle2On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 181.png');
+  }
+  .toggle3{
+    background-image: url('../assets/imgs/toggles/HRESAsset-177.png');
+  }
+  .toggle3On{
+    background-image: url('../assets/imgs/toggles/HRESAsset-182.png');
+  }
+  .toggle4{
+    background-image: url('../assets/imgs/toggles/HRESAsset 203.png');
+  }
+  .toggle4On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 204.png');
+  }
+  .toggle5{
+    background-image: url('../assets/imgs/toggles/HRESAsset 175.png');
+  }
+  .toggle5On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 180.png');
+  }
+  .toggle6{
+    background-image: url('../assets/imgs/toggles/HRESAsset 174.png');
+  }
+  .toggle6On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 179.png');
+  }
+  .toggle7{
+    background-image: url('../assets/imgs/toggles/HRESAsset 183.png');
+  }
+  .toggle7On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 190.png');
+  }
+  .toggle8{
+    background-image: url('../assets/imgs/toggles/HRESAsset 184.png');
+  }
+  .toggle8On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 189.png');
+  }
+  .toggle9{
+    background-image: url('../assets/imgs/toggles/HRESAsset 185.png');
+  }
+  .toggle9On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 188.png');
+  }
+  .toggle10{
+    background-image: url('../assets/imgs/toggles/HRESAsset 186.png');
+  }
+  .toggle10On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 187.png');
+  }
+  //Business Toggles
+  
+  .toggle11{
+    background-image: url('../assets/imgs/toggles/HRESAsset 192.png');
+  }
+  .toggle11On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 191.png');
+  }
+  
+  //Launch Toggles
+  
+  .toggle12{
+    background-image: url('../assets/imgs/toggles/HRESAsset 197.png');
+  }
+  .toggle12On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 193.png');
+  }
+  .toggle13{
+    background-image: url('../assets/imgs/toggles/HRESAsset 198.png');
+  }
+  .toggle13On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 154.png');
+  }
+  .toggle14{
+    background-image: url('../assets/imgs/toggles/Asset 226 (1).png');
+  }
+  .toggle14On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 223.png');
+  }
+  .toggle15{
+    background-image: url('../assets/imgs/toggles/Asset 227.png');
+  }
+  .toggle15On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 224.png');
+  }
+  .toggle16{
+    background-image: url('../assets/imgs/toggles/Pasted image at 2017_10_03 11_00 AM.png');
+  }
+  .toggle16On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 225.png');
+  }
+  .toggle17{
+    background-image: url('../assets/imgs/toggles/Pasted image at 2017_10_03 11_00 AM.png');
+  }
+  .toggle17On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 225.png');
+  }
+  //Support Toggles
+  
+  .toggle18{
+    background-image: url('../assets/imgs/toggles/HRESAsset 209.png');
+  }
+  .toggle18On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 210.png');
+  }
+  .toggle19{
+    background-image: url('../assets/imgs/toggles/HRESAsset 208.png');
+  }
+  .toggle19On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 211.png');
+  }
+  .toggle20{
+    background-image: url('../assets/imgs/toggles/HRESAsset 186.png');
+  }
+  .toggle20On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 187.png');
+  }
+  .toggle21{
+    background-image: url('../assets/imgs/toggles/HRESAsset 207.png');
+  }
+  .toggle21On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 213.png');
+  }
+  .toggle22{
+    background-image: url('../assets/imgs/toggles/HRESAsset 206.png');
+  }
+  .toggle22On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 214.png');
+  }
+  .toggle23{
+    background-image: url('../assets/imgs/toggles/HRESAsset 205.png');
+  }
+  .toggle23On{
+    background-image: url('../assets/imgs/toggles/HRESAsset 215.png');
+  }
+  .toggle24{
+    background-image: url('../assets/imgs/toggles/phone_160.png');
+  }
+  .toggle24On{
+    background-image: url('../assets/imgs/toggles/phoneteal_160.png');
+  }
+  .toggle25{
+    background-image: url('../assets/imgs/toggles/chat_160.png');
+  }
+  .toggle25On{
+    background-image: url('../assets/imgs/toggles/chatteal_160.png');
+  }

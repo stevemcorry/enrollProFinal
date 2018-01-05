@@ -1,0 +1,58 @@
+page-settings {
+    ion-list{
+        width: 100%;
+        margin: 5px;
+    }
+    ion-label{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profilePic{
+        background: lightgrey;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .profileIcon{
+        color: white;
+        font-size: 130px;
+    }
+    .profileTitle{
+        color: $purp;
+        font: 55px 'hello-beautiful';
+        align-self: flex-start;
+        margin: 15px;
+    }
+    .item{
+        padding-right: 16px;
+    }
+    .rightMargin{
+        margin-right: 20px;
+    }
+    .item-block:last-child{
+        border-bottom: .55px solid #c8c7cc !important;
+        margin-top: 0 !important;
+    }
+    .scroll-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #import-contacts{
+        font: 22px 'junction-bold';
+        text-align: center;
+        width: 100%;
+        padding: 15px;
+        margin: 20px;
+        background-color: $redd;
+        color: white;
+    }
+    #import-contacts:hover{
+        color: $bluish;
+    }
+}

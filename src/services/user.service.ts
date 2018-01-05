@@ -19,12 +19,19 @@ export class UserService {
 
 	getUser(){
 
-			let authHeader = new Headers();
+		let authHeader = new Headers();
 
-			authHeader.append('Authorization', 'Bearer ' + this.storage.getToken());
+		authHeader.append('Authorization', 'Bearer ' + this.storage.getToken());
 
-			return this.http.get(this.globalVar.getApiUrl() + 'user', {headers: authHeader})
+		return this.http.get(this.globalVar.getApiUrl() + 'user', {headers: authHeader})
         
-  	}
+	}
+	getUserInfo(){
+		let authHeader = new Headers();
+		authHeader.append('Authorization', 'Bearer ' + this.storage.getToken());
+		return this.http.get(this.globalVar.getApiUrl() + 'user', {headers: authHeader}).map(data =>{
+			return data.json();
+		})
+	}
 
 }
