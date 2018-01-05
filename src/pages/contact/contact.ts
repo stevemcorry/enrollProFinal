@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, ViewController, NavParams, Slides, Events, NavController } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, Slides, Events, NavController, ModalController } from 'ionic-angular';
 import { ContactService } from '../../services/contact.service';
 
 
@@ -57,9 +57,18 @@ export class ContactPage {
     public viewCtrl: ViewController,
     public contactService: ContactService,
     public events: Events,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public modalCtrl: ModalController
   ) {
-    this.contact = this.params.get('contact');
+    if(this.params.get('contact')){
+        this.contact = this.params.get('contact');
+    }
+    this.events.subscribe('actionAdded', ()=>{
+        this.getSpecificContact()
+    })
+    this.events.subscribe('editContact', ()=>{
+        this.getSpecificContact();
+    })
   }
   dismiss(){
       this.viewCtrl.dismiss();
@@ -77,11 +86,11 @@ export class ContactPage {
   }
 
   addAction(){
-    let modal = this.navCtrl.push('page-add-action', {contact: this.contact});
+    this.navCtrl.push('page-add-action', {contact: this.contact});
   }
   openEdit(){
-    //   let modal = this.modalCtrl.create(EditContact, {contact: this.contact});
-    //   modal.present();
+      let modal = this.modalCtrl.create('page-edit-contact', {contact: this.contact});
+      modal.present()
   }
   specificAction(action){
       action.contact = {
@@ -94,7 +103,6 @@ export class ContactPage {
     this.contactService.getSpecificContact(this.contact.id).subscribe(res => {
         this.contact = res;
         this.setToggles(res.pipeline_actions);
-        console.log(res.pipeline_actions)
         this.tags = res.tags;
         this.actions = res.actions;
         if(res.role.id == 1){
@@ -162,7 +170,6 @@ export class ContactPage {
         role: x
     }
     this.contactService.editContact(this.contact.id ,props).subscribe(res=>{
-        console.log(res, this.contact)
     },err=>{
         console.log(err)
     })
@@ -182,7 +189,6 @@ export class ContactPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactPage');
     this.slides = this.allSlides;
     this.getSpecificContact()
   }

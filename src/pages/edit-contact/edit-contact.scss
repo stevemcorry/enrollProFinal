@@ -1,0 +1,171 @@
+page-edit-contact {
+
+    .scroll-content{
+        font-family: junction-light;
+        color: $dark;
+    }
+    //ICONS
+    .iconList{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 20%;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .labelIcon{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 80px;
+        max-width: 25%;
+        text-align: center;
+    }
+    .labels{
+        margin-top: 8px;
+        color: $greyy;
+        font: 100 16px 'junction-light';
+    }
+    .labelsOn{
+        color: $bluish;
+    }
+    .customer{
+        background-image: url('../assets/imgs/newIcons/Asset 70.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .sharer{
+        background-image: url('../assets/imgs/newIcons/Asset 74.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .builder{
+        background-image: url('../assets/imgs/newIcons/Asset 76.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .sharerOn{
+        background-image: url('../assets/imgs/newIcons/Asset 75.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .customerOn{
+        background-image: url('../assets/imgs/newIcons/Asset 71.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+    .builderOn{
+        background-image: url('../assets/imgs/newIcons/Asset 77.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+    }
+
+    //Inputs
+    .inputs{
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        margin: 15px auto;
+        font-size: 25px;
+    }
+    input{
+        height: 40px;
+        margin: 5px 2px 5px 2px;
+        border: 2px solid $light;
+        padding: 10px;
+    }
+    textarea{
+        resize: none;
+        height: 120px;
+        margin: 5px 2px 5px 2px;
+        border: 2px solid $light;
+        padding: 5px;
+    }
+
+    //Pipeline
+    .pipePager{
+        display: flex;
+        margin: 5px 0;
+        width: 100%;
+    }
+    .pagerBar{
+        display: flex;
+        width: 100%;
+        margin-top: 10px; 
+        justify-content: center;
+    }
+    .pagerBox{
+        display: flex;
+    }
+    .pagerFlag{
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        margin: 2px;
+        background: $greyy;
+    }
+    .activeFlag{
+        height: 9px;
+        width: 9px;
+        background: $bluish;
+    }
+    .choosePipe{
+        height: 20px;
+        color: $purp;
+        font: 25px 'brandon-regular';
+    }
+    .firstSlide{
+        width: 25% !important;
+    }
+    .activeSlide{
+        width: 50% !important;
+    }
+    .slides{
+        height: 40px;
+    }
+    .pipe{
+        display: flex;
+        align-items: center;
+        height: 30px;
+    }
+    .slideName{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 75%;
+        width: 90%;
+        background-color: $greyy;
+        color: white;
+        font: 15px 'junction-light';
+    }
+    .bumper{
+        width: 4.5%;
+        height: 100%;
+        background-color: $greyy;
+        margin: 1px;
+    }
+    .activePipe{
+        background-color: $bluish
+    }
+
+    //button
+    button{
+        border-radius: 0px !important;
+        height: 40px;
+        width: 100px;
+        margin: 30px 10px 10px !important;
+        float: right;
+    }
+}

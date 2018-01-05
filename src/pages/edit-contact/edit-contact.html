@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <div left>
+        <ion-icon name="close" (click)="dismiss()" class="icons"></ion-icon>
+    </div>
+    <ion-title>Edit Contact</ion-title>
+    <ion-buttons end>
+        <!-- <div class="save" (click)="editContact()">SAVE</div> -->
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="iconList">
+      <div class="labelIcon" (click)="changeRole('customerOn'); saveRole(2);">
+          <div [ngClass]="{customerOn: customerOn}" class="customer"></div>
+          <div class="labels" [ngClass]="{labelsOn: customerOn}">Customer</div>
+      </div>
+      <div class="labelIcon" (click)=" changeRole('sharerOn'); saveRole(3);">
+          <div [ngClass]="{sharerOn: sharerOn}" class="sharer"></div>
+          <div class="labels" [ngClass]="{labelsOn: sharerOn}">Sharer</div>
+      </div>
+      <div class="labelIcon" (click)=" changeRole('builderOn'); saveRole(1);">
+          <div [ngClass]="{builderOn: builderOn}" class="builder"></div>
+          <div class="labels" [ngClass]="{labelsOn: builderOn}">Builder</div>
+      </div>
+  </div>
+  <div class="inputs">
+      <input type="text" [(ngModel)]="contact.first_name" placeholder="First Name">
+      <input type="text" [(ngModel)]="contact.last_name" placeholder="Last Name">
+      <input type="email" [(ngModel)]="contact.email" placeholder="Email">
+      <input type="tel" [(ngModel)]="contact.phone" placeholder="Phone" (keydown)="formatPhone()">
+      <textarea [(ngModel)]="contact.notes"
+          placeholder="Notes">
+      </textarea>
+  </div>
+  <div class="pipePager">
+      <ion-slides class="choosePipe" #editPipe slidesPerView="3" (ionSlideDidChange)="slideChange()">
+          <ion-slide class="firstSlide">
+          </ion-slide>
+          <ion-slide *ngFor="let slide of slides" class="slides" [ngClass]="{ activeSlide: getIndex(slide)}">
+              <div class="pipe">
+                  <div class="bumper" [ngClass]="{activePipe: getIndex(slide)}"></div>
+                  <div class="slideName" [ngClass]="{activePipe: getIndex(slide)}">{{slide.name}}</div>
+                  <div class="bumper" [ngClass]="{activePipe: getIndex(slide)}"></div>
+              </div>
+          </ion-slide>
+          <ion-slide>
+          </ion-slide>
+      </ion-slides>
+  </div> 
+      <div class="pagerBar">
+          <div *ngFor="let slide of slides" class="pagerBox">
+          <div [ngClass]="{activeFlag: getIndex(slide)}" class="pagerFlag"></div>
+          </div>
+      </div>
+  <div class="buttons">
+      <!-- <button ion-button class="cancel" (click)="dismiss()">CANCEL</button> -->
+      <button ion-button (click)="editContact()">SAVE</button>
+  </div>
+</ion-content>
