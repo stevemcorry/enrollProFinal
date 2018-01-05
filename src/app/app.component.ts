@@ -29,6 +29,7 @@ export class MyApp {
       { title: 'Actions', component: 'page-actions' },
       { title: 'Pipeline', component: 'page-pipeline'},
       { title: 'Contacts', component: 'page-contacts'},
+      { title: 'Recommendations', component: 'page-recommended'},
       { title: 'Success Tracker', component: 'page-tracker'},
       { title: 'Settings', component: 'page-settings'},
       { title: 'Log Out', component: 'page-landing'},

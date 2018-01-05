@@ -28,13 +28,19 @@ export class ActionService {
             })
     }
     getActions(){
-            let authHeader = new Headers();
-                authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
-                return this.http.get(this.globalVar.getApiUrl() + 'actions', {headers: authHeader})
-                .map(data=>{
-                    return data.json();
-                });
+        let authHeader = new Headers();
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
+            return this.http.get(this.globalVar.getApiUrl() + 'actions', {headers: authHeader})
+            .map(data=>{
+                return data.json();
+            });
 
+    }
+    getRecommendations(id){
+        let authHeader = new Headers();
+        authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
+        return this.http.get(this.globalVar.getApiUrl() + 'recommendations/pipeline/' + id, {headers: authHeader})
+        .map(data=>{ return data.json(); })
     }
 
     addAction(action){
@@ -49,6 +55,13 @@ export class ActionService {
             authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
             authHeader.append('Content-Type','application/json')
         return this.http.put(this.globalVar.getApiUrl() + 'actions/' + id, JSON.stringify(action), { headers: authHeader})
+        .map(res => console.log(res, 'put complete'));
+    }
+    completeRecommendation(action){
+        let authHeader = new Headers();
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
+            authHeader.append('Content-Type','application/json')
+        return this.http.post(this.globalVar.getApiUrl() + 'recommendations/actions/used', JSON.stringify(action), { headers: authHeader})
         .map(res => console.log(res, 'put complete'));
     }
 

@@ -28,6 +28,7 @@ export class AddActionPage {
   newActionTime;
   recommendation;
   selectedName;
+  contact
 
   constructor(
     public navCtrl: NavController, 
@@ -51,10 +52,16 @@ export class AddActionPage {
           this.meetOn = true;
       }
       this.newAction.action_type = this.recommendation.action_type;
-      this.newAction.contact = this.recommendation.contact;
-      this.selectedName = this.recommendation.contact_name;
+      this.newAction.contact = this.recommendation.contact.id;
+      this.selectedName = this.recommendation.contact.first_name + ' ' + this.recommendation.contact.last_name;
       this.newAction.notes = this.recommendation.notes;
     }
+    this.contact = nav.get('contact')
+    if(this.contact){
+        this.newAction.contact = this.contact.id
+        this.selectedName = this.contact.first_name + ' ' + this.contact.last_name
+    }
+    console.log(this.contact)
   }
 
   ionViewDidLoad() {
