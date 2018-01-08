@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle left>
+        <div class="menuToggle"></div>
+      </button>
+      <ion-title>Messages</ion-title>
+      <ion-buttons end>
+          <div class="add-message" (click)="openAdd()"></div>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+  <div class="messages-wrapper">
+    <div *ngFor="let message of messages" 
+      class="message" 
+      (click)="openMessages(message)">
+      <div class="messageIcon"></div>
+      <div class="messageInner">
+        <div class="contactName">
+          {{message.first_name}} {{message.last_name}}
+        </div>
+        <div class="lastMessage">
+          {{message.text}}
+        </div>
+      </div>
+      <div class="time">{{message.time | timeFormat}}</div>
+    </div>
+    <div *ngIf="!messages[0]" 
+      class="job" 
+      style="text-align: center">
+        <div style="font: 18px 'junction-light'; padding-top: 10px;">
+            {{messagesLoading}}
+        </div>
+    </div>
+  </div>
+</ion-content>

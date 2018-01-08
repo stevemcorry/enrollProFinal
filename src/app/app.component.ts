@@ -31,6 +31,7 @@ export class MyApp {
       { title: 'Contacts', component: 'page-contacts'},
       { title: 'Recommendations', component: 'page-recommended'},
       { title: 'Dashboard', component: 'page-dashboard'},
+      { title: 'Messaging', component: 'page-messaging'},
       { title: 'Success Tracker', component: 'page-tracker'},
       { title: 'Scheduled', component: 'page-scheduled'},
       { title: 'Settings', component: 'page-settings'},

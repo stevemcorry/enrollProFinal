@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+      <ion-buttons left>
+        <div (click)="dismiss()">
+          <ion-icon name="arrow-back" class="icons"></ion-icon>
+        </div>
+      </ion-buttons>
+      <ion-title>{{name}}</ion-title>
+      <ion-buttons end>
+          <!--<ion-icon name="home" class="icons"></ion-icon>-->
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+  <ion-content>
+      <div class="messages-wrapper" 
+        id="messages" 
+        [ngClass]="{textAreaMargin: resizeOn}">
+          <div *ngFor="let message of messages" 
+            class="message {{message.direction}}"
+            (click)="resizeOn=false">
+            <div class="messageIconIn" *ngIf="message.direction !== 'out'"></div>
+            <div class="messageContent" [ngClass]="{inMessage: message.direction === 'in'}">{{message.text}}</div>
+            <div class="messageIcon" *ngIf="message.direction === 'out'"></div>
+          </div>
+      <div *ngIf="!messages[0]">{{noMessages}}</div>
+      <div class="sendBar">
+          <textarea class="send-input" [ngClass]="{tallTextArea: resizeOn}" type="text" [(ngModel)]="newText"></textarea>
+          <div class="send-button" (click)="sendMessage()">Send</div>
+      </div>
+      </div>
+    </ion-content>
