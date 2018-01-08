@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle left>
+        <div class="menuToggle"></div>
+      </button>
+      <ion-title>Scheduled Marketing</ion-title>
+      <ion-buttons end>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-list class="schedule">
+        <ion-item-sliding *ngFor="let job of scheduledJobs | recomFilter: recomFilter">
+          <ion-item>
+              <div class="job">
+                  <div class="jobIcon {{job.template_type.name}}"></div>
+                  <div class="contacts">{{job.to}}</div>
+                  <div class="date">{{job.scheduled_date}}</div>
+                  <div class="time">{{job.scheduled_time}}</div>
+              </div>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button 
+              color="danger" 
+              (click)="deleteScheduledJob(job)">
+              Delete
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+        <div *ngIf="!scheduledJobs[0]" class="job" style="justify-content: center">
+            <div style="font: 18px 'junction-light'; padding-top: 10px;">
+                {{scheduledLoading}}
+            </div>
+        </div>
+      </ion-list>
+</ion-content>

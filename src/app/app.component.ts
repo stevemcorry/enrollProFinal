@@ -32,6 +32,7 @@ export class MyApp {
       { title: 'Recommendations', component: 'page-recommended'},
       { title: 'Dashboard', component: 'page-dashboard'},
       { title: 'Success Tracker', component: 'page-tracker'},
+      { title: 'Scheduled', component: 'page-scheduled'},
       { title: 'Settings', component: 'page-settings'},
       { title: 'Log Out', component: 'page-landing'},
     ];
