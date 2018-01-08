@@ -5,6 +5,10 @@ import { FormsModule }    from '@angular/forms';
 
 import { ContactOrder } from './../pipes/contact-order.filter';
 import { ContactFilter } from '../pipes/contact.filter';
+import { ActionFilterPipe } from '../pipes/action-filter';
+import { ActionOrder } from '../pipes/action-order.filter';
+import { RecommendedFilter } from '../pipes/recommended.filter';
+
 
 @NgModule({
     imports: [
@@ -13,13 +17,19 @@ import { ContactFilter } from '../pipes/contact.filter';
     ],
     declarations: [
         ContactOrder,
-        ContactFilter
+        ContactFilter,
+        ActionFilterPipe,
+        ActionOrder,
+        RecommendedFilter,
     ],
     providers: [
     ],
     exports: [
         ContactOrder,
-        ContactFilter
+        ContactFilter,
+        ActionFilterPipe,
+        ActionOrder,
+        RecommendedFilter,
     ]
 })
 export class SharedModule {}

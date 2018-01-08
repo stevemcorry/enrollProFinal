@@ -26,10 +26,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Actions', component: 'page-actions' },
+      { title: 'Tasks', component: 'page-actions' },
       { title: 'Pipeline', component: 'page-pipeline'},
       { title: 'Contacts', component: 'page-contacts'},
       { title: 'Recommendations', component: 'page-recommended'},
+      { title: 'Dashboard', component: 'page-dashboard'},
       { title: 'Success Tracker', component: 'page-tracker'},
       { title: 'Settings', component: 'page-settings'},
       { title: 'Log Out', component: 'page-landing'},
@@ -43,7 +44,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       let token = this.storage.getToken();
-      console.log(token, 'token')
       if(token){
         this.checkTraining();
       } else {

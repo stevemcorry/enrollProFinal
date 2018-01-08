@@ -1,0 +1,238 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle left>
+      <div class="menuToggle"></div>
+    </button>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons end>
+      <div class="search" (click)="showDimSearch = true"></div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<div class="dimmer" [ngClass]="{showDim: showDim}" (click)="showDim = false; closeFab(fab)">
+  <div [ngClass]="{circles :showDim}"></div>
+</div>
+<div class="dimSearch"  [ngClass]="{showDimSearch: showDimSearch}" >
+  <div class="dimSearchContent">
+    <div class="dimSearchIcon"></div>
+    <div class="dimSearchArrow" (click)="showDimSearch = false;"></div>
+    <input type="text" [(ngModel)]="search">
+    <div *ngFor="let c of contacts | contactFilter: search | contactOrder: 'name-asc'" (click)="openContact(c)" class="dimSearchName">{{c.first_name}} {{c.last_name}}</div>
+  </div>
+  <div class="dimSearchBottom" (click)="showDimSearch = false"></div>
+</div>
+
+
+<ion-content padding>
+  <div class="dashboardSection">
+      <div class="sideLine"></div>
+      <div class="dashboardLabel">Tasks</div>
+      <div class="sideLine"></div>
+  </div>
+  <ion-list>
+    <ion-item-sliding *ngFor="let action of actions | 
+      actionFilter: action.complete | 
+      orderAction"
+      class="heightSet">
+      <ion-item no-lines 
+        class="task" 
+        [ngClass]="{completeAnimation:  animate(action.animate)}">
+        <ion-icon item-left 
+          (click)="openSpecificAction(action)" 
+          class="{{classCheck(action)}}">
+        </ion-icon>
+        <div class="spacing">
+          <div (click)="openSpecificAction(action)" 
+            class="actionBody" 
+            [ngClass]="{striking :action.strike}">
+            <div class="taskProspect" 
+              [style.color]="dateCheck(action.due_date)">
+              {{action.action_type.name}} {{action.contact.first_name}}
+            </div>
+            <div class="taskNotes">
+              {{action.notes}}
+            </div>
+          </div>
+          <div class="statusCircle" 
+            [style.border-color]="dateCheck(action.due_date)" 
+            [ngClass]="{statusCircleOn:action.animate}" 
+            (click)="action.animate = true; 
+            completeAction(action)">
+          </div>
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" 
+          (click)="action.strike = !action.strike; 
+          action.skip = true; 
+          skipAction(action.id)">
+          Skip task
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <div *ngIf="!actions[0]" class="job" style="justify-content: center">
+      <div style="font: 18px 'junction-light'; padding-top: 10px;">
+        {{actionsLoading}}
+      </div>
+    </div>
+  </ion-list>
+
+  <div class="dashboardSection" *ngIf="recommendations[0]">
+      <div class="sideLine"></div>
+      <div class="dashboardLabel">Recommendations</div>
+      <div class="sideLine"></div>
+  </div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let action of recommendations | recomFilter: recomFilter;  
+      let i=index">
+      <ion-item no-lines 
+        class="task" 
+        [ngClass]="{completeAnimation:  animate(action.animate)}" 
+        *ngIf="i<10 && !action.delete">
+        <ion-icon item-left 
+          (click)="addRecommendedAction(action)" 
+          class="{{recommendedActionCheck(action.action_type.id)}}">
+        </ion-icon>
+        <div class="spacing">
+          <div (click)="addRecommendedAction(action)" 
+            class="actionBody" 
+            [ngClass]="{striking :action.strike}">
+            <div class="taskProspect">
+              {{action.action_type.name}} {{action.contact.first_name}}
+              <div class="recom-bulb"></div>
+            </div>
+            <div class="taskNotes">
+              {{action.notes}}
+            </div>
+          </div>
+          <div class="statusCircle" 
+            [ngClass]="{statusCircleOn:action.animate}" 
+            (click)="openRecomAlert(action)">
+          </div>
+        </div>
+      </ion-item>
+      <ion-item-options side="right" 
+        *ngIf="i<10">
+        <button ion-button 
+          color="danger" 
+          (click)="action.strike = !action.strike; 
+          action.skip = true; 
+          finishRecommendation(action)">
+          Skip task
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div class="dashboardSection">
+      <div class="sideLine"></div>
+      <div class="dashboardLabel">Scheduled</div>
+      <div class="sideLine"></div>
+  </div>
+
+  <ion-list class="schedule">
+    <ion-item-sliding *ngFor="let job of scheduledJobs | recomFilter: recomFilter; let i=index">
+      <ion-item *ngIf="i < 10">
+          <div class="job">
+              <div class="jobIcon {{job.template_type.name}}"></div>
+              <div class="contacts">{{job.to}}</div>
+              <div class="date">{{job.scheduled_date}}</div>
+              <div class="time">{{job.scheduled_time}}</div>
+          </div>
+      </ion-item>
+      <ion-item-options side="right"  *ngIf="i < 10">
+        <button ion-button 
+          color="danger" 
+          (click)="action.strike = !action.strike; 
+          action.skip = true; 
+          deleteScheduledJob(job)">
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <div *ngIf="!scheduledJobs[0]" class="job" style="justify-content: center">
+        <div style="font: 18px 'junction-light'; padding-top: 10px;">
+            {{scheduledLoading}}
+        </div>
+    </div>
+  </ion-list>
+
+  <div class="dashboardSection">
+      <div class="sideLine"></div>
+      <div class="dashboardLabel">Progress</div>
+      <div class="sideLine"></div>
+  </div>
+
+  <div *ngIf="!dates" class="job" style="justify-content: center">
+      <div style="font: 18px 'junction-light'; padding-top: 10px;">
+          {{goalsLoading}}
+      </div>
+  </div>
+
+  <div class="pipelineSnapshot">
+    <div class="snapshotTop">
+      <div class="snapshotTitle">How have I done lately?</div>
+    </div>
+    <div class="snapshotBody">
+      <div class="snapshotPyramid">
+        <div class="snapshot one">
+          <div class="snapshotNumbers">{{top.actual}}/{{top.goal}}</div>
+          <div class="snapshot45" [ngStyle]="width(top)"></div>
+        </div>
+        <div class="label label1">Top 45</div>
+      </div>
+      <div class="snapshotPyramid">
+        <div class="snapshot two">
+          <div class="snapshotNumbers">{{oils.actual}}/{{oils.goal}}</div>
+          <div class="snapshotOils" [ngStyle]="width(oils)"></div>
+        </div>
+        <div class="label label2">6-Weeks Experienced</div>
+      </div>
+      <div class="snapshotPyramid">
+        <div class="snapshot three">
+          <div class="snapshotNumbers">{{committed.actual}}/{{committed.goal}}</div>
+          <div class="snapshotCommitted" [ngStyle]="width(committed)"></div>
+        </div>
+        <div class="label label3">30 day Committed</div>
+      </div>
+      <div class="snapshotPyramid">
+        <div class="snapshot four">
+          <div class="snapshotNumbers">{{presentation.actual}}/{{presentation.goal}}</div>
+          <div class="snapshotPresentation" [ngStyle]="width(presentation)"></div>
+        </div>
+        <div class="label label4">30 day Attended</div>
+      </div>
+      <div class="snapshotPyramid">
+        <div class="snapshot five">
+          <div class="snapshotNumbers">{{enrolled.actual}}/{{enrolled.goal}}</div>
+          <div class="snapshotEnrolled" [ngStyle]="width(enrolled)"></div>
+        </div>
+        <div class="label label5">30 day Enrolled</div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <ion-fab bottom center #fab>
+    <div ion-fab (click)="showDim = !showDim;" class="addButton" [ngClass]="{addButtonActive: showDim}" ></div>
+    <ion-fab-list side="right">
+      <div (click)="addContact(); showDim = false; closeFab(fab)" class="addContactIcon">
+          <div class="fabTitles">
+            Add Contact
+          </div>
+      </div>
+    </ion-fab-list>
+    <ion-fab-list side="left">
+      <div (click)="chooseActionContact(); showDim = false; closeFab(fab)" class="addActionIcon">
+        <div class="fabTitles">
+          Add Task
+        </div>
+      </div>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

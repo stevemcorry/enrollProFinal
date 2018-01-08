@@ -55,7 +55,6 @@ export class ActionsPage {
   //Actions
   getActions(){
     this.actionService.getActions().subscribe(res => {
-      console.log(res)
       let data: any = {}
       data = res;
       let actions = [];
@@ -191,13 +190,19 @@ export class ActionsPage {
   }
   completeAction(action){
     let id = action.id
-    let contact = action.contact;
       setTimeout(()=>{
         this.actionService.completeAction(id, this.newAction).subscribe(res => {
           this.getActions();
-          this.openAlert(contact)
+          this.openAlert(action)
         })
       }, 500)
+  }
+  skipAction(id){
+    setTimeout(()=>{
+      this.actionService.deleteAction(id).subscribe(res => {
+        this.getActions();
+      })
+    }, 200)
   }
   openAlert(contact){
     let alert = this.alert.create({
@@ -213,13 +218,7 @@ export class ActionsPage {
         {
           text: 'Add Action',
           handler: () => {
-            this.navCtrl.push('page-add-action', {
-              recommendation: {
-                  contact_name: contact.first_name + ' ' + contact.last_name,
-                  contact : contact.id
-              }
-
-            });
+            this.navCtrl.push('page-add-action', {recommendation: contact});
           }
         }
       ]

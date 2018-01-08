@@ -1,0 +1,471 @@
+page-dashboard {
+    .dashboardSection{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 10px 0;
+    }
+    .sideLine{
+        border-top: 1px solid $greyy;
+        width: 40%;
+    }
+    .dashboardLabel{
+        font: 13px 'junction-light';
+        color: $dark;
+    }
+
+    //Dimmer & Add button
+    input{
+        width: 95%;
+        height: 35px;
+        margin: 2.5%;
+        margin-top: 10px;
+        padding-left: 45px;
+        margin-bottom: 15px;
+        background: $clear;
+        border: none !important;
+    }
+    .search{
+        background-image: url('../assets/imgs/actionIcons/Asset 24.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 5px 5px 0px 5px;
+        float: right;
+    }
+    .dimmer{
+        z-index: 50;
+        position: fixed;
+        transform: translateX(-150%);
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: opacity .3s;
+        background-image: url('../assets/imgs/dimBack.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .showDim{
+        transform: translateX(0%);
+        opacity: 1;
+        transition: opacity .5s;
+    }
+    .dimSearch{
+        margin-top: 20px;
+        position: fixed;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .dimSearchIcon{
+        background-image: url('../assets/imgs/actionIcons/Asset 24.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+        position: fixed;
+        margin: 15px;
+    }
+    .dimSearchArrow{
+        background-image: url('../assets/imgs/newIcons/Asset 29.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+        position: fixed;
+        margin: 20px;
+        right: 0%;
+    }
+    .dimSearchContent{
+        max-height: 97vh;
+        z-index: 16;
+        background: $clear8;
+        overflow: scroll;
+    }
+    .dimSearchName{
+        font: 17px 'junction-regular';
+        color: white;
+        height: 20px;
+        margin: 0px 0 5px 20px;
+    }
+    .dimSearchBottom{
+        height: 100%;
+        width: 100%;
+    }
+    .showDimSearch{
+        z-index: 15;
+    }
+    .addButton{
+        background-image: url('../assets/imgs/tealDrop.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100px;
+        width: 75px;
+    }
+    .addButtonActive{
+        background-image: none;
+        background-repeat: no-repeat;
+    }
+    .fab-ios{
+        color: transparent;
+        background-color: rgba(0,0,0,0);
+    }
+    ion-fab[center]{
+        margin-left: -38px !important;
+    }
+    .addContactIcon{
+        height: 75px;
+        width: 75px;
+        transform: translate(40%,-55%);
+    }
+    .circles{
+        position: fixed;
+        bottom: 0%;
+        background-image: url('../assets/imgs/addAction.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 50%;
+        width: 85%;
+        transform: translateX(8%);
+    }
+    .addActionIcon{
+        height: 75px;
+        width: 75px;
+        transform: translate(-27%,-55%);
+    }
+    .fabTitles{
+        font: 12px junction-bold;
+        color: white;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(20px);
+        text-shadow: -1px 0px 1px $dark;
+    }
+
+    //Actions
+    ion-list{
+        margin-bottom: 5px !important;
+    }
+    .scroll-content{
+        overflow-y: scroll;
+        padding: 0 0 15px 0 !important;
+    }
+    .item{
+        border-bottom: none !important;
+    }
+    .heightSet{
+        height: 67px;
+        transition: all .5s cubic-bezier(1, 0, 1, .2);
+    }
+    .task{
+        display: flex;
+        //height: 45px;
+        align-items: center;
+        //margin: 10px 0 10px 2px;
+        transition: transform .5s cubic-bezier(1, 0, 1, .2);
+    }
+    .completeAnimation{
+        transform: translateX(-100%);
+        border-radius: 5px;
+    }
+    .text{
+        background-image: url('../assets/imgs/actionIcons/Asset 35.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .textRed{
+        background-image: url('../assets/imgs/actionIcons/Asset 33.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .textBlue{
+        background-image: url('../assets/imgs/actionIcons/Asset 34.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .email{
+        background-image: url('../assets/imgs/actionIcons/Asset 53.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .emailRed{
+        background-image: url('../assets/imgs/actionIcons/Asset 51.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .emailBlue{
+        background-image: url('../assets/imgs/actionIcons/Asset 52.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .call{
+        background-image: url('../assets/imgs/actionIcons/Asset 59.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .callRed{
+        background-image: url('../assets/imgs/actionIcons/Asset 57.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .callBlue{
+        background-image: url('../assets/imgs/actionIcons/Asset 58.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .meet{
+        background-image: url('../assets/imgs/actionIcons/Asset 64.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .meetRed{
+        background-image: url('../assets/imgs/actionIcons/Asset 62.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .meetBlue{
+        background-image: url('../assets/imgs/actionIcons/Asset 63.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 0% 10px 0 5px;
+    }
+    .spacing{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .actionBody{
+        width: 80%;
+    }
+    .taskProspect{
+        font: 15px 'junction-regular';
+        font-weight: 700;
+        padding-top: 2px;
+        color: $dark;
+    }
+    .taskNotes{
+        font: 12px 'junction-light';
+        color: $dark;
+        margin-top: 4px;
+        white-space: pre-line;
+        height: 2em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-top: 1px;
+    }
+    .statusCircle{
+        border-radius: 50%;
+        border: 2px solid $greyy;
+        height: 30px;
+        width: 30px;
+        align-self: center;
+        margin-right: 10px;
+    }
+    .statusCircleOn{
+        background-image: url('../assets/imgs/Asset 40.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: none;
+    }
+    .item-block:last-child{
+        margin-top: 0px;
+    }
+    .job{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    //Recommendations
+    .recom-bulb{
+        display: inline-block;
+        transform: translateY(5px);
+        background-image: url('../assets/img/newIcons/Asset 155.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 25px;
+        width: 25px;
+        border: none;
+    }
+
+    //Scheduled
+    .item-block:first-child{
+        margin-top: 0px;
+    }
+    .schedule{
+        margin-bottom: 40px !important;
+    }
+    .jobIcon{
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 20px;
+        width: 20px;
+        margin-right: 10px;
+    }
+    .Text{
+        background-image: url('../assets/imgs/actionIcons/Asset 34.png');
+    }
+    .Email{
+        background-image: url('../assets/imgs/actionIcons/Asset 52.png');
+    }
+    .Drip{
+        background-image: url('../assets/imgs/actionIcons/Asset 43.png');
+    }
+    .contacts{
+        width: 50%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .date{
+        font: 14px 'junction-light';
+        color: $dark;
+    }
+    .time{
+        font: 14px 'junction-light';
+        color: $dark;
+    }
+
+    //Goals
+    .pipelineSnapshot{
+        margin-top: 25px;
+        margin-bottom: 100px;
+    }
+    .snapshotTop{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .snapshotTitle{
+        margin-bottom: 10px;
+        font: 25px 'junction-bold';
+        color: $bluish;
+    }
+    .snapshotBody{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .snapshotPyramid{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .snapshot{
+        position: relative;
+        width: 70%;
+        height: 0;
+        background-color: transparent;
+        margin: 10px;
+        border-top: 30px solid blue;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+    }
+    .snapshotNumbers{
+        position: absolute;
+        width: 50px;
+        font: 15px 'junction-light';
+        color: white;
+        text-align: center;
+        left: calc(50% - 25px);
+        transform: translateY(-22px);
+        z-index: 5;
+    }
+    .label{
+        font: 12px 'junction-regular';
+        color: $dark;
+        padding-bottom: 3px;
+        width: 23%;
+    }
+    .one{
+        border-top-color: rgb(250,181,166);
+    }
+    .two{
+        border-top-color: rgb(129,195,199);
+        width: 55%;
+    }
+    .three{
+        border-top-color: rgb(171,178,183);
+        width: 40%;
+    }
+    .four{
+        border-top-color: rgb(180,174,213);
+        width: 25%;
+    }
+    .five{
+        border-top-color: rgb(247,157,155);
+        width: 10%;
+    }
+    .snapshot45{
+        border-top: 30px solid #f6795d;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    .snapshotOils{
+        border-top: 30px solid #1a9199;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    .snapshotCommitted{
+        border-top: 30px solid #66737c;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    .snapshotPresentation{
+        border-top: 30px solid #776cb2;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    .snapshotEnrolled{
+        border-top: 30px solid #f14d49;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        transform: translate(-20px, -30px);
+    }
+    
+}
+
