@@ -3,7 +3,7 @@
       <button ion-button menuToggle left>
         <div class="menuToggle"></div>
       </button>
-      <ion-title>Scheduled Marketing</ion-title>
+      <ion-title>Scheduled Communication</ion-title>
       <ion-buttons end>
       </ion-buttons>
     </ion-navbar>
@@ -30,7 +30,7 @@
           </ion-item-options>
         </ion-item-sliding>
         <div *ngIf="!scheduledJobs[0]" class="job" style="justify-content: center">
-            <div style="font: 18px 'junction-light'; padding-top: 10px;">
+            <div class="loading">
                 {{scheduledLoading}}
             </div>
         </div>

@@ -38,7 +38,7 @@ page-recommended {
         background-image: url('../assets/imgs/actionIcons/Asset 155.png');
     }
     .job-middle{
-        width: 100%;
+        width: 75%;
     }
     .contacts{
         font: 14px 'junction-bold';
@@ -65,9 +65,9 @@ page-recommended {
     }
     .checkbox{
         border-radius: 50%;
-        border: 2px solid $bluish;
-        height: 25px;
-        width: 25px;
+        border: 2px solid $greyy;
+        height: 30px;
+        width: 30px;
         align-self: center;
         margin-right: 10px;
         flex-shrink: 0;

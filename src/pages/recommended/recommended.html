@@ -16,11 +16,18 @@
         [ngClass]="{jobOff: job.delete}">
           <ion-item>
               <div class="job">
-                  <div class="jobIcon {{job.action_type ? job.action_type.name: 'light'}}"></div>
-                  <div class="job-middle" (click)="addRecommendedAction(job)">
-                      <div class="contacts">{{job.contact.first_name}} {{job.contact.last_name}}</div>
-                      <div class="notes">{{job.notes}}</div>
-                  </div>
+                <div class="jobIcon {{job.action_type ? job.action_type.name: 'light'}}" 
+                    (click)="addRecommendedAction(job)">
+                </div>
+                <div class="job-middle" 
+                    (click)="addRecommendedAction(job)">
+                    <div class="contacts">
+                        {{job.contact.first_name}} {{job.contact.last_name}}
+                    </div>
+                    <div class="notes">
+                        {{job.notes}}
+                    </div>
+                </div>
                   <div class="checkbox" [ngClass]="{checkboxOn: job.done}" (click)="openAlert(job)"></div>
               </div>
           </ion-item>

@@ -1,5 +1,9 @@
 page-contacts {
     //header
+    ion-item{
+        font: 17px junction-regular;
+        color: $dark !important;
+    }
     .item-block:last-child {
         margin-top: 0px;
     }
@@ -12,12 +16,18 @@ page-contacts {
         margin: 10px 5px 5px 5px;
     }
     .searchBar{
+        font: 17px junction-regular;
         width: 96%;
         height: 35px;
         margin: 2% 2% 0 2%;
         border-radius: 5px;
         border: 3px solid lightgrey;
         padding: 5px;
+    }
+    .loading{
+        font: 18px 'junction-light'; 
+        padding-top: 10px;
+        color: $dark;
     }
     //Dimmer
 

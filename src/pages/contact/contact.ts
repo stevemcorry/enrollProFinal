@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, ViewController, NavParams, Slides, Events, NavController, ModalController } from 'ionic-angular';
 import { ContactService } from '../../services/contact.service';
+import { ActionService } from '../../services/actions.service';
 
 
 @IonicPage({
@@ -9,7 +10,7 @@ import { ContactService } from '../../services/contact.service';
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html',
-  providers: [ContactService]
+  providers: [ContactService, ActionService]
 })
 export class ContactPage {
 
@@ -58,7 +59,8 @@ export class ContactPage {
     public contactService: ContactService,
     public events: Events,
     public navCtrl: NavController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public actionService: ActionService,
   ) {
     if(this.params.get('contact')){
         this.contact = this.params.get('contact');
@@ -121,6 +123,27 @@ export class ContactPage {
             this.timerCheck = true;
         },2500)
       });
+  }
+  newAction
+  completeAction(action){
+      let id = action.id;
+      let comp = action.complete;
+      if(comp === 0){
+          this.newAction = {
+              complete: 1
+          };
+          action.complete = 1;
+      } else if(comp === 1){
+          this.newAction = {
+              complete: 0
+          }
+          action.complete = 0;
+      }
+    setTimeout(()=>{
+        this.actionService.completeAction(id, this.newAction).subscribe(res => {
+            this.getSpecificContact();
+        })
+    }, 500)
   }
   setToggles(toggles){
     let tog = [ toggles[0], toggles[1], toggles[2], toggles[4], toggles[5], toggles[23], toggles[24], toggles[6], toggles[7], toggles[8], toggles[9], toggles[3], toggles[17], toggles[18], toggles[19], toggles[20], toggles[21], toggles[22], toggles[10], toggles[11], toggles[12], toggles[13], toggles[14], toggles[15], toggles[16]]

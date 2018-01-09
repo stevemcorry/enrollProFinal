@@ -12,6 +12,12 @@ page-dashboard {
     .dashboardLabel{
         font: 13px 'junction-light';
         color: $dark;
+        text-align: center;
+    }
+    .loading{
+        font: 18px 'junction-light'; 
+        padding-top: 10px;
+        color: $dark;
     }
 
     //Dimmer & Add button
@@ -301,6 +307,24 @@ page-dashboard {
     }
     .statusCircleOn{
         background-image: url('../assets/imgs/Asset 40.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: none;
+    }
+    .red{
+        background-image: url('../assets/imgs/actionIcons/Asset 39.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: none;
+    }
+    .blue{
+        background-image: url('../assets/imgs/actionIcons/Asset 40.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: none;
+    }
+    .grey{
+        background-image: url('../assets/imgs/actionIcons/Asset 41.png');
         background-size: contain;
         background-repeat: no-repeat;
         border: none;

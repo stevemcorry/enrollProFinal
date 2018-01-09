@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
-        <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
+        <button ion-button menuToggle left>
+          <div class="menuToggle"></div>
         </button>
         <ion-title>
             Contacts
@@ -20,7 +20,7 @@
   
 <ion-content>
     <input type="text" 
-      placeholder="search" 
+      placeholder="Search" 
       [(ngModel)]="search" 
       class="searchBar">
     <ion-list>
@@ -49,7 +49,7 @@
     <div *ngIf="!contacts[0]" 
       class="job" 
       style="text-align: center">
-        <div style="font: 18px 'junction-light'; padding-top: 10px;">
+        <div class="loading">
             {{contactsLoading}}
         </div>
     </div>

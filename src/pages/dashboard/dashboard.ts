@@ -126,10 +126,17 @@ export class DashboardPage {
   }
   classCheck(x){
     let action = x.action_type.id
-    let date = (new Date()).toISOString().slice(0,10).replace(/-/g,"")
-    let a = x.due_date.slice(0,4)
-    let b = x.due_date.slice(5,7)
-    let c = x.due_date.slice(8,10)
+    x = x.due_date
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        const date = [year, month, day].join('');
+    let a = x.slice(0,4)
+    let b = x.slice(5,7)
+    let c = x.slice(8,10)
     let z = a+b+c;
     if( action === 1){
       if(z > date){
@@ -163,6 +170,29 @@ export class DashboardPage {
       } else if (z < date){
         return 'meetRed'
       }
+    }
+  }
+  doneCheck(x, action){
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        const date = [year, month, day].join('');
+    let a = x.slice(0,4)
+    let b = x.slice(5,7)
+    let c = x.slice(8,10)
+    let z = a+b+c;
+    if(!action){
+      return
+    }
+    if(z > date){
+      return 'grey'
+    } else if (z == date){
+      return 'blue'
+    } else if (z < date){
+      return 'red'
     }
   }
   dateCheck(x){
@@ -210,7 +240,7 @@ export class DashboardPage {
               } else { return }
               }
           }
-          !this.actions[0] ? this.actionsLoading = 'No Actions!' : 'Loading...';
+          !this.actions[0] ? this.actionsLoading = "You're all caught up for today!" : 'Loading...';
       })
   }
   completeAction(action){
@@ -252,7 +282,7 @@ export class DashboardPage {
 }
 
 //Recommendations
-
+recomLoading = 'Loading...';
 getRecommendations(){
   this.recommendations = [];
   for(let i = 1; i < 14; i++){
@@ -260,15 +290,19 @@ getRecommendations(){
       this.getRecommendation(i)
     }
   }
+  this.recomFilter += 1;
 }
 getRecommendation(id){
   this.actionService.getRecommendations(id).subscribe(res => {
     for(let recom of res){
-        recom.action_type =this.recomActions[recom.action_type]
+        recom.action_type =this.recomActions[recom.action_type-1]
         recom.action_type ? '' : recom.action_type = { name: 'Email',id: 1 };
         this.recommendations.push(recom)
     }
     this.recomFilter += 1;
+    if(id === 13){
+      !this.recommendations[0] ? this.recomLoading = "Great job!" : 'Loading...';
+    }
 })
 }
 recommendedActionCheck(id){
@@ -292,6 +326,7 @@ finishRecommendation(rec){
 }
   this.actionService.completeRecommendation(recom).subscribe(res=>{
     rec.delete = true;
+    this.recomFilter += 1; 
   })
 }
 openRecomAlert(recom){

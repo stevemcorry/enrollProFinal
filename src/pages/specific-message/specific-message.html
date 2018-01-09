@@ -5,7 +5,10 @@
           <ion-icon name="arrow-back" class="icons"></ion-icon>
         </div>
       </ion-buttons>
-      <ion-title>{{name}}</ion-title>
+      <ion-title>
+        <!-- <div class="messageIconIn">{{name[0]}}</div> -->
+        {{name}}
+      </ion-title>
       <ion-buttons end>
           <!--<ion-icon name="home" class="icons"></ion-icon>-->
       </ion-buttons>
@@ -20,9 +23,9 @@
           <div *ngFor="let message of messages" 
             class="message {{message.direction}}"
             (click)="resizeOn=false">
-            <div class="messageIconIn" *ngIf="message.direction !== 'out'"></div>
+            <!-- <div class="messageIconIn" *ngIf="message.direction !== 'out'">{{name[0]}}</div> -->
             <div class="messageContent" [ngClass]="{inMessage: message.direction === 'in'}">{{message.text}}</div>
-            <div class="messageIcon" *ngIf="message.direction === 'out'"></div>
+            <!-- <div class="messageIcon" *ngIf="message.direction === 'out'"></div> -->
           </div>
       <div *ngIf="!messages[0]">{{noMessages}}</div>
       <div class="sendBar">

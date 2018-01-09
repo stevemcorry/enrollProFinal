@@ -155,7 +155,9 @@ openAlert(id){
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddContactPage');
+      setTimeout(()=>{
+          this.setPipes('customer')
+      },100)
   }
 
 }

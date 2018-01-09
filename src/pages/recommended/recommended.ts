@@ -65,10 +65,9 @@ export class RecommendedPage {
   getRecommendation(id){
     this.actionsService.getRecommendations(id).subscribe(res => {
       for(let recom of res){
-          recom.action_type = this.actions[recom.action_type]
+          recom.action_type = this.actions[recom.action_type-1]
           this.recommendations.push(recom)
       }
-      console.log(this.recommendations)
   })
   }
   addRecommendedAction(action){

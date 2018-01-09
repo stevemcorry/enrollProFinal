@@ -17,7 +17,7 @@ page-messaging {
     }
     .messageIcon{
         height: 50px;
-        width: 50px;
+        min-width: 50px;
         border-radius: 50%;
         background-color: $greyy;
         margin: 10px;
@@ -38,6 +38,7 @@ page-messaging {
     }
     .messageInner{
         margin-left: 15px;
+        max-width: 50%;
         .contactName{
             font: 20px 'junction-bold';
             color: $bluish;
@@ -45,6 +46,9 @@ page-messaging {
         .lastMessage{
             font: 17px 'junction-light';
             color: $dark;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
     }
 }

@@ -67,7 +67,7 @@ export class ScheduledPage {
       this.scheduledJobs = res;
       this.recomFilter += 1;
       if(!this.scheduledJobs[0]){
-          this.scheduledLoading = 'No Scheduled Communication Today!';
+          this.scheduledLoading = 'This is where you can edit or delete emails, texts, and drip campaigns.';
       }
     })
   }

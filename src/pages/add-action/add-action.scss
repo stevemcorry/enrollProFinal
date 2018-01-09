@@ -1,5 +1,8 @@
 page-add-action {
     //dimmer
+    ion-item{
+        color: $dark !important;
+    }
     input{
         width: 95%;
         height: 35px;
@@ -159,11 +162,12 @@ page-add-action {
         justify-content: center;
         align-self: flex-end;
         font: 18px 'junction-regular';
-        color: $dark;
+        color: white;
         height: 40px;
         width: 100px;
-        background-color: $greyy;
+        background-color: $bluish;
         margin-right: 10px;
+        border-radius: 5px;
     }
     .labelsOn{
         color: $redd;

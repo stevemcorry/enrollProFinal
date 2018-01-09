@@ -55,9 +55,8 @@
               {{action.notes}}
             </div>
           </div>
-          <div class="statusCircle" 
-            [style.border-color]="dateCheck(action.due_date)" 
-            [ngClass]="{statusCircleOn:action.animate}" 
+          <div class="statusCircle"
+            [ngClass]="doneCheck(action.due_date, action.animate)" 
             (click)="action.animate = true; 
             completeAction(action)">
           </div>
@@ -73,13 +72,13 @@
       </ion-item-options>
     </ion-item-sliding>
     <div *ngIf="!actions[0]" class="job" style="justify-content: center">
-      <div style="font: 18px 'junction-light'; padding-top: 10px;">
+      <div class="loading">
         {{actionsLoading}}
       </div>
     </div>
   </ion-list>
 
-  <div class="dashboardSection" *ngIf="recommendations[0]">
+  <div class="dashboardSection">
       <div class="sideLine"></div>
       <div class="dashboardLabel">Recommendations</div>
       <div class="sideLine"></div>
@@ -91,7 +90,7 @@
       <ion-item no-lines 
         class="task" 
         [ngClass]="{completeAnimation:  animate(action.animate)}" 
-        *ngIf="i<10 && !action.delete">
+        *ngIf="i<10">
         <ion-icon item-left 
           (click)="addRecommendedAction(action)" 
           class="{{recommendedActionCheck(action.action_type.id)}}">
@@ -125,15 +124,20 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
+    <div *ngIf="!recommendations[0]" class="job" style="justify-content: center">
+        <div class="loading">
+            {{recomLoading}}
+        </div>
+    </div>
   </ion-list>
 
-  <div class="dashboardSection">
+  <div class="dashboardSection" *ngIf="scheduledJobs[0]">
       <div class="sideLine"></div>
-      <div class="dashboardLabel">Scheduled</div>
+      <div class="dashboardLabel">Scheduled Communication</div>
       <div class="sideLine"></div>
   </div>
 
-  <ion-list class="schedule">
+  <ion-list class="schedule" *ngIf="scheduledJobs[0]">
     <ion-item-sliding *ngFor="let job of scheduledJobs | recomFilter: recomFilter; let i=index">
       <ion-item *ngIf="i < 10">
           <div class="job">
@@ -154,7 +158,7 @@
       </ion-item-options>
     </ion-item-sliding>
     <div *ngIf="!scheduledJobs[0]" class="job" style="justify-content: center">
-        <div style="font: 18px 'junction-light'; padding-top: 10px;">
+        <div class="loading">
             {{scheduledLoading}}
         </div>
     </div>
