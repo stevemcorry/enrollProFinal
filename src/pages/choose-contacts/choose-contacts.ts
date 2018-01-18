@@ -43,10 +43,8 @@ export class ChooseContactsPage {
     this.scheduledDate = params.get('scheduled_at');
     this.template_type = params.get('template_type');
     this.followupEmail = params.get('followupEmail')
-    this.followupText = params.get('followupText')
-    if(this.scheduledDate){
-      this.sendOr = 'Schedule';
-    }
+    this.followupText = params.get('followupText');
+    this.sendOr = params.get('sendOr');
   }
 
   ionViewDidLoad() {

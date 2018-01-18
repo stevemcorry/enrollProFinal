@@ -34,6 +34,7 @@ export class MarketingEditTemplatePage {
   signature;
   template_type;
   template_type_name;
+  sendOr = "Send";
   name;
   followupAction = {
     id: 0,
@@ -101,6 +102,7 @@ export class MarketingEditTemplatePage {
         content: this.textTemplatePage.text, 
         scheduled_at : this.getDate(),
         template_type: 1,
+        sendOr: this.sendOr,
         followupEmail: {
           on: this.one,
           subject: this.preSetEmail ? this.preSetEmail.subject : this.followupEmail.data[0].header,
@@ -119,6 +121,7 @@ export class MarketingEditTemplatePage {
         content: this.getEmailContent(),
         scheduled_at : this.getDate(),
         template_type: 2,
+        sendOr: this.sendOr,
         followupEmail: {
           on: this.one,
           subject: this.preSetEmail ? this.preSetEmail.subject : this.followupEmail.data[0].header,
@@ -141,11 +144,15 @@ export class MarketingEditTemplatePage {
       hour = d.getHours(),
       mins = d.getMinutes();
     if(this.date){
+      this.sendOr = 'Schedule';
       if(this.time){
         return this.date + ' ' + this.time;
       } else {
         return this.date + ' ' + hour + ':' + mins;
       }
+    } else if(this.time){
+      this.sendOr = 'Schedule';
+      return [year, month, day].join('-') + ' ' + this.time;
     } else {
       if (month.length < 2) month = '0' + month;
       if (day.length < 2) day = '0' + day;
