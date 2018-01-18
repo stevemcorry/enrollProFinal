@@ -84,9 +84,10 @@ page-email-template {
             border-radius: 5px;
         }
     }
-    .preview{
+    .previewButton{
         font: 18px junction-regular;
         color: $bluish;
         margin: 5px 0;
+        position: absolute;
     }
 }

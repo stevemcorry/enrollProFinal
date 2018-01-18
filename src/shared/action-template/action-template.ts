@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
@@ -8,10 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ActionTemplatePage {
 
-  newAction = {
-    action_type: "",
-    notes: "",
-  };
+  @Input()action = {}
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams
@@ -19,7 +16,6 @@ export class ActionTemplatePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ActionTemplatePage');
   }
 
 }

@@ -11,7 +11,8 @@ page-marketing-edit-template {
     }
     .advancedTitle{
         text-align: center;
-        margin-top: 10px;
+        position: absolute;
+        right: 20px;
         font: 18px junction-regular;
         color: $dark;
         div{
@@ -31,7 +32,9 @@ page-marketing-edit-template {
     .arrowOn{
         transform: rotate(-90deg);
     }
-    .scheduled{}
+    .advanced{
+        margin-top: 50px;
+    }
     .scheduledTitle{
         margin-top: 15px;
         font: 17px junction-regular;

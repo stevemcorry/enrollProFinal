@@ -63,6 +63,7 @@ export class MarketingEditTemplatePage {
   three;
   preSetText;
   preSetEmail;
+  preSetAction
 
   constructor(
     public navCtrl: NavController, 
@@ -115,6 +116,12 @@ export class MarketingEditTemplatePage {
           content: this.preSetText ? this.preSetText : this.followupText.text,
           time: this.followupText.time
         },
+        followupAction:{
+          on: this.three,
+          id: this.preSetAction ? this.preSetAction.id : this.followupAction.id,
+          notes: this.preSetAction ? this.preSetAction.notes : this.followupAction.notes,
+          time: this.followupAction.time
+        }
       });
     } else {
       this.navCtrl
@@ -134,6 +141,12 @@ export class MarketingEditTemplatePage {
           content: this.preSetText ? this.preSetText : this.followupText.text,
           time: this.followupText.time
         },
+        followupAction:{
+          on: this.three,
+          id: this.preSetAction ? this.preSetAction.id : this.followupAction.id,
+          notes: this.preSetAction ? this.preSetAction.notes : this.followupAction.notes,
+          time: this.followupAction.time
+        }
       });
     }
   }
@@ -218,7 +231,6 @@ export class MarketingEditTemplatePage {
   }
   verify(){
     this.userService.getUserInfo().subscribe(res=>{
-      console.log(res,'user;')
       this.OKTOTEXT = res.data.bandwidth_phone;
       this.signature = res.data.signature;
     })
@@ -254,7 +266,6 @@ export class MarketingEditTemplatePage {
     })
   }
   formatEmail(res){
-    console.log(res,'email')
     this.emailData = res.data;
     this.customData = res.data_custom;
     this.content = res.content;
@@ -290,10 +301,25 @@ export class MarketingEditTemplatePage {
     if(data.followup.type == 'text'){
       this.preSetText = data.preSet;
       this.two = true;
-    } else {
-      console.log(data,'emil')
+    } else if(data.followup.type == 'email') {
       this.preSetEmail = data.preSet;
       this.one = true;
+    } else {
+      this.preSetAction = data.followup;
+      this.three = true;
+    }
+  }
+  actionName(x){
+    switch(x){
+      case 1:
+        return "email"
+      case 2:
+        return "text"
+      case 3:
+        return "call"
+      case 4:
+        return "meet"
+
     }
   }
 

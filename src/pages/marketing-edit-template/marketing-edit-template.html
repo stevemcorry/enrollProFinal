@@ -93,7 +93,7 @@
           [ngClass]="{checkboxOn: three}"
           (click)="three = !three;">
         </div>
-        <div class="followTitle">Remind me to {{followupAction.id}}</div>
+        <div class="followTitle">Remind me to {{actionName(followupAction.id)}}</div>
         <div class="editFollowup"
           (click)="openFollowup(followupAction)">
           Edit

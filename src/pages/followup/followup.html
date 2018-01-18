@@ -43,7 +43,8 @@
     [custom]="followup.custom">
   </page-email-template>
 
-  <page-action-template *ngIf="followup.type == 'action'">
+  <page-action-template *ngIf="followup.type == 'action'"
+    [action]="followup">
   </page-action-template>
   <button class="save" (click)="save()">Save</button>
 

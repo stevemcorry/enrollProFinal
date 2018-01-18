@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { ContactService } from '../../services/contact.service';
 import { MarketService } from '../../services/market.service';
+import { ActionService } from '../../services/actions.service';
 
 @IonicPage({
   name: 'page-choose-contacts'
@@ -12,6 +13,7 @@ import { MarketService } from '../../services/market.service';
   providers: [
     ContactService,
     MarketService,
+    ActionService,
   ]
 })
 export class ChooseContactsPage {
@@ -30,6 +32,7 @@ export class ChooseContactsPage {
   tags;
   followupEmail;
   followupText;
+  followupAction
 
   constructor(
     public navCtrl: NavController, 
@@ -37,13 +40,15 @@ export class ChooseContactsPage {
     public viewCtrl: ViewController,
     public contactService: ContactService,
     public alertCtrl: AlertController,
-    public marketService: MarketService
+    public marketService: MarketService,
+    public actionService: ActionService,
   ) {
     this.content = params.get('content');
     this.scheduledDate = params.get('scheduled_at');
     this.template_type = params.get('template_type');
     this.followupEmail = params.get('followupEmail')
     this.followupText = params.get('followupText');
+    this.followupAction = params.get('followupAction');
     this.sendOr = params.get('sendOr');
   }
 
@@ -197,6 +202,7 @@ export class ChooseContactsPage {
               }
               this.sendFollowupEmail();
               this.sendFollowupText();
+              this.sendFollowupAction();
               this.marketService.scheduleJob(job).subscribe(res => {
                   console.log(res, 'job sent')
               })
@@ -210,16 +216,7 @@ export class ChooseContactsPage {
   }
   sendFollowupEmail(){
     if(!this.followupEmail.on){return}
-    let date = new Date(this.scheduledDate);
-    date.setHours(date.getHours() + this.followupEmail.time);
-    let year = date.getFullYear(),
-      month:any = (date.getMonth() + 1),
-      day:any = date.getDate(),
-      hours = date.getHours(),
-      mins = date.getMinutes();
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
-      let d = year + '-' + month + '-' + day + ' ' + hours + ':' + mins;
+    let d = this.getDate(this.followupEmail.time);
     let job = {
       "template_type": 2,
       "to": this.contactArr,
@@ -233,16 +230,7 @@ export class ChooseContactsPage {
   }
   sendFollowupText(){
     if(!this.followupText.on){return}
-    let date = new Date(this.scheduledDate);
-    date.setHours(date.getHours() + this.followupText.time);
-    let year = date.getFullYear(),
-      month:any = (date.getMonth() + 1),
-      day:any = date.getDate(),
-      hours = date.getHours(),
-      mins = date.getMinutes();
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
-      let d = year + '-' + month + '-' + day + ' ' + hours + ':' + mins;
+    let d = this.getDate(this.followupText.time)
     let job = {
       "template_type": 1,
       "to": this.contactArr,
@@ -254,6 +242,35 @@ export class ChooseContactsPage {
         console.log(res, 'job sent')
     })
     
+  }
+  sendFollowupAction(){
+    if(!this.followupAction.on){return}
+    let date = this.getDate(this.followupAction.time)
+    for(let contact of this.contactArr){
+      let action = {
+        action_type: this.followupAction.id,
+        contact: contact,
+        due_date: date,
+        notes: this.followupAction.notes
+      }
+      this.actionService.addAction(action).subscribe(res => {
+      }, err=>{
+        console.log('something is wrong', err)
+      });
+    }
+  }
+  getDate(time){
+    let date = new Date(this.scheduledDate);
+    date.setHours(date.getHours() + time);
+    let year = date.getFullYear(),
+      month:any = (date.getMonth() + 1),
+      day:any = date.getDate(),
+      hours = date.getHours(),
+      mins = date.getMinutes();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      let d = year + '-' + month + '-' + day + ' ' + hours + ':' + mins;
+      return d
   }
 
 }

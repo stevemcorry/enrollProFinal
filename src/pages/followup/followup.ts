@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, Events } from 'ion
 import { MarketService } from '../../services/market.service';
 import { TextTemplatePage } from '../../shared/market-shared/text-template/text-template';
 import { EmailTemplatePage } from '../../shared/market-shared/email-template/email-template';
+import { ActionTemplatePage } from '../../shared/action-template/action-template';
 
 
 @IonicPage({
@@ -19,6 +20,7 @@ export class FollowupPage {
 
   @ViewChild(TextTemplatePage)textTemplatePage;
   @ViewChild(EmailTemplatePage)emailTemplatePage;
+  @ViewChild(ActionTemplatePage)actionTemplatePage;
   followup
   name
   textData = [];
@@ -64,13 +66,16 @@ export class FollowupPage {
       this.followup.text = this.textTemplatePage.text;
       this.followup.custom = this.textTemplatePage.custom;
       this.preSet = this.textTemplatePage.text;
-    } else {
+    } else if(this.followup.type == 'email') {
       this.followup.custom = this.emailTemplatePage.custom;
       this.preSet = {
         subject: this.emailTemplatePage.subject,
         body: this.emailTemplatePage.body,
         signature: this.emailTemplatePage.signature
       };
+    } else {
+      this.followup.id = this.actionTemplatePage.action.id;
+      this.followup.notes = this.actionTemplatePage.action.notes;
     }
     console.log(this.followup, 'saved')
     this.events.publish('followupSaved', {
