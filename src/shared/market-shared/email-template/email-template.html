@@ -49,6 +49,10 @@
     </div>
     <div class="previewTitle">
       Body:
+      <div class="firstname" 
+        (click)="addFirst()">
+        {{firstname}}
+      </div>
     </div>
     <div class="preview">
       <textarea [(ngModel)]="body" (keyup)="saveAsOn = true; saveOnCheck()"></textarea>

@@ -23,6 +23,7 @@ export class EmailTemplatePage implements OnInit {
   @Input()content;
   
   subject;
+  firstname="{{firstname}}"
   body;
   version1 = true;
   version2;
@@ -76,6 +77,9 @@ export class EmailTemplatePage implements OnInit {
         this.version1 = false;
         this.version2 = true;
     }
+  }
+  addFirst(){
+    this.body = this.body + " {{firstname}}";
   }
   openOptions(){
     let modal = this.modalCtrl.create('page-custom-market-templates',{

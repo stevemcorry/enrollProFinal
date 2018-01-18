@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController, Events, AlertController } from 'ionic-angular';
 import { MarketService } from '../../services/market.service';
 import { TextTemplatePage } from '../../shared/market-shared/text-template/text-template';
 import { UserService } from '../../services/user.service';
@@ -72,6 +72,7 @@ export class MarketingEditTemplatePage {
     public modalCtrl: ModalController,
     public userService: UserService,
     public events: Events,
+    public alert: AlertController
   ) {
     this.events.subscribe('followupSaved', (data)=>{
       this.followupSaved(data)
@@ -166,8 +167,46 @@ export class MarketingEditTemplatePage {
     .replace("{{ body }}", this.emailTemplatePage.body ? this.emailTemplatePage.body :' ')
     .replace("{{ footer }}", this.emailTemplatePage.signature ? this.emailTemplatePage.signature :' ' );
     this.content = safe;
+    this.firstnameCheck(this.emailTemplatePage.body);
     return safe;
-    //this.safeContent= this.sanitizer.bypassSecurityTrustHtml(safe);
+  }
+  firstnameCheck(data){
+    if(data.includes('{{firstname}')){
+      if(!data.includes('{{firstname}}')){
+        this.firstAlert()
+      }
+    } else if(data.includes('{{firstname')){
+      if(!data.includes('{{firstname}}')){
+        this.firstAlert()
+      }
+    } else if(data.includes('{firstname}')){
+      if(!data.includes('{{firstname}}')){
+        this.firstAlert()
+      }
+    } else if(data.includes('firstname}')){
+      if(!data.includes('{{firstname}}')){
+        this.firstAlert()
+      }
+    } else if(data.includes('firstname}}')){
+      if(!data.includes('{{firstname}}')){
+        this.firstAlert()
+      }
+    } else if(data.includes('firstname')){
+      if(!data.includes('{{firstname}}')){
+        this.firstAlert()
+      }
+    }
+  }
+  firstAlert(){
+    let alert = this.alert.create({
+      title: `If you're trying to insert the recipients' first name, there is a problem. Please make sure that the firstname function reads "{{firstname}}" before you send!`,
+      buttons: [
+        {
+          text: 'Ok',
+        }
+      ]
+    })
+    alert.present()
   }
   getFollowupContent(){
     let safe = this.followupEmail.content
