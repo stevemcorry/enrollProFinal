@@ -16,6 +16,7 @@ page-marketing-jobs {
         background-repeat: no-repeat;
         height: 40px;
         width: 40px;
+        margin-bottom: 8px;
     }
     .icon1{
         background-image: url('../assets/imgs/newPictures/Asset 144.png');
@@ -37,7 +38,6 @@ page-marketing-jobs {
         background-repeat: no-repeat;
         height: 40px;
         width: 40px;
-        margin-bottom: 5px;
     }
     .icon4{
         background-image: url('../assets/imgs/newPictures/Asset 148.png');
@@ -67,28 +67,55 @@ page-marketing-jobs {
         align-items: flex-end;
         height: 100%;
         width: 25%;
-        background: $clear1;
+        background: $clear;
     }
     .box1{
-        background: $clear2
+        background: $clear1
     }
     .box2{
-        background: $clear3
+        background: $clear2
     }
     .box3{
-        background: $clear4
+        background: $clear3
     }
     .box4{
+        background: $clear4
+    }
+    .box5{
         background: $clear5
+    }
+    .box6{
+        background: $clear6
+    }
+    .box7{
+        background: $clear7
+    }
+    .box8{
+        background: $clear8
+    }
+    .box9{
+        background: $clear9
+    }
+    .box10{
+        background: $clear10
+    }
+    .box11{
+        background: $clear11
+    }
+    .box12{
+        background: $clear12
+    }
+    .box13{
+        background: $clear13
     }
     .boxTitle{
         height: 20px;
         width: 20px;
     }
     .optionTitle{
-        font: 20px 'junction-light';
+        font: 28px 'junction-regular';
         color: white;
-        text-align: center;
         width: 75%;
+        margin-left: 5px;
     }
 }

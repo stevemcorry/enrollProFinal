@@ -55,16 +55,40 @@ page-marketing {
         width: 25%;
     }
     .marketTitle1{
-        background: $clear2;
+        background: $clear1;
     }
     .marketTitle2{
-        background: $clear3;
+        background: $clear2;
     }
     .marketTitle3{
-        background: $clear4;
+        background: $clear3;
     }
     .marketTitle4{
+        background: $clear4;
+    }
+    .marketTitle5{
         background: $clear5;
+    }
+    .marketTitle6{
+        background: $clear6;
+    }
+    .marketTitle7{
+        background: $clear7;
+    }
+    .marketTitle8{
+        background: $clear8;
+    }
+    .marketTitle9{
+        background: $clear9;
+    }
+    .marketTitle10{
+        background: $clear10;
+    }
+    .marketTitle11{
+        background: $clear11;
+    }
+    .marketTitle12{
+        background: $clear12;
     }
     .icons{
         background-image: url('../assets/imgs/newPictures/Asset 139.png');
@@ -72,6 +96,7 @@ page-marketing {
         background-repeat: no-repeat;
         height: 40px;
         width: 40px;
+        margin-bottom: 8px;
     }
     .icon1{
         background-image: url('../assets/imgs/newPictures/Asset 144.png');
@@ -93,7 +118,6 @@ page-marketing {
         background-repeat: no-repeat;
         height: 40px;
         width: 40px;
-        margin-bottom: 5px;
     }
     .icon4{
         background-image: url('../assets/imgs/newPictures/Asset 148.png');
@@ -103,7 +127,7 @@ page-marketing {
         width: 40px;
     }
     .description{
-        font: 20px 'junction-light';
+        font: 28px 'junction-regular';
         color: white;
         text-align: center;
         margin: 0 3px 0 3px;

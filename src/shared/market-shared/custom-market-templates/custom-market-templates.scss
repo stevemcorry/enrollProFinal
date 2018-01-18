@@ -9,6 +9,10 @@ page-custom-market-templates {
         height: 30px;
         border-radius: 5px;
     }
+    .next{
+        color: $dark;
+        font: 16px junction-light;
+    }
     .optionLabel{
         display: inline-block;
         font: 16px junction-regular;
@@ -30,6 +34,7 @@ page-custom-market-templates {
         background-image: url('../assets/imgs/Asset 40.png');
         background-size: contain;
         background-repeat: no-repeat;
+        border: none;
     }
 
 }

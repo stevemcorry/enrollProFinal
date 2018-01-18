@@ -5,7 +5,7 @@
         <ion-icon name="close" class="icons"></ion-icon>
       </div>
     </ion-buttons>
-    <ion-title>followup</ion-title>
+    <ion-title>Follow-up {{followup.type}}</ion-title>
     <ion-buttons end>
         <!-- <div class="next" (click)="save()">Save</div> -->
     </ion-buttons>
@@ -15,8 +15,11 @@
 
 <ion-content padding>
   <div class="followupTime">
-    <div>
-      Send follow-up email
+    <div *ngIf="followup.type !== 'action'">
+      Send follow-up {{followup.type}}
+    </div>
+    <div *ngIf="followup.type == 'action'">
+      Schedule follow-up task 
     </div>
     <input type="number" min="0" [(ngModel)]="followup.time">
     <div>
@@ -40,6 +43,8 @@
     [custom]="followup.custom">
   </page-email-template>
 
+  <page-action-template *ngIf="followup.type == 'action'">
+  </page-action-template>
   <button class="save" (click)="save()">Save</button>
 
 </ion-content>

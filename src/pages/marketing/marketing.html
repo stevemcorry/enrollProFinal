@@ -8,11 +8,11 @@
   </ion-header>
 
 <ion-content>
-  <div class="marketOptions" *ngFor="let market of markets">
+  <div class="marketOptions" *ngFor="let market of markets; let i=index">
     <div class="box" 
       (click)="openModal(market)"
       [ngStyle]="{'background-image': 'url(' + market.image + ')'}">
-      <div class="marketTitle">
+      <div class="marketTitle marketTitle{{i+1}}">
         <div class="icons icon{{market.id}}"
           [ngStyle]="{'background-image': 'url(' + market.icon + ')'}">
         </div>

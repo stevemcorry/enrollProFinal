@@ -54,6 +54,7 @@ export class TextTemplatePage implements OnInit {
     }
   }
   versionCheck(x){
+    this.currentCustom = '';
     switch(x){
       case 'one':
         this.text = this.textData[0].body

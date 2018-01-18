@@ -6,12 +6,17 @@ page-choose-contacts {
         color: $dark;
         font: 16px junction-light;
     }
+    .titleLabel{
+        font: 20px junction-regular;
+        color: $dark;
+        margin: 5px;
+    }
     //ICONS
     .iconList{
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 20%;
+        height: 80px;
         width: 100%;
         margin-top: 15px;
     }
@@ -94,13 +99,13 @@ page-choose-contacts {
     .tag{
         font: 15px 'junction-light';
         color: $dark;
-        width: 30%;
+        max-width: 30%;
         height: 25px;
         border: 1px solid $dark;
         border-radius: 15px;
         text-align: center;
         margin: 5px;
-        padding-top: 5px;
+        padding: 5px 10px 0;
     }
     .tagOn{
         background-color: $bluish;
@@ -121,8 +126,8 @@ page-choose-contacts {
         margin-right: 5px;
     }
     .circle{
-        height: 20px;
-        width: 20px;
+        height: 30px;
+        width: 30px;
         border: 2px solid $dark;
         border-radius: 50%;
         margin-right: 10px;
@@ -131,10 +136,7 @@ page-choose-contacts {
         color: $bluish;
     }
     .activeCircle{
-        border-color: transparent;
-        height: 25px;
-        width: 25px;
-        margin-right: 7px;
+        border: none;
         background-image: url('../assets/imgs/Asset 40.png');
         background-size: contain;
         background-repeat: no-repeat;

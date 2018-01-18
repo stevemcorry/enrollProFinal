@@ -1,0 +1,62 @@
+<div class="iconList">
+  <div class="labelIcon">
+    <div [ngClass]="{callOn: callOn}" 
+      (click)="newAction.action_type = 3; 
+      callOn=true; 
+      emailOn=false; 
+      textOn=false; 
+      meetOn=false;" 
+      class="call">
+    </div>
+    <div class="labels" 
+      [ngClass]="{labelsOn: callOn}">
+      Call
+    </div>
+  </div>
+  <div class="labelIcon">
+    <div [ngClass]="{textOn: textOn}" 
+      (click)="newAction.action_type = 2; 
+      textOn=true; 
+      emailOn=false; 
+      callOn=false; 
+      meetOn=false;" 
+      class="text">
+    </div>
+    <div class="labels" 
+      [ngClass]="{labelsOn: textOn}">
+      Text
+    </div>
+  </div>
+  <div class="labelIcon">
+    <div [ngClass]="{emailOn: emailOn}" 
+      (click)="newAction.action_type = 1; 
+      emailOn=true; 
+      textOn=false; 
+      callOn=false; 
+      meetOn=false;" 
+      class="email">
+    </div>
+    <div class="labels" 
+      [ngClass]="{labelsOn: emailOn}">
+      Email
+    </div>
+  </div>
+  <div class="labelIcon">
+    <div [ngClass]="{meetOn: meetOn}" 
+      (click)="newAction.action_type = 4; 
+      meetOn=true; 
+      emailOn=false; 
+      textOn=false; 
+      callOn=false" 
+      class="meet">
+    </div>
+    <div class="labels" 
+      [ngClass]="{labelsOn: meetOn}">
+      Meet
+    </div>
+  </div>
+</div>
+<textarea type="text" 
+  [(ngModel)]="newAction.notes"
+  placeholder="Notes">
+</textarea>

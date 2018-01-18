@@ -13,10 +13,10 @@
 
 <ion-content>
     <div class="method method{{option.id}}" 
-      *ngFor="let option of market.jobs" 
+      *ngFor="let option of market.jobs; let i=index" 
       (click)="openModal(option)"
       [ngStyle]="{'background-image': 'url(' + option.image + ')'}">
-        <div class="box box{{option.id}}">
+        <div class="box box{{i+1}}">
             <div class="iconz 
               icon{{option.id}}"
               [ngStyle]="{'background-image': 'url(' + option.icon + ')'}">

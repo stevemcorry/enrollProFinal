@@ -5,7 +5,7 @@
         <ion-icon name="arrow-back" class="icons"></ion-icon>
       </div>
     </ion-buttons>
-    <ion-title>Choose Contacts</ion-title>
+    <ion-title>Recipients</ion-title>
     <ion-buttons end>
       <div class="next" (click)="send()">
         {{sendOr}}
@@ -29,6 +29,9 @@
           <div class="labels" [ngClass]="{labelsOn: builderOn}">Builder</div>
       </div>
   </div>
+  <div class="titleLabel">
+    Tags
+  </div>
   <div class="tags">
     <div class="tag" *ngFor="let tag of tags"  
       (click)="tag.on = !tag.on; 
@@ -37,6 +40,11 @@
       {{tag.name}}
     </div>
   </div>
+
+  <div class="titleLabel">
+    Contacts
+  </div>
+
   <input type="text" placeholder="search" [(ngModel)]="search" class="searchBar">
   <div *ngFor="let contact of contacts | 
     contactOrder: 'name-asc' |

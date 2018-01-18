@@ -77,6 +77,7 @@ export class CustomMarketTemplatesPage {
         id: this.options.length + 1,
         text: this.customName
       }
+      this.currentCustom = neww;
       this.options.push(neww);
     }
     for(let custom of this.options){
@@ -85,13 +86,14 @@ export class CustomMarketTemplatesPage {
         custom.body = this.data.body,
         custom.footer = this.data.footer,
         custom.text = this.currentCustom.text
+        this.currentCustom = custom;
       }
       custom.on = false;
       temp.push(custom);
     }
     this.options = temp;
     this.marketService.updateJob(this.id, this.options).subscribe(res=>{
-      this.events.publish('customOption', this.data)
+      this.events.publish('customOption', this.currentCustom)
       this.dismiss()
     }, err=>{
       console.log('Something Is Wrong', err)
