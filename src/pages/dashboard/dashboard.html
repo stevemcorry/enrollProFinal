@@ -125,7 +125,7 @@
       </ion-item-options>
     </ion-item-sliding>
     <div *ngIf="!recommendations[0]" class="job" style="justify-content: center">
-        <div class="loading">
+        <div class="loading" (click)="loadMoreRecom()">
             {{recomLoading}}
         </div>
     </div>
@@ -163,6 +163,37 @@
         </div>
     </div>
   </ion-list>
+
+  <div class="dashboardSection" *ngIf="messages[0]">
+      <div class="sideLine"></div>
+      <div class="dashboardLabel">Recent Messages</div>
+      <div class="sideLine"></div>
+  </div>
+
+
+  <div class="messages-wrapper">
+    <div *ngFor="let message of messages" 
+      class="message" 
+      (click)="openMessages(message)">
+      <div class="messageIcon"></div>
+      <div class="messageInner">
+        <div class="contactName">
+          {{message.first_name}} {{message.last_name}}
+        </div>
+        <div class="lastMessage">
+          {{message.text}}
+        </div>
+      </div>
+      <div class="mesTime">{{message.time | timeFormat}}</div>
+    </div>
+    <div *ngIf="!messages[0]" 
+      class="job" 
+      style="text-align: center">
+        <div style="font: 18px 'junction-light'; padding-top: 10px;">
+            {{messagesLoading}}
+        </div>
+    </div>
+  </div>
 
   <div class="dashboardSection">
       <div class="sideLine"></div>

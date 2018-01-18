@@ -1,0 +1,104 @@
+<ion-header>
+    <ion-navbar>
+      <ion-buttons left>
+        <div (click)="dismiss()">
+          <ion-icon name="arrow-back" class="icons"></ion-icon>
+        </div>
+      </ion-buttons>
+      <ion-title>{{template_type_name}}</ion-title>
+      <ion-buttons end>
+          <div class="next" (click)="nextPage(template_type)">Next</div>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+  <page-text-template 
+    *ngIf="template_type == 1"
+    [name]="name" 
+    [id]="option.id"
+    [textData]="textData"
+    [custom]="customData" 
+    [text]="text">
+  </page-text-template>
+
+  <page-email-template 
+    *ngIf="template_type == 2"
+    [name]="name"
+    [data]="emailData"
+    [id]="option.id"
+    [signature]="signature"
+    [content]="content"
+    [custom]="customData">
+  </page-email-template>
+
+  <div class="advancedTitle" 
+    (click)="advanced =! advanced;">
+    <div class="title">
+      Advanced
+    </div>
+    <div class="arrow" [ngClass]="{arrowOn: advanced}"></div>
+  </div>
+  <div class="advanced"
+    *ngIf="advanced">
+    <div class="scheduled">
+      <div class="scheduledTitle">
+        Schedule:
+      </div>
+      <div class="dates">
+        <ion-item class="date">
+          <ion-label [ngClass]="{display: date}">Date:</ion-label>
+          <ion-datetime displayFormat="DDD MMM YYYY" 
+          pickerFormat="MMM DD YYYY"  
+          min="2016" 
+          max="2020-12-31" 
+          [(ngModel)]="date">
+        </ion-datetime>
+        </ion-item>
+        <ion-item class="date">
+          <ion-label>Time:</ion-label>
+          <ion-datetime displayFormat="h:mm a" 
+            pickerFormat="h mm a" 
+            [(ngModel)]="time">
+          </ion-datetime>
+        </ion-item>
+      </div>
+    </div>
+    <div class="followup" *ngIf="followupEmail.id || followupText.id || followupAction.id">
+      <div class="scheduledTitle">Follow-up</div>
+      <div class="follow" *ngIf="followupEmail.data">
+        <div class="followCheckbox"
+          [ngClass]="{checkboxOn: one}"
+          (click)="one = !one;">
+        </div>
+        <div class="followTitle">Send follow-up email</div>
+        <div class="editFollowup"
+          (click)="openFollowup(followupEmail)">
+          Edit
+        </div>
+      </div>
+      <div class="follow" *ngIf="followupText.data">
+        <div class="followCheckbox"
+          [ngClass]="{checkboxOn: two}"
+          (click)="two = !two;">
+        </div>
+        <div class="followTitle">Send follow-up text</div>
+        <div class="editFollowup"
+          (click)="openFollowup(followupText)">
+          Edit
+        </div>
+      </div>
+      <div class="follow" *ngIf="followupAction.id">
+        <div class="followCheckbox"
+          [ngClass]="{checkboxOn: three}"
+          (click)="three = !three;">
+        </div>
+        <div class="followTitle">Remind me to {{followupAction.id}}</div>
+        <div class="editFollowup"
+          (click)="openFollowup(followupAction)">
+          Edit
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

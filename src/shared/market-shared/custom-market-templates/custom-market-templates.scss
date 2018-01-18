@@ -1,0 +1,35 @@
+page-custom-market-templates {
+    input{
+        border: 2px solid $greyy;
+        color: $dark;
+        font: 15px junction-light;
+        width: 95%;
+        margin: 10px 2.5%;
+        padding-left: 5px;
+        height: 30px;
+        border-radius: 5px;
+    }
+    .optionLabel{
+        display: inline-block;
+        font: 16px junction-regular;
+        color: $dark;
+        margin-left: 10px;
+    }
+    .center{
+        transform: translateY(-8px);
+    }
+    .checkbox{
+        display: inline-block;
+        height: 25px;
+        width: 25px;
+        min-width: 25px;
+        border: 2px solid $dark;
+        border-radius: 50%;
+    }
+    .checkboxOn{
+        background-image: url('../assets/imgs/Asset 40.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+}

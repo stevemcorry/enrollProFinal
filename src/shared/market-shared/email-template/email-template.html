@@ -1,0 +1,72 @@
+<div class="wrapper">
+    <div class="temp-head">
+      {{name}}
+    </div>
+    <div class="options">
+      <div class="customName">
+        {{currentCustom ? currentCustom.text : ''}}
+      </div>
+      <div class="versions">
+        <div class="version"
+          (click)="versionCheck('one')">
+          <button class="versionCircle"
+            [ngClass]="{versionCircleOn: version1}">
+          </button>
+          <div class="versionText">
+            Version 1
+          </div>
+        </div>
+        <div class="version"
+          (click)="versionCheck('two')">
+          <button class="versionCircle"
+            [ngClass]="{versionCircleOn: version2}">
+          </button>
+          <div class="versionText">
+            Version 2
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button [ngClass]="{buttonOn: openOn}"
+          (click)="openOptions()">
+          Open
+        </button>
+        <button [ngClass]="{buttonOn: saveOn}"
+          (click)="saveOption()">
+          Save
+        </button>
+        <button [ngClass]="{buttonOn: saveAsOn}"
+          (click)="openSaveAs()">
+          Save as
+        </button>
+      </div>
+    </div>
+    <div class="previewTitle">
+      Subject:
+    </div>
+    <div class="preview">
+      <textarea [(ngModel)]="subject" (keyup)="saveAsOn = true; saveOnCheck()"></textarea>
+    </div>
+    <div class="previewTitle">
+      Body:
+    </div>
+    <div class="preview">
+      <textarea [(ngModel)]="body" (keyup)="saveAsOn = true; saveOnCheck()"></textarea>
+    </div>
+    <div class="previewTitle">
+      Signature:
+    </div>
+    <div class="preview">
+      <textarea [(ngModel)]="signature" (keyup)="saveAsOn = true; saveOnCheck()"></textarea>
+    </div>
+    <div class="preview" (click)="preview()">
+      Preview
+    </div>
+    <!-- <quill-editor 
+      (keyup)="saveOn=true; setPreview()"
+      [(ngModel)]="emailInfo.body" 
+      class="textarea">
+      <div quill-editor-toolbar style="display:none">
+      </div>
+    </quill-editor> -->
+  </div>

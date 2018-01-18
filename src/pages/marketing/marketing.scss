@@ -1,0 +1,111 @@
+page-marketing {
+    .scroll-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .text{
+        background-image: url('../assets/imgs/marketing/MARKETINGtext.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 35px;
+        height: 35px;
+        margin: 5px 5px 10px 5px;
+    }
+    .search{
+        background-image: url('../assets/imgs/newIcons/Asset 24.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin: 5px 5px 10px 5px;
+    }
+    .marketOptions{
+        height: 23%;
+        width: 100%;
+    }
+    .box{
+        display: flex;
+        align-items: flex-end;
+        height: 99%;
+        background: white;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('../assets/imgs/newPictures/Asset 131.png');
+    }
+    .box1{
+        background-image: url('../assets/imgs/newPictures/Asset 68@2x.png');
+    }
+    .box2{
+        background-image: url('../assets/imgs/newPictures/Asset 69@2x.png');
+    }
+    .box3{
+        background-image: url('../assets/imgs/newPictures/Asset 70@2x.png');
+    }
+    .box4{
+        background-image: url('../assets/imgs/newPictures/Asset 71@2x.png');
+    }
+    .marketTitle{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        background: rgba(255, 255, 255, 0.849);
+        height: 100%;
+        width: 25%;
+    }
+    .marketTitle1{
+        background: $clear2;
+    }
+    .marketTitle2{
+        background: $clear3;
+    }
+    .marketTitle3{
+        background: $clear4;
+    }
+    .marketTitle4{
+        background: $clear5;
+    }
+    .icons{
+        background-image: url('../assets/imgs/newPictures/Asset 139.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+    }
+    .icon1{
+        background-image: url('../assets/imgs/newPictures/Asset 144.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+    }
+    .icon2{
+        background-image: url('../assets/imgs/newPictures/Asset 145.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+    }
+    .icon3{
+        background-image: url('../assets/imgs/newPictures/Asset 147.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+        margin-bottom: 5px;
+    }
+    .icon4{
+        background-image: url('../assets/imgs/newPictures/Asset 148.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+    }
+    .description{
+        font: 20px 'junction-light';
+        color: white;
+        text-align: center;
+        margin: 0 3px 0 3px;
+    }
+}

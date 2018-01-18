@@ -56,6 +56,14 @@ export class ContactService {
                 return data.json();
             })
     }
+    getTags(){
+        let authHeader = new Headers();
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
+            return this.http.get(this.globalVar.getApiUrl() + 'contacts/tags', {headers: authHeader})
+            .map(data=>{
+                return data.json();
+            })
+    }
     addContact(contact){
         let authHeader = new Headers();
             authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());

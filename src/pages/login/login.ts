@@ -54,11 +54,10 @@ export class LoginPage {
   }
 
   authorize(){
-
     this.authService.passwordLogin(this.user.email, this.user.password).subscribe(res=>{  
 
         this.storageService.setToken(res)
-          console.log(res, 'token set');
+          alert(res + 'token set');
 
           this.userService.getUser().subscribe((data) => {
 
@@ -68,7 +67,7 @@ export class LoginPage {
             }
 
             userData = data.json();
-            console.log(data.json(), 'user data');
+            alert('user data');
            
             if(userData.data.training_flags.indexOf(1) != -1){
               this.menuCtrl.swipeEnable(true);
@@ -87,6 +86,9 @@ export class LoginPage {
           },Error=>{
             console.log(Error)
           });
+        }, Error =>{
+          console.log(Error)
+          alert('There was a problem signing in. Please try again.')
         });
 
   }

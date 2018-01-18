@@ -59,8 +59,10 @@ export class ActionsPage {
       data = res;
       let actions = [];
       for(let action of data){
-        if(!action.complete){
-          actions.push(action)
+        if(action.contact.id){
+          if(!action.complete){
+            actions.push(action)
+          }
         }
       }
       this.actions = actions;

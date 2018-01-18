@@ -1,0 +1,87 @@
+page-email-template {
+    .wrapper{
+        padding: 0 15px;
+    }
+    .temp-head{
+        font: 20px junction-regular;
+        color: $dark;
+        text-align: center;
+        margin: 0px auto 10px;
+    }
+    .options{
+        margin-bottom: 20px;
+    }
+    .customName{
+        font: 14px junction-light;
+        color: $bluish;
+        margin: 10px auto;
+        text-align: center;
+    }
+    .versions{
+        display: inline-block;
+        .version{
+            height: 30px;
+            line-height: 30px;
+        }
+        .versionText{
+            font: 16px junction-light;
+            color: $dark;
+            display: inline-block;
+        }
+        .versionCircle{
+            display: inline-block;
+            min-height: 20px;
+            min-width: 20px;
+            height: 20px;
+            width: 20px;
+            border: 1px solid $dark;
+            border-radius: 50%;
+        }
+        .versionCircleOn{
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url('../assets/imgs/Asset 40.png');
+            border: none;
+        }
+    }
+    .buttons{
+        display: inline-block;
+        float: right;
+        margin-top: 11px;
+        button{
+            display: inline-block;
+            border: none;
+            border-radius: 0;
+            background-color: $med;
+            color: white;
+            font: 16px junction-regular;
+            height: 35px;
+            padding: 0 10px;
+        }
+        .buttonOn{
+            background-color: $bluish !important;
+        }
+    }
+
+    .previewTitle{
+        font: 18px junction-regular;
+        color: $dark;
+        margin: 8px 0 5px;
+    }
+    .preview{
+        textarea{
+            font: 15px junction-light;
+            color: $dark;
+            padding: 5px;
+            resize: none;
+            width: 100%;
+            border: 1px solid $dark;
+            border-radius: 5px;
+        }
+    }
+    .preview{
+        font: 18px junction-regular;
+        color: $bluish;
+        margin: 5px 0;
+    }
+}

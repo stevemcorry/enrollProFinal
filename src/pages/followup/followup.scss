@@ -1,0 +1,29 @@
+page-followup {
+    .scroll-content{
+        padding: 0 !important;
+    }
+    .save{
+        height: 40px;
+        width: 100px;
+        font: 16px junction-regular;
+        float: right;
+        color: white;
+        margin: 15px;
+        background-color: $bluish;
+        border-radius: 5px;
+    }
+    .followupTime{
+        color: $dark;
+        text-align: center;
+        margin: 20px 0;
+        font: 16px junction-light;
+        div{
+            display: inline-block;
+        }
+        input{
+            max-width: 50px;
+            border: 1px solid $dark;
+            color: $dark;
+        }
+    }
+}

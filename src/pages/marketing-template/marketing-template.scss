@@ -1,0 +1,87 @@
+page-marketing-template {
+    .scroll-content{
+        overflow-y: scroll;
+    }
+    .method{
+        background-image: url('../assets/imgs/newPictures/Asset 72@2x.png');
+        background-size: cover;
+        display: flex;
+        align-items: flex-end;
+        height: 23%;
+        width: 100%;
+    }
+    .iconz{
+        background-image: url('../assets/imgs/newPictures/Asset 139.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+    }
+    .icon1{
+        background-image: url('../assets/imgs/newPictures/Asset 144.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+    }
+    .icon2{
+        background-image: url('../assets/imgs/newPictures/Asset 145.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+    }
+    .icon3{
+        background-image: url('../assets/imgs/newPictures/Asset 147.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+        margin-bottom: 5px;
+    }
+    .method1{
+        background-image: url('../assets/imgs/newPictures/Asset 114.png');
+    }
+    .method2{
+        background-image: url('../assets/imgs/newPictures/Asset 113.png');
+    }
+    .method3{
+        background-image: url('../assets/imgs/newPictures/Asset 78@2x.png');
+    }
+    .method4{
+        background-image: url('../assets/imgs/newPictures/Asset 113.png');
+    }
+    .method5{
+        background-image: url('../assets/imgs/newPictures/Asset 114.png');
+    }
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 100%;
+        width: 25%;
+        background: $clear1;
+    }
+    .box1{
+        background: $clear2
+    }
+    .box2{
+        background: $clear3
+    }
+    .box3{
+        background: $clear4
+    }
+    .box4{
+        background: $clear5
+    }
+    .boxTitle{
+        height: 20px;
+        width: 20px;
+    }
+    .optionTitle{
+        font: 20px 'junction-light';
+        color: white;
+        text-align: center;
+        width: 75%;
+    }
+}

@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle left>
+          <div class="menuToggle"></div>
+        </button>
+      <ion-title>Marketing</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+  <div class="marketOptions" *ngFor="let market of markets">
+    <div class="box" 
+      (click)="openModal(market)"
+      [ngStyle]="{'background-image': 'url(' + market.image + ')'}">
+      <div class="marketTitle">
+        <div class="icons icon{{market.id}}"
+          [ngStyle]="{'background-image': 'url(' + market.icon + ')'}">
+        </div>
+      </div>
+    <div class="description">{{market.name}}</div>
+    </div>
+  </div>
+</ion-content>

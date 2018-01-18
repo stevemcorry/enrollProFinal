@@ -29,7 +29,12 @@
           </div>
       <div *ngIf="!messages[0]">{{noMessages}}</div>
       <div class="sendBar">
-          <textarea class="send-input" [ngClass]="{tallTextArea: resizeOn}" type="text" [(ngModel)]="newText"></textarea>
+          <textarea #myInput 
+            class="send-input" 
+            (keyup)="resize()"
+            type="text" 
+            [(ngModel)]="newText">
+          </textarea>
           <div class="send-button" (click)="sendMessage()">Send</div>
       </div>
       </div>

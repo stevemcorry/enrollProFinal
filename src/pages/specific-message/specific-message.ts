@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, Content, AlertController, Events } from 'ionic-angular';
 import { MessagingService } from '../../services/messaging.service';
 
@@ -13,6 +13,8 @@ import { MessagingService } from '../../services/messaging.service';
 export class SpecificMessagePage {
 
   @ViewChild(Content) content: Content;
+  @ViewChild('myInput') myInput: ElementRef;
+
   timeout;
   noMessages = 'Loading...';
   messageId;
@@ -21,7 +23,7 @@ export class SpecificMessagePage {
   newText = '';
   contactNumber;
   resizeOn;
-
+  tx
   constructor(
     public navCtrl: NavController, 
     public params: NavParams,
@@ -42,11 +44,13 @@ export class SpecificMessagePage {
   ionViewDidLeave(){
     clearTimeout(this.timeout)
   }
-
   dismiss() {
     clearTimeout(this.timeout);
     this.events.publish('messages');
     this.viewCtrl.dismiss();
+  }
+  resize() {
+      this.myInput.nativeElement.style.height = this.myInput.nativeElement.scrollHeight + 'px';
   }
   getMessages(){
     clearTimeout(this.timeout);

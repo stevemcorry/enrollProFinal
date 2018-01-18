@@ -33,5 +33,25 @@ export class UserService {
 			return data.json();
 		})
 	}
+	getGmailAuth(){
+		let authHeader = new Headers();
+		authHeader.append('Authorization', 'Bearer ' + this.storage.getToken());
+		return this.http.get(this.globalVar.getApiUrl() + 'user', {headers: authHeader}).map(data =>{
+			return data.json().data.bandwidth_phone;
+		})
+	}
+	getTextAuth(){
+		let authHeader = new Headers();
+		authHeader.append('Authorization', 'Bearer ' + this.storage.getToken());
+		return this.http.get(this.globalVar.getApiUrl() + 'user', {headers: authHeader}).map(data =>{
+			return data.json().data.bandwidth_phone;
+		})
+	}
+    googleAuthCheck(){
+        const authHeader = new Headers();
+        authHeader.append('Authorization', 'Bearer ' + this.storage.getToken());
+        return this.http.get( this.globalVar.getApiUrl() + `google/authorized`, {headers: authHeader})
+        .map(res => res.json().authorized);
+    }
 
 }

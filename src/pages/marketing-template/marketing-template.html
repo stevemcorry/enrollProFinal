@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <div (click)="dismiss()">
+        <ion-icon name="arrow-back" class="icons"></ion-icon>
+      </div>
+    </ion-buttons>
+    <ion-title>{{market.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="method method{{option.template_type.id}}" *ngFor="let option of market.templates" (click)="openModal(option)">
+        <div class="box box{{option.template_type.id}}">
+            <div class="iconz icon{{option.template_type.id}}"></div>
+        </div>
+        <div class="optionTitle">
+            {{option.name}}
+        </div>
+    </div>
+  </ion-content>

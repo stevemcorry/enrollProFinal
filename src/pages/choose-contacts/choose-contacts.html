@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <div (click)="dismiss()">
+        <ion-icon name="arrow-back" class="icons"></ion-icon>
+      </div>
+    </ion-buttons>
+    <ion-title>Choose Contacts</ion-title>
+    <ion-buttons end>
+      <div class="next" (click)="send()">
+        {{sendOr}}
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="iconList">
+      <div class="labelIcon" (click)="changeRole('customerOn');">
+          <div [ngClass]="{customerOn: customerOn}" class="customer"></div>
+          <div class="labels" [ngClass]="{labelsOn: customerOn}">Customer</div>
+      </div>
+      <div class="labelIcon" (click)=" changeRole('sharerOn');">
+          <div [ngClass]="{sharerOn: sharerOn}" class="sharer"></div>
+          <div class="labels" [ngClass]="{labelsOn: sharerOn}">Sharer</div>
+      </div>
+      <div class="labelIcon" (click)=" changeRole('builderOn');">
+          <div [ngClass]="{builderOn: builderOn}" class="builder"></div>
+          <div class="labels" [ngClass]="{labelsOn: builderOn}">Builder</div>
+      </div>
+  </div>
+  <div class="tags">
+    <div class="tag" *ngFor="let tag of tags"  
+      (click)="tag.on = !tag.on; 
+      setContactsArray(tag.contacts, tag.on)"
+      [ngClass]="{tagOn: tag.on}">
+      {{tag.name}}
+    </div>
+  </div>
+  <input type="text" placeholder="search" [(ngModel)]="search" class="searchBar">
+  <div *ngFor="let contact of contacts | 
+    contactOrder: 'name-asc' |
+    contactFilter: search | 
+    contactOnFilter: onFilter" 
+    (click)="setContacts(contact);">
+    <div class="contact">
+      <div class="contactItem" 
+        [ngClass]="{activeItem: contact.on, offItem: contact.off}">
+        {{contact.first_name}} {{contact.last_name}}
+      </div>
+      <div class="circle" 
+        [ngClass]="{activeCircle: contact.on, offCircle: contact.off}">
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let contact of contacts | 
+    contactFilter: search | 
+    contactOrder: 'name-asc' |
+    contactOnFilter: offFilter"
+    (click)="setContacts(contact);">
+    <div class="contact">
+      <div class="contactItem" 
+        [ngClass]="{activeItem: contact.on, offItem: contact.off}">
+        {{contact.first_name}} {{contact.last_name}}
+      </div>
+      <div class="circle" 
+        [ngClass]="{activeCircle: contact.on, offCircle: contact.off}">
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!contacts[0]">
+    <div class="contact">
+      <div class="contactItem">
+        Loading...
+      </div>
+    </div>
+  </div>
+</ion-content>

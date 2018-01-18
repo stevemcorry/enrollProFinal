@@ -4,6 +4,7 @@ import { ActionService } from '../../services/actions.service';
 import { ContactService } from '../../services/contact.service';
 import { MarketService } from '../../services/market.service';
 import { TrackerService } from '../../services/tracker.service';
+import { MessagingService } from '../../services/messaging.service';
 
 @IonicPage({
   name: 'page-dashboard'
@@ -11,7 +12,13 @@ import { TrackerService } from '../../services/tracker.service';
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
-  providers: [ActionService, ContactService, MarketService, TrackerService]
+  providers: [
+    ActionService, 
+    ContactService, 
+    MarketService, 
+    TrackerService,
+    MessagingService,
+  ]
 })
 export class DashboardPage {
 
@@ -33,6 +40,7 @@ export class DashboardPage {
   }
 
   recommendations = [];
+  allRecommendations = [];
   recomActions = [
     {
       name: 'Email',
@@ -89,7 +97,8 @@ export class DashboardPage {
     public events: Events,
     public contactService: ContactService,
     public marketService: MarketService,
-    public trackerService: TrackerService
+    public trackerService: TrackerService,
+    public messageService: MessagingService,
   ) {
     this.events.subscribe('actionAdded', ()=>{
       this.getActions();
@@ -101,6 +110,7 @@ export class DashboardPage {
     this.getRecommendations();
     this.getContacts();
     this.getGoalTotals();
+    this.getMessageList();
   }
   closeFab(fab: FabContainer): void {
     if (fab !== undefined) {
@@ -236,7 +246,9 @@ export class DashboardPage {
                 //     this.actions.push(action);
                 // } else { return }
                 if(action.due_date !< date){
-                  this.actions.push(action);
+                  if(action.contact.id){
+                    this.actions.push(action);
+                  }
               } else { return }
               }
           }
@@ -297,13 +309,19 @@ getRecommendation(id){
     for(let recom of res){
         recom.action_type =this.recomActions[recom.action_type-1]
         recom.action_type ? '' : recom.action_type = { name: 'Email',id: 1 };
-        this.recommendations.push(recom)
+        if(this.recommendations.length < 10){
+          this.recommendations.push(recom)
+        }
+        this.allRecommendations.push(recom);
     }
     this.recomFilter += 1;
     if(id === 13){
-      !this.recommendations[0] ? this.recomLoading = "Great job!" : 'Loading...';
+      this.recomLoading = "Great job!";
     }
 })
+}
+loadMoreRecom(){
+  this.recommendations = this.allRecommendations.slice(0,10);
 }
 recommendedActionCheck(id){
   if(id === 1){
@@ -326,7 +344,14 @@ finishRecommendation(rec){
 }
   this.actionService.completeRecommendation(recom).subscribe(res=>{
     rec.delete = true;
-    this.recomFilter += 1; 
+    this.recomFilter += 1;
+    let index = this.recommendations.indexOf(rec)
+    if(this.recommendations.length > 1){
+      this.recommendations.splice(index,1)
+    } else {
+      this.recommendations = [];
+      this.recomLoading = 'Great job! Click to get more recommendations!'
+    }
   })
 }
 openRecomAlert(recom){
@@ -378,9 +403,19 @@ getContacts(){
       this.getScheduledJobs();
   })
 }
-  
+getDate(){
+  var d = new Date(),
+      month = '' + (d.getMonth() + 1),
+      day = '' + (d.getDate() + 1),
+      year = d.getFullYear();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      const date = [year, month, day].join('-');
+      return date;
+}
 getScheduledJobs(){
   this.marketService.getScheduledJobs().subscribe(res => {
+    this.scheduledJobs = [];
     for(let job of res){
       let name = '';
       for(let to of job.to){
@@ -405,8 +440,19 @@ getScheduledJobs(){
       date = date[1] + '/' + date[2] + '/' + date[0].substring(2,4);
       job.scheduled_date = date;
       job.scheduled_time = time;
+      let da = this.getDate()
+      if(da >= job.scheduled_at.substring(0,10)){
+        this.scheduledJobs.push(job)
+      }
     }
-    this.scheduledJobs = res;
+    for(let job of res){
+      if(this.scheduledJobs.indexOf(job) == -1){
+        if(this.scheduledJobs.length < 5){
+          this.scheduledJobs.push(job)
+        }
+      }
+    }
+    //this.scheduledJobs = res;
     if(!this.scheduledJobs[0]){
         this.scheduledLoading = 'No Scheduled Communication Today!';
     }
@@ -416,7 +462,7 @@ deleteScheduledJob(id){
   this.marketService.deleteScheduledJob(id.id).subscribe(res=>{
     id.delete = true;
     this.recomFilter += 1;
-    console.log(res)
+    this.getScheduledJobs();
   })
 }
 
@@ -492,5 +538,32 @@ getGoalTotals(){
   this.goals = [];
   this.allGoals();
 }
+
+//Messaging
+timer
+messages =[];
+messagesLoading = 'Loading...'
+getMessageList(){
+  //clearTimeout(this.timer);
+  this.messageService.getMessageList().subscribe(res=>{
+    for(let mess of res){
+      if(this.messages.length < 5){
+        this.messages.push(mess)
+      }
+    }
+    //this.messages = res;
+    !this.messages[0] ? this.messagesLoading = 'No Messages!' : this.messagesLoading = 'Loading...';
+    // this.timer = setTimeout(()=>{
+    //   this.getMessageList();
+    // },3000);
+  })
+}
+openMessages(message){
+  let name = message.first_name + ' ' + message.last_name
+  let modal = this.navCtrl.push('page-specific-message', {
+    id: message.id, name: name, number: message.number
+  });
+}
+
 
 }

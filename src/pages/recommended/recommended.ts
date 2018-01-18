@@ -112,7 +112,8 @@ export class RecommendedPage {
           "contact": recom.contact.id,
           "due_date": date,
           "notes": recom.notes,
-          "complete": 1
+          "complete": 1,
+          "recommended": 1
       }
       this.actionsService.addAction(action).subscribe(res => {
           this.finishRecommendation(recom)

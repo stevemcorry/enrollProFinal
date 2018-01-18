@@ -9,6 +9,7 @@ import { ActionFilterPipe } from '../pipes/action-filter';
 import { ActionOrder } from '../pipes/action-order.filter';
 import { RecommendedFilter } from '../pipes/recommended.filter';
 import { TimeFormatFilter } from '../pipes/time.filter';
+import { ContactOnFilter } from '../pipes/contact-on.filter';
 
 
 @NgModule({
@@ -23,12 +24,14 @@ import { TimeFormatFilter } from '../pipes/time.filter';
         ActionOrder,
         RecommendedFilter,
         TimeFormatFilter,
+        ContactOnFilter,
     ],
     providers: [
     ],
     exports: [
         ContactOrder,
         ContactFilter,
+        ContactOnFilter,
         ActionFilterPipe,
         ActionOrder,
         RecommendedFilter,

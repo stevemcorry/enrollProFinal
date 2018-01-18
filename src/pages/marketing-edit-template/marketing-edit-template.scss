@@ -1,0 +1,96 @@
+page-marketing-edit-template {
+    .scroll-content{
+        padding: 15px 0 !important;
+    }
+    .next{
+        font: 17px 'junction-light';
+        color: $dark;
+    }
+    .title{
+        transform: translateY(-5px);
+    }
+    .advancedTitle{
+        text-align: center;
+        margin-top: 10px;
+        font: 18px junction-regular;
+        color: $dark;
+        div{
+            display: inline-block;
+        }
+    }
+    .arrow{
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('../assets/imgs/toggles/HRESAsset 233.png');
+        height: 25px;
+        width: 15px;
+        margin-left: 7px;
+        transform: rotate(90deg);
+        transition: all .2s ease;
+    }
+    .arrowOn{
+        transform: rotate(-90deg);
+    }
+    .scheduled{}
+    .scheduledTitle{
+        margin-top: 15px;
+        font: 17px junction-regular;
+        color: $dark;
+        padding: 0 15px;
+        margin-bottom: 10px;
+    }
+    .date{
+        width: 46%;
+        height: 45px;
+        border: 2px solid $greyy;
+        color: $dark;
+    }
+    .dates{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0 15px;
+    }
+    .display{
+        display: none;
+    }
+    .followup{
+        margin-bottom: 30px;
+    }
+    .follow{
+        background-color: $med;
+        height: 40px;
+        padding: 7px;
+        margin: 1px 0;
+    }
+    .followCheckbox{
+        display: inline-block;
+        height: 25px;
+        width: 25px;
+        min-width: 25px;
+        min-height: 25px;
+        border: 1px solid $dark;
+        border-radius: 50%;
+        background-color: white;
+    }
+    .checkboxOn{
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('../assets/imgs/Asset 40.png');
+        border: none;
+    }
+    .followTitle{
+        display: inline-block;
+        font: 14px junction-light;
+        color: white;
+        transform: translateY(-5px);
+        margin-left: 5px;
+    }
+    .editFollowup{
+        display: inline-block;
+        color: white;
+        font: 14px junction-light;
+        float: right;
+        margin: 7px;
+    }
+}
