@@ -64,6 +64,11 @@ export class ContactService {
                 return data.json();
             })
     }
+    addTag(tag){
+        let authHeader = new Headers();
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
+        return this.http.post(this.globalVar.getApiUrl() + 'contacts/tags', tag, { headers: authHeader});
+    }
     addContact(contact){
         let authHeader = new Headers();
             authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
@@ -82,6 +87,16 @@ export class ContactService {
         return this.http.put(this.globalVar.getApiUrl() + 'contacts/' + id, edit, { headers: authHeader}).
         map(res => {
         });
+    }
+    updateTags(id, x){
+        let tags = {
+            tags: x
+        }
+        let authHeader = new Headers();
+            authHeader.append('Authorization', 'Bearer '+ this.storage.getToken());
+            authHeader.append('Content-Type','application/json')
+        return this.http.put(this.globalVar.getApiUrl() + 'contacts/' + id, tags, { headers: authHeader}).
+        map(res => {});
     }
     deleteContact(id){
         let authHeader = new Headers();

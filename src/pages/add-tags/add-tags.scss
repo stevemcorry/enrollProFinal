@@ -1,0 +1,61 @@
+page-add-tags {
+    .addTag{
+        display: flex;
+        align-items: center;
+        width: 95%;
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 40px;
+        padding: 5px;
+        border: 2px solid $greyy;
+    }
+    .addIcon{
+        background-image: url('../assets/imgs/Asset 30.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 20px;
+        width: 20px;
+    }
+    .addLabel{
+        font: 15px 'junction-light';
+        color: $greyy;
+        margin: 5px 0 0 10px;
+    }
+    .tags{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .tag{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        margin: 10px 0;
+    }
+    .tagIcon{
+        background-image: url('../assets/imgs/Asset 44.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 30px;
+        width: 30px;
+    }
+    .tagOn{
+        background-image: url('../assets/imgs/Asset 43.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 30px;
+        width: 30px;
+    }
+    .tagName{
+        font: 15px 'junction-light';
+        color: $dark;
+        margin-left: 10px;
+        width: 75px;
+    }
+    .tagNameOn{
+        color: $bluish;
+    }
+}

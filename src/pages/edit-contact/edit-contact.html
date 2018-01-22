@@ -49,11 +49,26 @@
           </ion-slide>
       </ion-slides>
   </div> 
-      <div class="pagerBar">
-          <div *ngFor="let slide of slides" class="pagerBox">
-          <div [ngClass]="{activeFlag: getIndex(slide)}" class="pagerFlag"></div>
-          </div>
-      </div>
+    <div class="pagerBar">
+        <div *ngFor="let slide of slides" class="pagerBox">
+        <div [ngClass]="{activeFlag: getIndex(slide)}" class="pagerFlag"></div>
+        </div>
+    </div>
+    <div class="addTagBox" 
+        (click)="openTags()"
+        *ngIf="subscribed">
+        <div class="addTag"></div>
+        <div class="addTagLabel">Add Tag</div>
+    </div>
+    <div class="tags"
+        *ngIf="subscribed">
+        <div class="tag" 
+            *ngFor="let t of tags" 
+            [ngClass]="{tagOn: t.on}"
+            (click)="t.on = !t.on; tag(tags)">
+            {{t.name}}
+        </div>
+    </div>
   <div class="buttons">
       <!-- <button ion-button class="cancel" (click)="dismiss()">CANCEL</button> -->
       <button ion-button (click)="editContact()">SAVE</button>

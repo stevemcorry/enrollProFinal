@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Events, AlertController, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Events, AlertController, Slides, ModalController } from 'ionic-angular';
 import { ContactService } from '../../services/contact.service';
+import { StorageService } from '../../services/storage.service';
 
 @IonicPage({
   name: 'page-add-contact'
@@ -8,7 +9,10 @@ import { ContactService } from '../../services/contact.service';
 @Component({
   selector: 'page-add-contact',
   templateUrl: 'add-contact.html',
-  providers: [ContactService]
+  providers: [
+      ContactService,
+      StorageService,
+    ]
 })
 export class AddContactPage {
 
@@ -20,9 +24,12 @@ export class AddContactPage {
     email: '',
     pipeline_position: 1,
     role: 1,
+    notes: '',
     tags: []
   };
+  tags = [];
   phone = '';
+  subscribed;
   slides;
   allSlides = [
       { name: 'Imported', id: 1 },
@@ -43,10 +50,15 @@ export class AddContactPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public contactService: ContactService,
+    public storageService: StorageService,
     public viewCtrl: ViewController,
     public events: Events,
+    public modalCtrl: ModalController,
     public alert: AlertController,
   ) {
+      this.storageService.getSubscribed().then(res=>{
+          this.subscribed = res;
+      })
   }
   dismiss() {
       this.viewCtrl.dismiss();
@@ -105,6 +117,12 @@ export class AddContactPage {
           alert.present();
       }
   }
+  getTags(){
+      this.contactService.getTags().subscribe(res=>{
+          console.log(res)
+          this.tags = res;
+      })
+  }
 
   formatPhone(){
     let input = this.phone.replace(/\D/g,'');
@@ -153,11 +171,28 @@ openAlert(id){
     })
     alert.present();
   }
+  openTags(){
+     let modal = this.modalCtrl.create('page-add-tags', {tags: this.tags});
+     modal.onDidDismiss(data => {
+         console.log(data,'data')
+         this.tags = data.taggy;
+     })
+     modal.present();
+  }
+  tag(x){
+      this.contact.tags = [];
+      for(let y of x){
+          if(y.on){
+              this.contact.tags.push(y.id);
+          }
+      }
+  }
 
   ionViewDidLoad() {
       setTimeout(()=>{
           this.setPipes('customer')
       },100)
+      this.getTags();
   }
 
 }

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <div (click)="updateTags()">
+        <ion-icon name="close" class="icons"></ion-icon>
+      </div>
+    </ion-buttons>
+    <ion-title>Tags</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="addTag" (click)="addTag()">
+      <div class="addIcon"></div>
+      <div class="addLabel">Add New Tag</div>
+  </div>
+  <div class="tags">
+      <div class="tag" *ngFor="let t of tags" (click)="t.active = !t.active">
+          <div class="tagIcon" [ngClass]="{tagOn: t.active}" ></div>
+          <div class="tagName" [ngClass]="{tagNameOn: t.active}" >{{t.name}}</div>
+      </div>
+  </div>
+</ion-content>

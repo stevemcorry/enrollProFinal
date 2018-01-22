@@ -25,7 +25,7 @@ export class StorageService {
 	}
 
 	getSubscribed() {
-		this.storage.get('subscribed')
+		return this.storage.get('subscribed')
 	}
 	clearStorage(){
 		this.storage.clear()

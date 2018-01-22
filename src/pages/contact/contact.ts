@@ -121,7 +121,7 @@ export class ContactPage {
         }
         setTimeout(()=>{
             this.timerCheck = true;
-        },2500)
+        },1100)
       });
   }
   newAction

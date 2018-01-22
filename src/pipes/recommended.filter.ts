@@ -7,7 +7,6 @@ export class RecommendedFilter implements PipeTransform {
   
   transform(values: any, term: any): any {
     if(!values[0]) return values;
-    console.log(values)
     return values.filter(value => {
       return (value.delete !== true)
     })

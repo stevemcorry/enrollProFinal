@@ -102,7 +102,10 @@
       </div>
     </div>
     <div class="bottomBox">
-      <div *ngFor="let action of actions | contactActionFilter: complete" class="action">
+      <div *ngFor="let action of actions | 
+      contactActionFilter: complete |
+      orderAction" 
+      class="action">
         <div class="typeIcon {{classCheck(action)}}"></div>
         <div class="spacing">
           <div 
@@ -110,7 +113,7 @@
             <div class="taskProspect">
               {{action.action_type.name}} {{contact.first_name}}: 
                 <div class="dueDate">
-                  {{action.due_date.slice(0,10)}}
+                  {{action.due_date | timeFormat}}
                 </div>
               </div>
             <div class="taskNotes">{{action.notes}}</div>

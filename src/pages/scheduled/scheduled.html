@@ -12,7 +12,9 @@
 
 <ion-content padding>
     <ion-list class="schedule">
-        <ion-item-sliding *ngFor="let job of scheduledJobs | recomFilter: recomFilter">
+        <ion-item-sliding *ngFor="let job of scheduledJobs | 
+          recomFilter: recomFilter |
+          orderScheduled">
           <ion-item>
               <div class="job">
                   <div class="jobIcon {{job.template_type.name}}"></div>

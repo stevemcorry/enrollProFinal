@@ -10,6 +10,7 @@ import { ActionOrder } from '../pipes/action-order.filter';
 import { RecommendedFilter } from '../pipes/recommended.filter';
 import { TimeFormatFilter } from '../pipes/time.filter';
 import { ContactOnFilter } from '../pipes/contact-on.filter';
+import { ScheduledOrder } from '../pipes/scheduled.filter';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ContactOnFilter } from '../pipes/contact-on.filter';
         RecommendedFilter,
         TimeFormatFilter,
         ContactOnFilter,
+        ScheduledOrder,
     ],
     providers: [
     ],
@@ -36,6 +38,7 @@ import { ContactOnFilter } from '../pipes/contact-on.filter';
         ActionOrder,
         RecommendedFilter,
         TimeFormatFilter,
+        ScheduledOrder,
     ]
 })
 export class SharedModule {}

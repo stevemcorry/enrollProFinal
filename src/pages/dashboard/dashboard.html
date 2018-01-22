@@ -85,7 +85,8 @@
   </div>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let action of recommendations | recomFilter: recomFilter;  
+    <ion-item-sliding *ngFor="let action of recommendations | 
+      recomFilter: recomFilter;  
       let i=index">
       <ion-item no-lines 
         class="task" 
@@ -138,7 +139,9 @@
   </div>
 
   <ion-list class="schedule" *ngIf="scheduledJobs[0]">
-    <ion-item-sliding *ngFor="let job of scheduledJobs | recomFilter: recomFilter; let i=index">
+    <ion-item-sliding *ngFor="let job of scheduledJobs | 
+      recomFilter: recomFilter |
+      orderScheduled; let i=index">
       <ion-item *ngIf="i < 10">
           <div class="job">
               <div class="jobIcon {{job.template_type.name}}"></div>

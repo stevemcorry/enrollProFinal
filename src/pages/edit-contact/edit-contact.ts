@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Slides, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Slides, Events, ModalController } from 'ionic-angular';
 import { PipelineService } from '../../services/pipeline.service';
 import { ContactService } from '../../services/contact.service';
+import { StorageService } from '../../services/storage.service';
 
 
 @IonicPage({
@@ -10,7 +11,11 @@ import { ContactService } from '../../services/contact.service';
 @Component({
   selector: 'page-edit-contact',
   templateUrl: 'edit-contact.html',
-  providers: [PipelineService, ContactService]
+  providers: [
+      PipelineService, 
+      ContactService,
+      StorageService,
+    ]
 })
 export class EditContactPage {
 
@@ -21,19 +26,23 @@ export class EditContactPage {
   builderOn = false;
   sharerOn = false;
   slides = [];
+  subscribed;
+  tags = [];
   allSlides = this.pipeService.allSlides;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public viewCtrl: ViewController,
+    public modalCtrl: ModalController,
     public pipeService: PipelineService,
     public contactService: ContactService,
+    public storageService: StorageService,
     public events: Events
   ) {
     let contact = navParams.get('contact');
     this.contact = contact;
-    console.log(this.contact, 'contact');
+    this.getTags();
     if(this.contact.role.id == 1){
         this.changeRole('builderOn')
     } else if(this.contact.role.id == 2){
@@ -50,8 +59,11 @@ export class EditContactPage {
         } else {
             this.choosePipe.slideTo(this.contact.pipeline_position.id - 1);
         }
-    },50)
-    console.log('ionViewDidLoad EditContactPage');
+    },100)
+    this.storageService.getSubscribed().then(res=>{
+        console.log(res)
+        this.subscribed = res;
+    })
   }
   
   dismiss(){
@@ -117,6 +129,7 @@ export class EditContactPage {
       this.contact.role.id = x;
   }
   editContact(){
+      let id = this.contact.id
       if(this.contact.first_name && this.contact.last_name){
           let contact = {
               first_name: this.contact.first_name,
@@ -124,14 +137,47 @@ export class EditContactPage {
               email: this.contact.email,
               phone: this.contact.phone,
               role: this.contact.role.id,
-              pipeline_position: this.contact.pipeline_position.id
+              pipeline_position: this.contact.pipeline_position.id,
+              tags: this.contact.tags
           }
-          console.log(contact,' edited')
-              this.contactService.editContact(this.contact.id, contact).subscribe(res =>{
+          console.log(contact,' edited', this.contact)
+              this.contactService.editContact(id, contact).subscribe(res =>{
                   this.events.publish('editContact');
                   this.dismiss()
               })
       }
   }
+
+  //Tags
+  getTags(){
+    this.contactService.getTags().subscribe(res=>{
+        this.tags = res;
+        for(let ctag of this.contact.tags){
+            for(let tag of this.tags){
+                if(tag.id == ctag.id){
+                    console.log(tag)
+                    tag.on = true;
+                }
+            }
+        }
+    })
+}
+  openTags(){
+    let modal = this.modalCtrl.create('page-add-tags', {tags: this.tags});
+    modal.onDidDismiss(data => {
+        console.log(data,'data')
+        this.tags = data.taggy;
+    })
+    modal.present();
+ }
+ tag(x){
+     this.contact.tags = [];
+     for(let y of x){
+         if(y.on){
+             this.contact.tags.push(y.id);
+         }
+     }
+ }
+
 
 }

@@ -38,6 +38,9 @@
         <input placeholder="Last Name:" type="text" required [(ngModel)]="contact.last_name">
         <input placeholder="Mobile:" type="tel" required [(ngModel)]="phone" (keydown)="formatPhone()">
         <input placeholder="Email:" type="email" required [(ngModel)]="contact.email">
+        <textarea [(ngModel)]="contact.notes"
+            placeholder="Notes">
+        </textarea>
       <ion-slides #choosePipe (ionSlideDidChange)="setPipe()">
         <ion-slide class="smallSlide"></ion-slide>
         <ion-slide *ngFor="let slide of slides" 
@@ -75,7 +78,12 @@
     </div>
     <div class="tags"
      *ngIf="subscribed">
-      <div class="tag" *ngFor="let t of tags" (click)="tag(tags)">{{t.name}}</div>
+      <div class="tag" 
+        *ngFor="let t of tags" 
+        [ngClass]="{tagOn: t.on}"
+        (click)="t.on = !t.on; tag(tags)">
+        {{t.name}}
+      </div>
     </div>
     <div class="buttons">
       <button class="save" ion-button bottom right (click)="addContact(contact)">Save</button>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, FabContainer } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, FabContainer, Events } from 'ionic-angular';
 import { ContactService } from '../../services/contact.service';
+import { StorageService } from '../../services/storage.service';
 
 
 @IonicPage({
@@ -9,7 +10,10 @@ import { ContactService } from '../../services/contact.service';
 @Component({
   selector: 'page-contacts',
   templateUrl: 'contacts.html',
-  providers: [ContactService]
+  providers: [
+    ContactService,
+    StorageService,
+  ]
 })
 export class ContactsPage {
 
@@ -17,12 +21,22 @@ export class ContactsPage {
   contacts = [];
   contact;
   contactsLoading = "Loading..."
+  subscribed;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public contactService: ContactService,
-    public modalCtrl: ModalController
+    public storageService: StorageService,
+    public modalCtrl: ModalController,
+    public events: Events,
   ) {
+    this.storageService.getSubscribed().then(res=>{
+     this.subscribed = res;
+     console.log(res)
+    })
+    this.events.subscribe('contactAdded', ()=>{
+      this.getContacts();
+    })
   }
 
   getContacts(){
