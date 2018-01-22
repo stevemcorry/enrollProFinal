@@ -65,7 +65,7 @@ page-pipeline {
         display: inline-block;
         position: absolute;
         left: 0;
-        top: 20px;
+        height: 100%;
         width: calc(100% - 190px);
         text-align: left;
     }
@@ -109,7 +109,10 @@ page-pipeline {
         width: calc(100% - 41px);
         text-overflow: ellipsis;
         overflow: hidden;
-        padding-top: 2px;
+        padding-top: 2px;    
+        line-height: 46px;
+        vertical-align: middle;
+        height: 100%;
     }
     .contactName:hover{
       color: $light;
